@@ -1,0 +1,121 @@
+Email,First name,Last name,Lifecycle stage,fc_contact_id,fc_persona,Company domain name
+mindy.simmons.ct-0001@example.com,Mindy,Simmons,Customer,CT-0001,EXECUTIVE,client021.example.com
+amy.ferguson.ct-0002@example.com,Amy,Ferguson,Customer,CT-0002,FINANCE,client022.example.com
+savannah.wheeler.ct-0003@example.com,Savannah,Wheeler,Customer,CT-0003,IT,client023.example.com
+jeffrey.barajas.ct-0004@example.com,Jeffrey,Barajas,Marketing Qualified Lead,CT-0004,IT,client024.example.com
+valerie.hodges.ct-0005@example.com,Valerie,Hodges,Marketing Qualified Lead,CT-0005,OPERATIONS,client025.example.com
+emily.lewis.ct-0006@example.com,Emily,Lewis,Marketing Qualified Lead,CT-0006,IT,client026.example.com
+melinda.williams.ct-0007@example.com,Melinda,Williams,Marketing Qualified Lead,CT-0007,IT,client027.example.com
+jessica.romero.ct-0008@example.com,Jessica,Romero,Lead,CT-0008,OPERATIONS,client028.example.com
+samantha.johnston.ct-0009@example.com,Samantha,Johnston,Lead,CT-0009,OPERATIONS,client029.example.com
+robert.reid.ct-0010@example.com,Robert,Reid,Customer,CT-0010,EXECUTIVE,client030.example.com
+nicholas.alvarado.ct-0011@example.com,Nicholas,Alvarado,Customer,CT-0011,FINANCE,client031.example.com
+steven.miller.ct-0012@example.com,Steven,Miller,Customer,CT-0012,OPERATIONS,client032.example.com
+roger.palmer.ct-0013@example.com,Roger,Palmer,Customer,CT-0013,OPERATIONS,client033.example.com
+brian.dawson.ct-0014@example.com,Brian,Dawson,Lead,CT-0014,IT,client034.example.com
+eric.rhodes.ct-0015@example.com,Eric,Rhodes,Lead,CT-0015,FINANCE,client035.example.com
+phillip.holloway.ct-0016@example.com,Phillip,Holloway,Lead,CT-0016,OPERATIONS,client036.example.com
+james.garcia.ct-0017@example.com,James,Garcia,Lead,CT-0017,EXECUTIVE,client037.example.com
+ricardo.skinner.ct-0018@example.com,Ricardo,Skinner,Lead,CT-0018,FINANCE,client038.example.com
+raymond.cannon.ct-0019@example.com,Raymond,Cannon,Lead,CT-0019,IT,client039.example.com
+kyle.harrington.ct-0020@example.com,Kyle,Harrington,Lead,CT-0020,FINANCE,client040.example.com
+michael.ortiz.ct-0021@example.com,Michael,Ortiz,Customer,CT-0021,EXECUTIVE,fc0001.example.com
+nathaniel.morrison.ct-0022@example.com,Nathaniel,Morrison,Customer,CT-0022,FINANCE,fc0002.example.com
+dennis.bender.ct-0023@example.com,Dennis,Bender,Customer,CT-0023,EXECUTIVE,fc0003.example.com
+tammy.hull.ct-0024@example.com,Tammy,Hull,Customer,CT-0024,EXECUTIVE,fc0004.example.com
+miranda.montgomery.ct-0025@example.com,Miranda,Montgomery,Customer,CT-0025,OPERATIONS,fc0005.example.com
+dominic.brewer.ct-0026@example.com,Dominic,Brewer,Customer,CT-0026,IT,fc0006.example.com
+james.weber.ct-0027@example.com,James,Weber,Customer,CT-0027,IT,fc0007.example.com
+timothy.hurst.ct-0028@example.com,Timothy,Hurst,Customer,CT-0028,FINANCE,fc0008.example.com
+brian.solomon.ct-0029@example.com,Brian,Solomon,Customer,CT-0029,FINANCE,fc0009.example.com
+joseph.snyder.ct-0030@example.com,Joseph,Snyder,Customer,CT-0030,IT,fc0010.example.com
+jeffrey.montgomery.ct-0031@example.com,Jeffrey,Montgomery,Customer,CT-0031,OPERATIONS,fc0011.example.com
+jay.lowe.ct-0032@example.com,Jay,Lowe,Customer,CT-0032,IT,fc0012.example.com
+john.olson.ct-0033@example.com,John,Olson,Customer,CT-0033,IT,fc0013.example.com
+cody.anderson.ct-0034@example.com,Cody,Anderson,Customer,CT-0034,FINANCE,fc0014.example.com
+anthony.perez.ct-0035@example.com,Anthony,Perez,Customer,CT-0035,IT,fc0015.example.com
+mary.leon.ct-0036@example.com,Mary,Leon,Customer,CT-0036,EXECUTIVE,fc0016.example.com
+samantha.glenn.ct-0037@example.com,Samantha,Glenn,Customer,CT-0037,IT,fc0017.example.com
+paula.day.ct-0038@example.com,Paula,Day,Customer,CT-0038,IT,fc0018.example.com
+omar.mitchell.ct-0039@example.com,Omar,Mitchell,Customer,CT-0039,FINANCE,fc0019.example.com
+ricky.morrison.ct-0040@example.com,Ricky,Morrison,Customer,CT-0040,EXECUTIVE,fc0020.example.com
+jeanette.olsen.ct-0222@example.com,Jeanette,Olsen,Customer,CT-0222,FINANCE,fc0020.example.com
+michael.estrada.ct-0223@example.com,Michael,Estrada,Customer,CT-0223,EXECUTIVE,fc0018.example.com
+stephanie.allen.ct-0232@example.com,Stephanie,Allen,Lead,CT-0232,OPERATIONS,client008.example.com
+brian.acevedo.ct-0233@example.com,Brian,Acevedo,Customer,CT-0233,IT,fc0007.example.com
+desiree.taylor.ct-0235@example.com,Desiree,Taylor,Customer,CT-0235,EXECUTIVE,fc0016.example.com
+michael.novak.ct-0241@example.com,Michael,Novak,Lead,CT-0241,OPERATIONS,client014.example.com
+suzanne.mitchell.ct-0244@example.com,Suzanne,Mitchell,Customer,CT-0244,FINANCE,fc0018.example.com
+yesenia.cabrera.ct-0246@example.com,Yesenia,Cabrera,Lead,CT-0246,IT,client016.example.com
+jessica.ellis.ct-0249@example.com,Jessica,Ellis,Lead,CT-0249,IT,client008.example.com
+thomas.perez.ct-0253@example.com,Thomas,Perez,Lead,CT-0253,EXECUTIVE,client004.example.com
+diana.wilson.ct-0269@example.com,Diana,Wilson,Lead,CT-0269,OPERATIONS,client015.example.com
+mason.green.ct-0272@example.com,Mason,Green,Customer,CT-0272,OPERATIONS,fc0005.example.com
+elizabeth.miller.ct-0275@example.com,Elizabeth,Miller,Customer,CT-0275,OPERATIONS,fc0009.example.com
+matthew.sloan.ct-0280@example.com,Matthew,Sloan,Customer,CT-0280,FINANCE,fc0017.example.com
+charles.diaz.ct-0299@example.com,Charles,Diaz,Customer,CT-0299,IT,fc0015.example.com
+gail.boyd.ct-0301@example.com,Gail,Boyd,Lead,CT-0301,FINANCE,client003.example.com
+shannon.trujillo.ct-0302@example.com,Shannon,Trujillo,Lead,CT-0302,FINANCE,client002.example.com
+michael.hernandez.ct-0308@example.com,Michael,Hernandez,Lead,CT-0308,EXECUTIVE,client013.example.com
+sean.wilson.ct-0329@example.com,Sean,Wilson,Lead,CT-0329,EXECUTIVE,client010.example.com
+melissa.mccullough.ct-0330@example.com,Melissa,Mccullough,Lead,CT-0330,IT,client008.example.com
+emily.collins.ct-0335@example.com,Emily,Collins,Lead,CT-0335,IT,client012.example.com
+tina.miller.ct-0341@example.com,Tina,Miller,Lead,CT-0341,EXECUTIVE,client006.example.com
+judy.pittman.ct-0345@example.com,Judy,Pittman,Customer,CT-0345,FINANCE,fc0008.example.com
+katherine.hall.ct-0351@example.com,Katherine,Hall,Lead,CT-0351,OPERATIONS,client006.example.com
+larry.lewis.ct-0352@example.com,Larry,Lewis,Customer,CT-0352,FINANCE,fc0006.example.com
+albert.evans.ct-0356@example.com,Albert,Evans,Lead,CT-0356,EXECUTIVE,client009.example.com
+kevin.willis.ct-0357@example.com,Kevin,Willis,Lead,CT-0357,OPERATIONS,client020.example.com
+thomas.chapman.ct-0360@example.com,Thomas,Chapman,Customer,CT-0360,EXECUTIVE,fc0018.example.com
+lisa.hunt.ct-0370@example.com,Lisa,Hunt,Lead,CT-0370,FINANCE,client003.example.com
+patricia.rodriguez.ct-0401@example.com,Patricia,Rodriguez,Lead,CT-0401,EXECUTIVE,client003.example.com
+ana.guzman.ct-0405@example.com,Ana,Guzman,Customer,CT-0405,FINANCE,fc0007.example.com
+david.morgan.ct-0412@example.com,David,Morgan,Customer,CT-0412,IT,fc0012.example.com
+jasmin.williams.ct-0415@example.com,Jasmin,Williams,Lead,CT-0415,FINANCE,client018.example.com
+john.jones.ct-0416@example.com,John,Jones,Customer,CT-0416,FINANCE,fc0002.example.com
+sandra.jordan.ct-0418@example.com,Sandra,Jordan,Lead,CT-0418,EXECUTIVE,client001.example.com
+jodi.logan.ct-0439@example.com,Jodi,Logan,Lead,CT-0439,IT,client011.example.com
+patrick.sullivan.ct-0448@example.com,Patrick,Sullivan,Customer,CT-0448,IT,fc0003.example.com
+michael.cardenas.ct-0462@example.com,Michael,Cardenas,Customer,CT-0462,FINANCE,fc0010.example.com
+denise.butler.ct-0467@example.com,Denise,Butler,Lead,CT-0467,OPERATIONS,client009.example.com
+dominic.carney.ct-0472@example.com,Dominic,Carney,Customer,CT-0472,OPERATIONS,fc0016.example.com
+shelly.payne.ct-0477@example.com,Shelly,Payne,Customer,CT-0477,EXECUTIVE,fc0001.example.com
+kylie.barnes.ct-0481@example.com,Kylie,Barnes,Customer,CT-0481,FINANCE,fc0007.example.com
+justin.robinson.ct-0482@example.com,Justin,Robinson,Customer,CT-0482,IT,fc0013.example.com
+melinda.lyons.ct-0486@example.com,Melinda,Lyons,Lead,CT-0486,FINANCE,client001.example.com
+allison.smith.ct-0490@example.com,Allison,Smith,Customer,CT-0490,FINANCE,fc0003.example.com
+david.zamora.ct-0533@example.com,David,Zamora,Customer,CT-0533,IT,fc0018.example.com
+emily.ramirez.ct-0534@example.com,Emily,Ramirez,Lead,CT-0534,EXECUTIVE,client019.example.com
+andrew.eaton.ct-0535@example.com,Andrew,Eaton,Lead,CT-0535,EXECUTIVE,client006.example.com
+lindsey.huerta.ct-0541@example.com,Lindsey,Huerta,Customer,CT-0541,OPERATIONS,fc0015.example.com
+mercedes.long.ct-0544@example.com,Mercedes,Long,Customer,CT-0544,EXECUTIVE,fc0007.example.com
+valerie.mejia.ct-0559@example.com,Valerie,Mejia,Customer,CT-0559,OPERATIONS,fc0016.example.com
+philip.molina.ct-0563@example.com,Philip,Molina,Customer,CT-0563,EXECUTIVE,fc0004.example.com
+danielle.moore.ct-0582@example.com,Danielle,Moore,Customer,CT-0582,FINANCE,fc0011.example.com
+mark.meyers.ct-0593@example.com,Mark,Meyers,Lead,CT-0593,IT,client002.example.com
+kendra.nash.ct-0597@example.com,Kendra,Nash,Customer,CT-0597,OPERATIONS,fc0009.example.com
+marcus.figueroa.ct-0601@example.com,Marcus,Figueroa,Lead,CT-0601,OPERATIONS,client009.example.com
+cindy.jones.ct-0619@example.com,Cindy,Jones,Customer,CT-0619,IT,fc0012.example.com
+alex.long.ct-0622@example.com,Alex,Long,Lead,CT-0622,IT,client009.example.com
+joel.tran.ct-0634@example.com,Joel,Tran,Customer,CT-0634,OPERATIONS,fc0018.example.com
+brian.peterson.ct-0638@example.com,Brian,Peterson,Customer,CT-0638,FINANCE,fc0016.example.com
+daniel.jackson.ct-0650@example.com,Daniel,Jackson,Lead,CT-0650,IT,client008.example.com
+sean.ellis.ct-0652@example.com,Sean,Ellis,Customer,CT-0652,EXECUTIVE,fc0019.example.com
+katherine.garcia.ct-0661@example.com,Katherine,Garcia,Lead,CT-0661,OPERATIONS,client017.example.com
+michael.shaw.ct-0672@example.com,Michael,Shaw,Lead,CT-0672,EXECUTIVE,client003.example.com
+rachel.jones.ct-0674@example.com,Rachel,Jones,Customer,CT-0674,FINANCE,fc0004.example.com
+michelle.sullivan.ct-0678@example.com,Michelle,Sullivan,Customer,CT-0678,FINANCE,fc0012.example.com
+jennifer.williams.ct-0680@example.com,Jennifer,Williams,Lead,CT-0680,OPERATIONS,client009.example.com
+lynn.mathis.ct-0685@example.com,Lynn,Mathis,Customer,CT-0685,FINANCE,fc0001.example.com
+sarah.melendez.ct-0692@example.com,Sarah,Melendez,Customer,CT-0692,OPERATIONS,fc0010.example.com
+ryan.mays.ct-0696@example.com,Ryan,Mays,Customer,CT-0696,FINANCE,fc0006.example.com
+anthony.rowe.ct-0700@example.com,Anthony,Rowe,Customer,CT-0700,IT,fc0008.example.com
+tonya.martin.ct-apr-001@example.com,Tonya,Martin,Opportunity,CT-APR-001,OPERATIONS,client001.example.com
+katie.turner.ct-apr-002@example.com,Katie,Turner,Opportunity,CT-APR-002,FINANCE,client002.example.com
+natasha.miller.ct-apr-003@example.com,Natasha,Miller,Opportunity,CT-APR-003,EXECUTIVE,client003.example.com
+melissa.collins.ct-apr-004@example.com,Melissa,Collins,Sales Qualified Lead,CT-APR-004,IT,client004.example.com
+james.rose.ct-apr-005@example.com,James,Rose,Sales Qualified Lead,CT-APR-005,EXECUTIVE,client005.example.com
+haley.baldwin.ct-apr-006@example.com,Haley,Baldwin,Sales Qualified Lead,CT-APR-006,IT,client006.example.com
+brian.robinson.ct-apr-007@example.com,Brian,Robinson,Marketing Qualified Lead,CT-APR-007,IT,client007.example.com
+elizabeth.payne.ct-apr-008@example.com,Elizabeth,Payne,Marketing Qualified Lead,CT-APR-008,EXECUTIVE,client008.example.com
+kayla.brown.ct-apr-009@example.com,Kayla,Brown,Marketing Qualified Lead,CT-APR-009,EXECUTIVE,client009.example.com

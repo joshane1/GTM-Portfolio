@@ -1,0 +1,37 @@
+Deal name,Pipeline,Deal stage,Amount,Close date,fc_opportunity_id,fc_opportunity_type,fc_source_owner_id,fc_external_quote_id,fc_source_stage,Company domain name
+Fiction Client 001 - OPP-APR-001,Sales Pipeline,Closed lost,80000.00,2026-05-21,OPP-APR-001,NEW_BUSINESS,AE-E2,Q-APR-001,CLOSED_LOST,client001.example.com
+Fiction Client 002 - OPP-APR-002,Sales Pipeline,Closed lost,100000.00,2026-05-22,OPP-APR-002,NEW_BUSINESS,AE-E1,Q-APR-002,CLOSED_LOST,client002.example.com
+Fiction Client 003 - OPP-APR-003,Sales Pipeline,Closed lost,110000.00,2026-05-23,OPP-APR-003,NEW_BUSINESS,AE-E1,Q-APR-003,CLOSED_LOST,client003.example.com
+Fiction Client 004 - OPP-APR-004,Sales Pipeline,Closed lost,120000.00,2026-05-24,OPP-APR-004,NEW_BUSINESS,AE-E1,Q-APR-004,CLOSED_LOST,client004.example.com
+Fiction Client 005 - OPP-APR-005,Sales Pipeline,Closed lost,130000.00,2026-05-20,OPP-APR-005,NEW_BUSINESS,AE-E1,Q-APR-005,CLOSED_LOST,client005.example.com
+Fiction Client 006 - OPP-APR-006,Sales Pipeline,Closed lost,140000.00,2026-05-21,OPP-APR-006,NEW_BUSINESS,AE-E1,Q-APR-006,CLOSED_LOST,client006.example.com
+Fiction Client 007 - OPP-APR-007,Sales Pipeline,Closed lost,150000.00,2026-05-22,OPP-APR-007,NEW_BUSINESS,AE-E1,Q-APR-007,CLOSED_LOST,client007.example.com
+Fiction Client 008 - OPP-APR-008,Sales Pipeline,Closed lost,110000.00,2026-05-23,OPP-APR-008,NEW_BUSINESS,AE-E1,Q-APR-008,CLOSED_LOST,client008.example.com
+Fiction Client 009 - OPP-APR-009,Sales Pipeline,Closed lost,80000.00,2026-05-24,OPP-APR-009,RENEWAL,AE-E1,Q-APR-009,CLOSED_LOST,client009.example.com
+Fiction Client 010 - OPP-APR-010,Sales Pipeline,Closed lost,100000.00,2026-05-20,OPP-APR-010,RENEWAL,AE-E1,Q-APR-010,CLOSED_LOST,client010.example.com
+Fiction Client 001 - OPP-APR-011,Sales Pipeline,Closed lost,80000.00,2026-05-21,OPP-APR-011,NEW_BUSINESS,AE-E1,Q-APR-001,CLOSED_LOST,client001.example.com
+Fiction Client 001 - OPP-COHORT-001,Sales Pipeline,Closed won,120000.00,2026-06-14,OPP-COHORT-001,NEW_BUSINESS,AE-E1,Q-COHORT-001,CLOSED_WON,client001.example.com
+Fiction Client 002 - OPP-COHORT-002,Sales Pipeline,Closed lost,90000.00,2026-06-18,OPP-COHORT-002,NEW_BUSINESS,AE-E1,Q-COHORT-002,CLOSED_LOST,client002.example.com
+Fiction Client 021 - OPP-WON-APR-001,Sales Pipeline,Closed won,100000.00,2026-04-10,OPP-WON-APR-001,NEW_BUSINESS,AE-E1,Q-WON-APR-001,CLOSED_WON,client021.example.com
+Fiction Client 022 - OPP-WON-APR-002,Sales Pipeline,Closed won,120000.00,2026-04-20,OPP-WON-APR-002,NEW_BUSINESS,AE-E1,Q-WON-APR-002,CLOSED_WON,client022.example.com
+Fiction Client 023 - OPP-WON-APR-003,Sales Pipeline,Closed won,140000.00,2026-04-25,OPP-WON-APR-003,NEW_BUSINESS,AE-E1,Q-WON-APR-003,CLOSED_WON,client023.example.com
+Fiction Oneill-Williamson - PH001,Sales Pipeline,Proposal,46500.00,2026-08-01,PH001,NEW_BUSINESS,AE-E1,Q-PH-001,PROPOSAL,fc0001.example.com
+"Fiction Moon, Bell and Lara - PH002",Sales Pipeline,Proposal,48000.00,2026-08-01,PH002,NEW_BUSINESS,AE-E1,Q-PH-002,PROPOSAL,fc0002.example.com
+Fiction Hopkins-Howard - PH003,Sales Pipeline,Proposal,49500.00,2026-08-01,PH003,NEW_BUSINESS,AE-E1,Q-PH-003,PROPOSAL,fc0003.example.com
+"Fiction Rodriguez, Lawrence and Martinez - PH004",Sales Pipeline,Proposal,51000.00,2026-08-01,PH004,NEW_BUSINESS,AE-E1,Q-PH-004,PROPOSAL,fc0004.example.com
+Fiction Lee Inc - PH005,Sales Pipeline,Proposal,52500.00,2026-10-01,PH005,NEW_BUSINESS,AE-E1,Q-PH-005,PROPOSAL,fc0005.example.com
+Fiction Skinner-Estrada - PH006,Sales Pipeline,Proposal,54000.00,2026-10-01,PH006,NEW_BUSINESS,AE-E1,Q-PH-006,PROPOSAL,fc0006.example.com
+"Fiction Roberts, Young and Fuller - PH007",Sales Pipeline,Proposal,55500.00,2026-10-01,PH007,NEW_BUSINESS,AE-E1,Q-PH-007,PROPOSAL,fc0007.example.com
+Fiction Jennings-Hawkins - PH008,Sales Pipeline,Proposal,57000.00,2026-10-01,PH008,NEW_BUSINESS,AE-E1,Q-PH-008,PROPOSAL,fc0008.example.com
+"Fiction Payne, Haney and Brown - PH009",Sales Pipeline,Proposal,58500.00,2026-08-01,PH009,NEW_BUSINESS,AE-E1,Q-PH-009,PROPOSAL,fc0009.example.com
+Fiction Harris and Sons - PH010,Sales Pipeline,Proposal,60000.00,2026-08-01,PH010,NEW_BUSINESS,AE-E1,Q-PH-010,PROPOSAL,fc0010.example.com
+"Fiction Harper, Wilson and Baker - PH011",Sales Pipeline,Proposal,61500.00,2026-08-01,PH011,NEW_BUSINESS,AE-E1,Q-PH-011,PROPOSAL,fc0011.example.com
+Fiction Brown-Hill - PH012,Sales Pipeline,Proposal,63000.00,2026-08-01,PH012,NEW_BUSINESS,AE-E1,Q-PH-012,PROPOSAL,fc0012.example.com
+"Fiction Allen, Green and Berger - PH013",Sales Pipeline,Proposal,64500.00,2026-08-01,PH013,NEW_BUSINESS,AE-E1,Q-PH-013,PROPOSAL,fc0013.example.com
+"Fiction Medina, Campos and Taylor - PH014",Sales Pipeline,Proposal,66000.00,2026-08-01,PH014,NEW_BUSINESS,AE-E1,Q-PH-014,PROPOSAL,fc0014.example.com
+Fiction Russo PLC - PH015,Sales Pipeline,Proposal,67500.00,2026-08-01,PH015,NEW_BUSINESS,AE-E1,Q-PH-015,PROPOSAL,fc0015.example.com
+"Fiction Brown, Perry and Oliver - PH016",Sales Pipeline,Proposal,69000.00,2026-08-01,PH016,NEW_BUSINESS,AE-E1,Q-PH-016,PROPOSAL,fc0016.example.com
+Fiction Garrett-Mckee - PH017,Sales Pipeline,Proposal,70500.00,2026-08-01,PH017,NEW_BUSINESS,AE-E1,Q-PH-017,PROPOSAL,fc0017.example.com
+Fiction Wilson Group - PH018,Sales Pipeline,Proposal,72000.00,2026-08-01,PH018,NEW_BUSINESS,AE-E1,Q-PH-018,PROPOSAL,fc0018.example.com
+Fiction Page-Williams - PH019,Sales Pipeline,Proposal,73500.00,2026-08-01,PH019,NEW_BUSINESS,AE-E1,Q-PH-019,PROPOSAL,fc0019.example.com
+Fiction Client 003 - PH020,Sales Pipeline,Proposal,75000.00,2026-08-01,PH020,NEW_BUSINESS,AE-E1,Q-PH-020,PROPOSAL,client003.example.com

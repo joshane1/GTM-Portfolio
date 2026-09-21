@@ -1,0 +1,61 @@
+Company name,Company domain name,Lifecycle stage,fc_account_id,fc_segment,fc_region,fc_industry
+Fiction Oneill-Williamson,fc0001.example.com,Customer,ACC-001,MID_MARKET,US_WEST,Manufacturing
+"Fiction Moon, Bell and Lara",fc0002.example.com,Customer,ACC-002,ENTERPRISE,US_WEST,Manufacturing
+Fiction Hopkins-Howard,fc0003.example.com,Customer,ACC-003,MID_MARKET,UK,Healthcare Operations
+"Fiction Rodriguez, Lawrence and Martinez",fc0004.example.com,Customer,ACC-004,ENTERPRISE,UK,Manufacturing
+Fiction Lee Inc,fc0005.example.com,Customer,ACC-005,MID_MARKET,UK,Software
+Fiction Skinner-Estrada,fc0006.example.com,Customer,ACC-006,ENTERPRISE,UK,Logistics
+"Fiction Roberts, Young and Fuller",fc0007.example.com,Customer,ACC-007,MID_MARKET,US_WEST,Manufacturing
+Fiction Jennings-Hawkins,fc0008.example.com,Customer,ACC-008,MID_MARKET,US_WEST,Business Services
+"Fiction Payne, Haney and Brown",fc0009.example.com,Customer,ACC-009,ENTERPRISE,US_WEST,Healthcare Operations
+Fiction Harris and Sons,fc0010.example.com,Customer,ACC-010,ENTERPRISE,US_EAST,Manufacturing
+"Fiction Harper, Wilson and Baker",fc0011.example.com,Customer,ACC-011,ENTERPRISE,UK,Logistics
+Fiction Brown-Hill,fc0012.example.com,Customer,ACC-012,ENTERPRISE,US_WEST,Manufacturing
+"Fiction Allen, Green and Berger",fc0013.example.com,Customer,ACC-013,ENTERPRISE,UK,Logistics
+"Fiction Medina, Campos and Taylor",fc0014.example.com,Customer,ACC-014,ENTERPRISE,US_EAST,Software
+Fiction Russo PLC,fc0015.example.com,Customer,ACC-015,ENTERPRISE,US_EAST,Manufacturing
+"Fiction Brown, Perry and Oliver",fc0016.example.com,Customer,ACC-016,ENTERPRISE,US_EAST,Business Services
+Fiction Garrett-Mckee,fc0017.example.com,Customer,ACC-017,ENTERPRISE,US_EAST,Healthcare Operations
+Fiction Wilson Group,fc0018.example.com,Customer,ACC-018,ENTERPRISE,US_WEST,Logistics
+Fiction Page-Williams,fc0019.example.com,Customer,ACC-019,ENTERPRISE,US_EAST,Business Services
+Fiction Barajas-Gibson,fc0020.example.com,Customer,ACC-020,ENTERPRISE,US_WEST,Business Services
+Fiction Client 001,client001.example.com,Lead,ACC-CTRL-001,MID_MARKET,US_EAST,Logistics
+Fiction Client 002,client002.example.com,Lead,ACC-CTRL-002,MID_MARKET,US_EAST,Business Services
+Fiction Client 003,client003.example.com,Opportunity,ACC-CTRL-003,MID_MARKET,US_EAST,Software
+Fiction Client 004,client004.example.com,Lead,ACC-CTRL-004,MID_MARKET,US_EAST,Logistics
+Fiction Client 005,client005.example.com,Lead,ACC-CTRL-005,MID_MARKET,US_EAST,Business Services
+Fiction Client 006,client006.example.com,Lead,ACC-CTRL-006,MID_MARKET,US_EAST,Software
+Fiction Client 007,client007.example.com,Lead,ACC-CTRL-007,MID_MARKET,US_EAST,Logistics
+Fiction Client 008,client008.example.com,Lead,ACC-CTRL-008,MID_MARKET,US_EAST,Business Services
+Fiction Client 009,client009.example.com,Lead,ACC-CTRL-009,MID_MARKET,US_EAST,Software
+Fiction Client 010,client010.example.com,Lead,ACC-CTRL-010,MID_MARKET,US_EAST,Logistics
+Fiction Client 011,client011.example.com,Lead,ACC-CTRL-011,MID_MARKET,US_EAST,Business Services
+Fiction Client 012,client012.example.com,Lead,ACC-CTRL-012,MID_MARKET,US_EAST,Software
+Fiction Client 013,client013.example.com,Lead,ACC-CTRL-013,MID_MARKET,US_EAST,Logistics
+Fiction Client 014,client014.example.com,Lead,ACC-CTRL-014,MID_MARKET,US_EAST,Business Services
+Fiction Client 015,client015.example.com,Lead,ACC-CTRL-015,MID_MARKET,US_EAST,Software
+Fiction Client 016,client016.example.com,Lead,ACC-CTRL-016,MID_MARKET,US_EAST,Logistics
+Fiction Client 017,client017.example.com,Lead,ACC-CTRL-017,MID_MARKET,US_EAST,Business Services
+Fiction Client 018,client018.example.com,Lead,ACC-CTRL-018,MID_MARKET,US_EAST,Software
+Fiction Client 019,client019.example.com,Lead,ACC-CTRL-019,MID_MARKET,US_EAST,Logistics
+Fiction Client 020,client020.example.com,Lead,ACC-CTRL-020,MID_MARKET,US_EAST,Business Services
+Fiction Client 021,client021.example.com,Customer,ACC-CTRL-021,MID_MARKET,US_EAST,Software
+Fiction Client 022,client022.example.com,Customer,ACC-CTRL-022,MID_MARKET,US_EAST,Logistics
+Fiction Client 023,client023.example.com,Customer,ACC-CTRL-023,MID_MARKET,US_EAST,Business Services
+Fiction Client 024,client024.example.com,Lead,ACC-CTRL-024,MID_MARKET,US_EAST,Software
+Fiction Client 025,client025.example.com,Lead,ACC-CTRL-025,MID_MARKET,US_EAST,Logistics
+Fiction Client 026,client026.example.com,Lead,ACC-CTRL-026,MID_MARKET,US_EAST,Business Services
+Fiction Client 027,client027.example.com,Lead,ACC-CTRL-027,MID_MARKET,US_EAST,Software
+Fiction Client 028,client028.example.com,Lead,ACC-CTRL-028,MID_MARKET,US_EAST,Logistics
+Fiction Client 029,client029.example.com,Lead,ACC-CTRL-029,MID_MARKET,US_EAST,Business Services
+Fiction Client 030,client030.example.com,Customer,ACC-CTRL-030,MID_MARKET,US_EAST,Software
+Fiction Client 031,client031.example.com,Customer,ACC-CTRL-031,MID_MARKET,US_EAST,Logistics
+Fiction Client 032,client032.example.com,Customer,ACC-CTRL-032,MID_MARKET,US_EAST,Business Services
+Fiction Client 033,client033.example.com,Customer,ACC-CTRL-033,MID_MARKET,US_EAST,Software
+Fiction Client 034,client034.example.com,Lead,ACC-CTRL-034,MID_MARKET,US_EAST,Logistics
+Fiction Client 035,client035.example.com,Lead,ACC-CTRL-035,MID_MARKET,US_EAST,Business Services
+Fiction Client 036,client036.example.com,Lead,ACC-CTRL-036,MID_MARKET,US_EAST,Software
+Fiction Client 037,client037.example.com,Lead,ACC-CTRL-037,MID_MARKET,US_EAST,Logistics
+Fiction Client 038,client038.example.com,Lead,ACC-CTRL-038,MID_MARKET,US_EAST,Business Services
+Fiction Client 039,client039.example.com,Lead,ACC-CTRL-039,MID_MARKET,US_EAST,Software
+Fiction Client 040,client040.example.com,Lead,ACC-CTRL-040,MID_MARKET,US_EAST,Logistics
