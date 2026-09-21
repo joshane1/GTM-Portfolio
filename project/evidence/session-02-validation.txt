@@ -1,0 +1,13 @@
+{
+  "tables": 14,
+  "source_rows": 7860,
+  "april_mql_inquiries": 24,
+  "april_unique_mql_contacts": 20,
+  "april_sales_pipeline_usd": "1200000.00",
+  "april_new_business_pipeline_usd": "940000.00",
+  "april_bookings_usd": "360000.00",
+  "april_service_revenue_usd": "70000.00",
+  "june_open_deals": 20,
+  "june_at_risk_deals": 8
+}
+PASS: core source records, baseline reports, and expected case metrics reconcile
