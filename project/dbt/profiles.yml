@@ -1,0 +1,8 @@
+fiction_cloud:
+  target: dev
+  outputs:
+    dev:
+      type: duckdb
+      path: ./project/warehouse/fiction_cloud.duckdb
+      schema: main
+      threads: 4

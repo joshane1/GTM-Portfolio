@@ -1,2 +1,19 @@
-.venv/
 __pycache__/
+
+# macOS
+.DS_Store
+**/.DS_Store
+
+# Python virtual environment
+.venv/
+
+# dbt generated artifacts
+project/dbt/logs/
+project/dbt/target/
+project/dbt/.user.yml
+
+# Generated DuckDB database
+project/warehouse/*.duckdb
+
+# Private validation oracle
+data/core-v1/validation_private/

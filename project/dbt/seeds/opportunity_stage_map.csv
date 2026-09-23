@@ -1,0 +1,8 @@
+stage_raw,stage_order,is_open,is_won,is_lost
+DISCOVERY,1,true,false,false
+EVALUATION,2,true,false,false
+PROPOSAL,3,true,false,false
+NEGOTIATION,4,true,false,false
+CLOSED_WON,5,false,true,false
+CLOSED_LOST,5,false,false,true
+UNKNOWN,0,false,false,false

@@ -1,0 +1,33 @@
+version: 2
+
+sources:
+
+  - name: raw_crm
+    schema: raw_crm
+    tables:
+      - name: crm_accounts
+      - name: crm_contacts
+      - name: crm_owners
+      - name: crm_opportunities
+      - name: crm_opportunity_source_links
+      - name: crm_opportunity_stage_events
+      - name: crm_opportunity_field_events
+
+  - name: raw_marketing
+    schema: raw_marketing
+    tables:
+      - name: mkt_inquiries
+      - name: mkt_touches
+      - name: mkt_campaigns
+
+  - name: raw_finance
+    schema: raw_finance
+    tables:
+      - name: fin_customers
+      - name: fin_subscriptions
+      - name: fin_monthly_service_revenue
+
+  - name: raw_identity
+    schema: raw_identity
+    tables:
+      - name: identity_account_links
