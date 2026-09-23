@@ -1,0 +1,38 @@
+version: 2
+
+models:
+  - name: stg_identity_account_links
+    columns:
+      # Uniqueness for link_id (Primary Key)
+      - name: link_id
+        data_tests:
+          - unique
+          - not_null
+      # Foreign Key: account_id exists in stg_crm_accounts
+      - name: account_id
+        data_tests:
+          - relationships:
+              arguments:
+                to: ref('stg_crm_accounts')
+                field: account_id
+      # Foreign Key: billing_customer_id exists in stg_fin_customers 
+      - name: billing_customer_id
+        data_tests:
+          - relationships:
+              arguments:
+                to: ref('stg_fin_customers')
+                field: billing_customer_id
+      # Accepted values for external_system
+      - name: external_system
+        data_tests:
+          - accepted_values:
+              arguments:
+                values:
+                  - BILLING
+      # Accepted values for match_status
+      - name: match_status
+        data_tests:
+          - accepted_values:
+              arguments:
+                values:
+                  - VERIFIED

@@ -1,0 +1,77 @@
+version: 2
+
+models:
+  - name: stg_mkt_campaigns
+    columns:
+      # Uniqueness and not null tests for campaign_id (Primary Key)
+      - name: campaign_id
+        data_tests:
+          - unique
+          - not_null
+
+  - name: stg_mkt_inquiries
+    columns:
+      # Uniqueness and not null tests for inquiry_id (Primary Key)
+      - name: inquiry_id
+        data_tests:
+          - unique
+          - not_null
+      # Foreign key relationships for contact_id
+      - name: contact_id
+        data_tests:
+          - relationships:
+              arguments:
+                to: ref('stg_crm_contacts')
+                field: contact_id
+      # Foreign key relationships for account_id
+      - name: account_id
+        data_tests:
+          - relationships:
+              arguments:
+                to: ref('stg_crm_accounts')
+                field: account_id
+      # Foreign key relationships for campaign_id
+      - name: campaign_id
+        data_tests:
+          - relationships:
+              arguments:
+                to: ref('stg_mkt_campaigns')
+                field: campaign_id
+      # Acceptable values for qualification_status 
+      - name: qualification_status
+        data_tests:
+          - accepted_values:
+              arguments:
+                values:
+                  - NEW
+                  - MQL
+                  - SQL
+
+  - name: stg_mkt_touches
+    columns:
+      # Uniqueness and not null tests for touch_id (Primary Key)
+      - name: touch_id
+        data_tests:
+          - unique
+          - not_null
+      # Foreign key relationships for campaign_id
+      - name: campaign_id
+        data_tests:
+          - relationships:
+              arguments:
+                to: ref('stg_mkt_campaigns')
+                field: campaign_id
+      # Foreign key relationships for contact_id
+      - name: contact_id
+        data_tests:
+          - relationships:
+              arguments:
+                to: ref('stg_crm_contacts')
+                field: contact_id
+      # Foreign key relationships for every non-null inquiry_id in stg_mkt_touches to stg_mkt_inquiries
+      - name: inquiry_id
+        data_tests:
+          - relationships:
+              arguments:
+                to: ref('stg_mkt_inquiries')
+                field: inquiry_id

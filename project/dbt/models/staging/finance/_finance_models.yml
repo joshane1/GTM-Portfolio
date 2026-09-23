@@ -1,0 +1,55 @@
+version: 2
+
+models:
+  - name: stg_fin_customers
+    columns:
+      # Uniqueness for billing_customer_id (Primary Key)
+      - name: billing_customer_id
+        data_tests:
+          - unique
+          - not_null
+      # Accepted values for status
+      - name: status
+        data_tests:
+          - accepted_values:
+              arguments:
+                values:
+                  - ACTIVE
+
+  - name: stg_fin_subscriptions
+    columns:
+      # Uniqueness for subscription_id (Primary Key)
+      - name: subscription_id
+        data_tests:
+          - unique
+          - not_null
+      # Foreign Key: billing_customer_id exists in stg_fin_customers
+      - name: billing_customer_id
+        data_tests:
+          - relationships:
+              arguments:
+                to: ref('stg_fin_customers')
+                field: billing_customer_id
+      # Foreign Key: originating_opp_id exists in stg_crm_opportunities
+      - name: originating_opp_id
+        data_tests:
+          - relationships:
+              arguments:
+                to: ref('stg_crm_opportunities')
+                field: opp_id
+
+  - name: stg_fin_monthly_service_revenue
+    columns:
+    # Uniqueness for revenue_line_id (Primary Key
+      - name: revenue_line_id
+        data_tests:
+          - unique
+          - not_null
+    # Foreign Key: subscription_id exists in stg_fin_subscriptions
+      - name: subscription_id
+        data_tests:
+          - relationships:
+              arguments:
+                to: ref('stg_fin_subscriptions')
+                field: subscription_id
+    
