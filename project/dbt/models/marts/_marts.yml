@@ -1,0 +1,9 @@
+version: 2
+
+models:
+  - name: mart_inquiry_funnel
+    columns:
+      - name: inquiry_id
+        data_tests:
+          - unique
+          - not_null

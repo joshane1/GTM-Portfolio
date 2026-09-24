@@ -63,3 +63,17 @@ models:
               arguments:
                 to: ref('dim_account')
                 field: account_id
+
+  - name: int_inquiry_cohort
+    columns:
+      - name: inquiry_id
+        data_tests:
+          - unique
+          - not_null
+
+  - name: int_inquiry_sourced_outcomes
+    columns:
+      - name: inquiry_id
+        data_tests:
+          - unique
+          - not_null
