@@ -1,0 +1,65 @@
+version: 2
+
+models:
+  - name: dim_account
+    columns:
+      - name: account_id
+        data_tests:
+          - unique
+          - not_null
+
+  - name: dim_contact
+    columns:
+      - name: contact_id
+        data_tests:
+          - unique
+          - not_null
+
+      - name: account_id
+        data_tests:
+          - relationships:
+              arguments:
+                to: ref('dim_account')
+                field: account_id
+  
+  - name: bridge_opportunity_inquiry
+    columns:
+      - name: source_link_id
+        data_tests:
+          - unique
+          - not_null
+
+      - name: opp_id
+        data_tests:
+          - relationships:
+              arguments:
+                to: ref('stg_crm_opportunities')
+                field: opp_id
+
+  - name: int_opportunity_stage_at_april_end
+    columns:
+      - name: opp_id
+        data_tests:
+          - unique
+          - not_null
+  
+  - name: int_quote_survivorship
+    columns:
+      - name: opp_id
+        data_tests:
+          - unique
+          - not_null
+
+  - name: fct_opportunity
+    columns:
+      - name: opp_id
+        data_tests:
+          - unique
+          - not_null
+
+      - name: account_id
+        data_tests:
+          - relationships:
+              arguments:
+                to: ref('dim_account')
+                field: account_id
