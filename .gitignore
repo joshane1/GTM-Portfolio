@@ -17,3 +17,6 @@ project/warehouse/*.duckdb
 
 # Private validation oracle
 data/core-v1/validation_private/
+
+# Documentation
+1_Documentation
