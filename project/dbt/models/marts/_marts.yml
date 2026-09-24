@@ -7,3 +7,10 @@ models:
         data_tests:
           - unique
           - not_null
+
+  - name: mart_pipeline_as_of
+    columns:
+      - name: opp_id
+        data_tests:
+          - unique
+          - not_null
