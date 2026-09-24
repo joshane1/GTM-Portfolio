@@ -14,3 +14,40 @@ models:
         data_tests:
           - unique
           - not_null
+
+  - name: mart_bookings
+    columns:
+      - name: opp_id
+        data_tests:
+          - unique
+          - not_null
+
+  - name: fct_monthly_service_revenue
+    columns:
+      - name: revenue_line_id
+        data_tests:
+          - unique
+          - not_null
+
+      - name: subscription_id
+        data_tests:
+          - not_null
+          - relationships:
+              arguments:
+                to: ref('stg_fin_subscriptions')
+                field: subscription_id
+
+      - name: account_id
+        data_tests:
+          - not_null
+          - relationships:
+              arguments:
+                to: ref('dim_account')
+                field: account_id
+
+  - name: mart_lead_to_revenue
+    columns:
+      - name: opp_id
+        data_tests:
+          - unique
+          - not_null
