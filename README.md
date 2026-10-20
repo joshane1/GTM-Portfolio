@@ -14,6 +14,14 @@ python generate.py --output data/core-v1
 python validate.py --data data/core-v1
 ```
 
+Before running the dbt project, create your local profile from the tracked example:
+
+```bash
+cp project/dbt/profiles.example.yml project/dbt/profiles.yml
+```
+
+The local `profiles.yml` is ignored by Git so environment-specific settings or credentials are not committed accidentally.
+
 The generator refuses to write into an existing output directory. Use a new path for each release or seed; it will not overwrite records you have saved. The default seed is `20260918`. You can use `--seed 1234` for a different but still reproducible surrounding population; the fixed business-case totals remain the same. The pinned Faker version is necessary for bit-for-bit reproducibility across machines using the same Python/runtime behavior.
 
 ## What it creates

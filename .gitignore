@@ -14,6 +14,7 @@ project/dbt/.user.yml
 
 # Generated DuckDB database
 project/warehouse/*.duckdb
+project/dbt/profiles.yml
 
 # Private validation oracle
 data/core-v1/validation_private/
