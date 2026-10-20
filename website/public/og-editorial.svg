@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-labelledby="title desc">
+  <title id="title">Your Name — GTM Engineer</title>
+  <desc id="desc">Cleaner data, faster handoffs, and better GTM decisions.</desc>
+  <rect width="1200" height="630" fill="#f4f0e6"/>
+  <rect x="792" width="408" height="630" fill="#e8eadf"/>
+  <rect x="72" y="70" width="1056" height="490" rx="2" fill="none" stroke="#20251f" stroke-opacity=".18"/>
+  <text x="72" y="42" fill="#416b4c" font-family="Courier New, monospace" font-size="16" font-weight="700" letter-spacing="2">YOUR NAME / GTM ENGINEERING</text>
+  <text x="94" y="190" fill="#20251f" font-family="Georgia, Times New Roman, serif" font-size="74" font-weight="500" letter-spacing="-3">Cleaner data.</text>
+  <text x="94" y="274" fill="#20251f" font-family="Georgia, Times New Roman, serif" font-size="74" font-weight="500" letter-spacing="-3">Faster handoffs.</text>
+  <text x="94" y="358" fill="#416b4c" font-family="Georgia, Times New Roman, serif" font-size="74" font-style="italic" font-weight="500" letter-spacing="-3">Better GTM decisions.</text>
+  <line x1="94" y1="430" x2="744" y2="430" stroke="#20251f" stroke-opacity=".32"/>
+  <text x="94" y="472" fill="#687066" font-family="Arial, sans-serif" font-size="20">Revenue systems · Analytics engineering · Automation</text>
+  <circle cx="996" cy="272" r="104" fill="#274334"/>
+  <circle cx="996" cy="272" r="56" fill="#f4f0e6"/>
+  <circle cx="996" cy="272" r="14" fill="#416b4c"/>
+  <path d="M996 168V112M1100 272H1156M996 376V432M892 272H836" fill="none" stroke="#416b4c" stroke-width="4"/>
+  <text x="878" y="506" fill="#416b4c" font-family="Courier New, monospace" font-size="15" font-weight="700" letter-spacing="1.6">DATA → DECISION → ACTION</text>
+</svg>

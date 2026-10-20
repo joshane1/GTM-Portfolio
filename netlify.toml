@@ -1,0 +1,7 @@
+[build]
+  base = "website"
+  command = "node scripts/build-netlify-embed.mjs"
+  publish = "handoff/GTM-Portfolio-Netlify-Drop"
+
+[build.environment]
+  NODE_VERSION = "22.13.0"

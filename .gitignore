@@ -20,3 +20,18 @@ data/core-v1/validation_private/
 
 # Documentation
 1_Documentation
+
+# Website dependencies and generated output
+node_modules/
+website/.next/
+website/.vinext/
+website/dist/
+website/.wrangler/
+website/handoff/
+website/outputs/
+website/work/
+*.zip
+
+# Local environment files and secrets
+.env*
+!.env.example
