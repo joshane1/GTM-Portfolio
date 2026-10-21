@@ -1,13 +1,13 @@
 # GTM Portfolio website
 
-This directory is the source of the portfolio website embedded in Framer.
+This directory is the source of the portfolio website, deployed on Netlify.
 
 ## Source of truth
 
 - `app/globals.css` contains the visual design and responsive styling.
 - `app/work-data.ts` contains the Types of Work content.
 - `scripts/build-netlify-embed.mjs` generates the static multipage website deployed by Netlify.
-- `public/` contains permanent public assets and Framer reference exports.
+- `public/` contains permanent public assets.
 
 ## Build locally
 

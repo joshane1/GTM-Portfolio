@@ -316,12 +316,12 @@ const singlePageHome = home
 await fs.mkdir(path.join(outputDir, 'about'), { recursive: true });
 await fs.writeFile(path.join(outputDir, 'index.html'), home);
 await fs.writeFile(path.join(outputDir, 'about', 'index.html'), about);
-await fs.writeFile(path.join(outputDir, 'README-FIRST.txt'), `UPLOAD THIS ENTIRE FOLDER TO NETLIFY DROP\n\n1. Open https://app.netlify.com/drop\n2. Drag the entire GTM-Portfolio-Netlify-Drop folder into the drop area.\n3. Copy the generated netlify.app URL.\n4. In Framer, select your Embed and choose URL.\n5. Paste the Netlify URL.\n\nDo not paste index.html into Framer's HTML field.\n`);
+await fs.writeFile(path.join(outputDir, 'README-FIRST.txt'), `GTM PORTFOLIO — NETLIFY SITE\n\nNetlify builds and publishes this folder automatically from the repository (see netlify.toml).\nTo deploy it manually instead, open https://app.netlify.com/drop and drag this entire folder into the drop area.\n\nDo not edit these files directly. Change the source files and rebuild with: node scripts/build-netlify-embed.mjs\n`);
 await fs.mkdir(singlePageOutputDir, { recursive: true });
 await fs.writeFile(path.join(singlePageOutputDir, 'index.html'), singlePageHome);
 await fs.copyFile(path.join(projectDir, 'public', 'headshot.png'), path.join(outputDir, 'headshot.png'));
 await fs.copyFile(path.join(projectDir, 'public', 'headshot.png'), path.join(singlePageOutputDir, 'headshot.png'));
-await fs.writeFile(path.join(singlePageOutputDir, 'README-FIRST.txt'), `SINGLE-PAGE VERSION — UPLOAD THIS ENTIRE FOLDER TO NETLIFY DROP\n\n1. Open https://app.netlify.com/drop\n2. Drag the entire GTM-Portfolio-Single-Page folder into the drop area.\n3. Copy the generated netlify.app URL.\n4. In Framer, select your Embed and choose URL.\n5. Paste the Netlify URL.\n\nThe About navigation scrolls to the About section on the Home page.\nDo not paste index.html into Framer's HTML field.\n`);
+await fs.writeFile(path.join(singlePageOutputDir, 'README-FIRST.txt'), `GTM PORTFOLIO — SINGLE-PAGE VERSION\n\nThis alternative layout is not published by netlify.toml.\nTo preview it on Netlify, open https://app.netlify.com/drop and drag this entire folder into the drop area.\n\nThe About navigation scrolls to the About section on the Home page.\n`);
 
 console.log(`Created Netlify Drop folder: ${outputDir}`);
 console.log(`Home HTML: ${Buffer.byteLength(home).toLocaleString()} bytes`);

@@ -34,7 +34,6 @@ export default function AccordionWorkPage() {
           <WorkAccordion items={workTypes} />
           <div className="accordion-section-links">
             <Link href="/accordion">Return to Home</Link>
-            <a href="/framer-work-types-accordion.csv" download>Download Framer CMS CSV</a>
           </div>
         </section>
       </main>
