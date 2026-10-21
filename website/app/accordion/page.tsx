@@ -4,7 +4,7 @@ import WorkAccordion from '../components/work-accordion';
 import { workTypes } from '../work-data';
 
 export const metadata: Metadata = {
-  title: 'Your Name — GTM Engineer | Accordion Study',
+  title: 'Oshane Jackson — GTM Engineer | Accordion Study',
   description: 'A concise, expandable view of GTM engineering capabilities, projects, and working approach.',
 };
 
@@ -18,7 +18,7 @@ export default function AccordionHome() {
   return (
     <main className="operating-site work-site capability-home theme-editorial accordion-version">
       <header className="site-header operating-header">
-        <a className="monogram" href="#top" aria-label="Back to top">YN<span>.</span></a>
+        <a className="monogram" href="#top" aria-label="Back to top">OJ<span>.</span></a>
         <nav aria-label="Main navigation">
           <Link className="nav-active" href="/accordion#top">Home</Link>
           <Link href="/accordion/work">Types of Work</Link>
@@ -33,7 +33,7 @@ export default function AccordionHome() {
           <h1>I build cleaner data, faster handoffs, and more reliable <em>GTM decisions.</em></h1>
         </div>
         <aside>
-          <p>I&apos;m Your Name, a GTM Engineer and GTM Analytics Engineer. I design the data models, analytics, enrichment workflows, automations, and scoring systems that help revenue teams operate with greater clarity and consistency.</p>
+          <p>I&apos;m Oshane Jackson, a GTM Engineer and GTM Analytics Engineer. I design the data models, analytics, enrichment workflows, automations, and scoring systems that help revenue teams operate with greater clarity and consistency.</p>
           <div className="operating-actions"><a className="report-button report-button-primary" href="#types-of-work">Explore types of work</a><a className="report-button" href="#contact">Contact</a></div>
           <small><i /> AVAILABLE FOR THE RIGHT ROLE OR PROJECT</small>
         </aside>
@@ -76,10 +76,10 @@ export default function AccordionHome() {
 
       <section className="operating-contact simple-contact" id="contact">
         <div><p className="report-kicker">EMPLOYMENT OR PROJECT-BASED SUPPORT</p><h2>Hiring for this capability—or need it <em>built?</em></h2><p className="contact-intro">I&apos;m open to GTM Engineering and GTM Analytics Engineering roles, as well as clearly scoped project work.</p></div>
-        <div className="contact-review"><a href="mailto:hello@yourdomain.com">hello@yourdomain.com</a><div><span>YOUR CITY · OPEN TO REMOTE</span><a href="#">LINKEDIN</a><a href="#">GITHUB</a></div></div>
+        <div className="contact-review"><a href="https://www.linkedin.com/in/oshane-jackson/" rel="noreferrer" target="_blank">Connect on LinkedIn</a><div><span>REMOTE</span><a href="https://github.com/joshane1/GTM-Portfolio" rel="noreferrer" target="_blank">GITHUB</a></div></div>
       </section>
 
-      <footer className="operating-footer"><span>© 2026 YOUR NAME</span><span>GTM ENGINEERING / SYSTEMS / ANALYTICS</span><a href="#top">BACK TO TOP</a></footer>
+      <footer className="operating-footer"><span>© 2026 OSHANE JACKSON</span><span>GTM ENGINEERING / SYSTEMS / ANALYTICS</span><a href="#top">BACK TO TOP</a></footer>
     </main>
   );
 }

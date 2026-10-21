@@ -4,7 +4,7 @@ import WorkAccordion from '../../components/work-accordion';
 import { workTypes } from '../../work-data';
 
 export const metadata: Metadata = {
-  title: 'Types of Work — Your Name, GTM Engineer | Accordion Study',
+  title: 'Types of Work — Oshane Jackson, GTM Engineer | Accordion Study',
   description: 'Explore five GTM engineering capabilities in a concise, expandable format.',
 };
 
@@ -12,7 +12,7 @@ export default function AccordionWorkPage() {
   return (
     <div className="operating-shell work-site theme-editorial accordion-version">
       <header className="site-header operating-header">
-        <Link className="monogram" href="/accordion" aria-label="Go to homepage">YN<span>.</span></Link>
+        <Link className="monogram" href="/accordion" aria-label="Go to homepage">OJ<span>.</span></Link>
         <nav aria-label="Main navigation">
           <Link href="/accordion#top">Home</Link>
           <Link className="nav-active" href="/accordion/work">Types of Work</Link>
@@ -40,7 +40,7 @@ export default function AccordionWorkPage() {
       </main>
 
       <footer className="operating-footer">
-        <span>© 2026 YOUR NAME</span>
+        <span>© 2026 OSHANE JACKSON</span>
         <span>GTM ENGINEERING / SYSTEMS / ANALYTICS</span>
         <Link href="/accordion#top">HOME</Link>
       </footer>

@@ -25,4 +25,4 @@ handoff/GTM-Portfolio-Netlify-Drop/
 
 Do not edit the generated HTML directly. Make changes in the source files and rebuild it. Netlify uses the repository-level `netlify.toml` to run this build automatically.
 
-The public contact email, LinkedIn URL, location, and remaining personal placeholders must be replaced before launch.
+The contact form uses Netlify Forms, so no email address is published on the site. Enable form detection and set up email notifications in the Netlify dashboard (Site configuration → Forms).

@@ -35,7 +35,7 @@ export default async function ProjectPage({ params, searchParams }: PageProps) {
   return (
     <div className={`operating-shell ${siteThemeClass(theme) ?? 'theme-editorial'}`}>
       <header className="site-header operating-header">
-        <Link className="monogram" href={themedHref('/', theme)} aria-label="Go to homepage">YN<span>.</span></Link>
+        <Link className="monogram" href={themedHref('/', theme)} aria-label="Go to homepage">OJ<span>.</span></Link>
         <nav aria-label="Main navigation">
           <Link href={themedHref('/#top', theme)}>Home</Link>
           <Link className="nav-active" href={themedHref(`/solutions#${project.solutionSlug}`, theme)}>Solutions</Link>
@@ -121,7 +121,7 @@ export default async function ProjectPage({ params, searchParams }: PageProps) {
       </main>
 
       <footer className="operating-footer">
-        <span>© 2026 YOUR NAME</span>
+        <span>© 2026 OSHANE JACKSON</span>
         <span>GTM ENGINEERING / SYSTEMS / ANALYTICS</span>
         <Link href={themedHref('/', theme)}>HOME</Link>
       </footer>

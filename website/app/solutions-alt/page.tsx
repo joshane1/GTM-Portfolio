@@ -11,7 +11,7 @@ export default function AlternateSolutionsPage() {
   return (
     <div className="solutions-shell alt-solutions-shell">
       <header className="site-header solutions-header">
-        <Link className="monogram" href="/" aria-label="Go to homepage">YN<span>.</span></Link>
+        <Link className="monogram" href="/" aria-label="Go to homepage">OJ<span>.</span></Link>
         <nav aria-label="Main navigation">
           <Link href="/#top">Home</Link>
           <Link className="nav-active" href="/solutions">Solutions</Link>

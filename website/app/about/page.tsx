@@ -3,7 +3,7 @@ import Link from 'next/link';
 import { resolveSiteTheme, siteThemeClass, themedHref, type ThemeSearchParams } from '../site-theme';
 
 export const metadata: Metadata = {
-  title: 'About — Your Name, GTM Engineer',
+  title: 'About — Oshane Jackson, GTM Engineer',
   description: 'How I connect commercial context to technical execution across revenue operations, data, analytics, and automation.',
 };
 
@@ -29,7 +29,7 @@ export default async function AboutPage({ searchParams }: PageProps) {
   return (
     <div className={`operating-shell ${siteThemeClass(theme) ?? 'theme-editorial'}`}>
       <header className="site-header operating-header">
-        <Link className="monogram" href={themedHref('/#top', theme)} aria-label="Go to homepage">YN<span>.</span></Link>
+        <Link className="monogram" href={themedHref('/#top', theme)} aria-label="Go to homepage">OJ<span>.</span></Link>
         <nav aria-label="Main navigation">
           <Link href={themedHref('/#top', theme)}>Home</Link>
           <Link href={themedHref('/work', theme)}>Types of Work</Link>
@@ -51,9 +51,9 @@ export default async function AboutPage({ searchParams }: PageProps) {
               <div><span>TEAM FIT</span><strong>RevOps · GTM · Data</strong></div>
             </div>
           </div>
-          <figure className="report-portrait" role="img" aria-label="Your Name profile monogram">
+          <figure className="report-portrait" role="img" aria-label="Oshane Jackson profile monogram">
             <div><span>GTM ENGINEERING</span><span>PROFILE</span></div>
-            <strong>YN</strong>
+            <strong>OJ</strong>
             <figcaption>Revenue systems · Analytics engineering · Workflow automation</figcaption>
           </figure>
         </section>
@@ -86,13 +86,13 @@ export default async function AboutPage({ searchParams }: PageProps) {
           <div>
             <h2>Need someone who can move from GTM problem to working <em>system?</em></h2>
             <p>I&apos;m open to GTM Engineering and GTM Analytics Engineering roles, as well as focused project work across data, analytics, enrichment, automation, and scoring.</p>
-            <a href="mailto:hello@yourdomain.com">hello@yourdomain.com</a>
+            <a href="https://www.linkedin.com/in/oshane-jackson/" rel="noreferrer" target="_blank">Connect on LinkedIn</a>
           </div>
         </section>
       </main>
 
       <footer className="operating-footer">
-        <span>© 2026 YOUR NAME</span>
+        <span>© 2026 OSHANE JACKSON</span>
         <span>GTM ENGINEERING / SYSTEMS / ANALYTICS</span>
         <Link href={themedHref('/#top', theme)}>HOME</Link>
       </footer>

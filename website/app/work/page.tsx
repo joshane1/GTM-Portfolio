@@ -4,7 +4,7 @@ import { workTypes } from '../work-data';
 import { resolveSiteTheme, siteThemeClass, themedHref, type ThemeSearchParams } from '../site-theme';
 
 export const metadata: Metadata = {
-  title: 'Types of Work — Your Name, GTM Engineer',
+  title: 'Types of Work — Oshane Jackson, GTM Engineer',
   description: 'Five ways I help GTM teams operate better across data, analytics, enrichment, automation, and scoring.',
 };
 
@@ -16,7 +16,7 @@ export default async function WorkIndexPage({ searchParams }: PageProps) {
   return (
     <div className={`operating-shell work-site ${siteThemeClass(theme) ?? 'theme-editorial'}`}>
       <header className="site-header operating-header">
-        <Link className="monogram" href={themedHref('/', theme)} aria-label="Go to homepage">YN<span>.</span></Link>
+        <Link className="monogram" href={themedHref('/', theme)} aria-label="Go to homepage">OJ<span>.</span></Link>
         <nav aria-label="Main navigation">
           <Link href={themedHref('/#top', theme)}>Home</Link>
           <Link className="nav-active" href={themedHref('/work', theme)}>Types of Work</Link>
@@ -50,7 +50,7 @@ export default async function WorkIndexPage({ searchParams }: PageProps) {
       </main>
 
       <footer className="operating-footer">
-        <span>© 2026 YOUR NAME</span>
+        <span>© 2026 OSHANE JACKSON</span>
         <span>GTM ENGINEERING / SYSTEMS / ANALYTICS</span>
         <Link href={themedHref('/#top', theme)}>HOME</Link>
       </footer>

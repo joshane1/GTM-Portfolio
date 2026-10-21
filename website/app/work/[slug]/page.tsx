@@ -56,7 +56,7 @@ export default async function WorkTypePage({ params, searchParams }: PageProps) 
   return (
     <div className={`operating-shell work-site ${siteThemeClass(theme) ?? 'theme-editorial'}`}>
       <header className="site-header operating-header">
-        <Link className="monogram" href={themedHref('/', theme)} aria-label="Go to homepage">YN<span>.</span></Link>
+        <Link className="monogram" href={themedHref('/', theme)} aria-label="Go to homepage">OJ<span>.</span></Link>
         <nav aria-label="Main navigation">
           <Link href={themedHref('/#top', theme)}>Home</Link>
           <Link className="nav-active" href={themedHref('/work', theme)}>Types of Work</Link>
@@ -129,12 +129,12 @@ export default async function WorkTypePage({ params, searchParams }: PageProps) 
 
         <section className="work-cta">
           <div className="work-section-marker"><span>F</span><small>START A CONVERSATION</small></div>
-          <div><h2>{work.ctaHeadline}</h2><p>{work.ctaText}</p><p>I&apos;m open to GTM Engineering and GTM Analytics Engineering roles, as well as focused project-based work.</p><a href="mailto:hello@yourdomain.com">hello@yourdomain.com</a></div>
+          <div><h2>{work.ctaHeadline}</h2><p>{work.ctaText}</p><p>I&apos;m open to GTM Engineering and GTM Analytics Engineering roles, as well as focused project-based work.</p><a href="https://www.linkedin.com/in/oshane-jackson/" rel="noreferrer" target="_blank">Connect on LinkedIn</a></div>
         </section>
       </main>
 
       <footer className="operating-footer">
-        <span>© 2026 YOUR NAME</span>
+        <span>© 2026 OSHANE JACKSON</span>
         <span>{work.title.toUpperCase()}</span>
         <Link href={themedHref('/work', theme)}>ALL TYPES OF WORK</Link>
       </footer>
