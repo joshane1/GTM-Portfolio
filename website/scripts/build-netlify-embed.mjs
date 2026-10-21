@@ -17,6 +17,24 @@ async function importTypeScript(relativePath) {
 }
 
 const { workTypes } = await importTypeScript('app/work-data.ts');
+
+const engagementTypes = [
+  'Fractional retainer — up to 15 hours/week',
+  'Fractional retainer — up to 20 hours/week',
+  'Full-time GTM Engineering',
+  'Full-time GTM Analytics Engineering',
+  'General conversation',
+];
+
+// [label, work-data slug] — the slug lets "Discuss this capability" preselect the matching chip.
+const inquiryAreas = [
+  ['GTM data modeling & data quality', 'gtm-data-modeling'],
+  ['Pipeline & funnel analytics', 'sales-pipeline-analytics'],
+  ['ICP discovery & enrichment', 'icp-discovery-enrichment'],
+  ['Lead qualification & automation', 'lead-qualification-automation'],
+  ['Lead scoring & signal activation', 'lead-scoring-activation'],
+  ['Still defining the need', ''],
+];
 let css = await fs.readFile(path.join(projectDir, 'app/globals.css'), 'utf8');
 css = css.replace("@import 'tailwindcss';", '');
 
@@ -53,7 +71,7 @@ function accordion(items) {
       <div class="work-accordion-panel" id="${panelId}" aria-hidden="true"><div class="work-accordion-panel-inner"><div class="work-accordion-compact">
         <div class="work-accordion-value"><span>WHY IT MATTERS</span><h4>${esc(work.outcomeHeadline)}</h4><p>${esc(work.businessValue)}</p></div>
         <div class="work-accordion-manager-view"><span>WHAT A GTM LEADER GETS</span><ul>${work.benefits.map((benefit) => `<li>${esc(benefit)}</li>`).join('')}</ul></div>
-        <div class="work-accordion-evidence"><span>PROJECT EVIDENCE</span><h5>${esc(evidence?.project ?? 'Representative project')}</h5><p>${esc(evidence?.summary)}</p><div>${work.technologies.slice(0, 4).map((technology) => `<small>${esc(technology)}</small>`).join('')}</div><a class="work-inquiry-link" href="#contact" data-capability="${esc(work.title)}">Discuss this capability <b>→</b></a></div>
+        <div class="work-accordion-evidence"><span>PROJECT EVIDENCE</span><h5>${esc(evidence?.project ?? 'Representative project')}</h5><p>${esc(evidence?.summary)}</p><div>${work.technologies.slice(0, 4).map((technology) => `<small>${esc(technology)}</small>`).join('')}</div><a class="work-inquiry-link" href="#contact" data-capability="${esc(work.title)}" data-area="${esc(work.slug)}">Discuss this capability <b>→</b></a></div>
       </div></div></div>
     </article>`;
   }).join('')}</div>`;
@@ -151,10 +169,9 @@ const behavior = `<script>
 document.addEventListener('click',function(event){
   var inquiryLink=event.target.closest('.work-inquiry-link');
   if(inquiryLink){
-    var capabilitySelect=document.getElementById('inquiry-capability');
-    var inquiryContext=document.querySelector('[data-inquiry-context]');
-    if(capabilitySelect)capabilitySelect.value=inquiryLink.getAttribute('data-capability')||'';
-    if(inquiryContext)inquiryContext.textContent='Selected capability: '+(inquiryLink.getAttribute('data-capability')||'General inquiry');
+    var area=inquiryLink.getAttribute('data-area');
+    var areaInput=area&&document.querySelector('.inquiry-chip input[data-area="'+area+'"]');
+    if(areaInput)areaInput.checked=true;
   }
   var trigger=event.target.closest('.work-accordion-trigger');
   if(!trigger)return;
@@ -240,7 +257,11 @@ document.addEventListener('click',function(event){
     var button=form.querySelector('button[type="submit"]');
     if(status)status.textContent='Sending your inquiry…';
     if(button)button.disabled=true;
-    fetch('/',{method:'POST',headers:{'Content-Type':'application/x-www-form-urlencoded'},body:new URLSearchParams(new FormData(form)).toString()})
+    var data=new FormData(form);
+    var areas=data.getAll('areas');
+    data.delete('areas');
+    data.set('areas',areas.join(', '));
+    fetch('/',{method:'POST',headers:{'Content-Type':'application/x-www-form-urlencoded'},body:new URLSearchParams(data).toString()})
       .then(function(response){
         if(!response.ok)throw new Error('Form submission failed');
         form.reset();
@@ -257,7 +278,7 @@ const home = `<!doctype html><html lang="en"><head>${sharedHead('Oshane Jackson 
   <section class="capability-hero" id="top"><div><p class="report-kicker">GTM ENGINEERING / REVENUE SYSTEMS</p><h1>Enable cleaner data, faster insights, and more reliable <em>GTM decisions.</em></h1></div><aside><p>I&apos;m Oshane Jackson, a GTM Engineer and GTM Analytics Engineer. I design the data models, analytics, enrichment workflows, automations, and scoring systems that help revenue teams operate with greater clarity and consistency.</p><div class="operating-actions"><a class="report-button report-button-primary" href="#types-of-work">Explore types of work</a><a class="report-button" href="#contact">Contact</a></div><small><i></i> AVAILABLE FOR THE RIGHT ROLE OR PROJECT</small></aside></section>
   <section class="capability-work accordion-work-section" id="types-of-work"><div class="capability-section-heading accordion-heading"><div><p class="report-kicker">HOW I HELP GTM TEAMS / 05 CAPABILITIES</p><h2>Five ways I help GTM teams operate <em>better.</em></h2></div><div class="accordion-heading-note"><p>Scan the five areas below, then open the one that matches your current constraint. Each section expands in place; opening another closes the previous one.</p><span>SELECT A ROW TO EXPLORE <i>↓</i></span></div></div>${accordion(workTypes)}</section>
   <section class="project-writeups" id="project-writeups"><div class="project-writeups-heading"><div><p class="report-kicker">PROJECT WRITE-UPS / GITHUB</p><h2>Practical systems for recurring <em>GTM problems.</em></h2></div><div class="project-writeups-intro"><p>Each write-up starts with the operating problem, then shows the design choices, technical logic, validation, and business use of the solution.</p><div class="project-carousel-controls" aria-label="Project carousel controls"><button type="button" data-carousel-prev aria-label="Previous project">←</button><span data-carousel-progress>01 / 03</span><button type="button" data-carousel-next aria-label="Next project">→</button></div></div></div><div class="project-carousel-viewport"><div class="project-carousel-track" data-project-carousel tabindex="0" aria-label="Project write-ups. Swipe or use the arrow buttons to browse.">${projectWriteupCards()}</div></div><div class="project-carousel-progress" aria-hidden="true"><i data-carousel-bar></i></div></section>
-  <section class="operating-contact simple-contact inquiry-section" id="contact"><div class="inquiry-intro"><p class="report-kicker">EMPLOYMENT OR PROJECT-BASED SUPPORT</p><h2>Hiring for this capability—or need it <em>built?</em></h2><p class="contact-intro">Share the role, project, or GTM problem you&apos;re working through. The form sends me a concise note so we can start with the right context.</p><small data-inquiry-context>Choose a capability above, or send a general inquiry.</small></div><form class="inquiry-form" id="inquiry-form" name="inquiry" method="POST" data-netlify="true" netlify-honeypot="company-website"><input type="hidden" name="form-name" value="inquiry"><p hidden><label>Leave this field empty <input name="company-website" tabindex="-1" autocomplete="off"></label></p><label><span>Name</span><input type="text" name="name" autocomplete="name" required></label><label><span>Email</span><input type="email" name="email" autocomplete="email" required></label><label><span>Reaching out about</span><select name="interest" required><option value="">Select one</option><option>GTM Engineering role</option><option>GTM Analytics Engineering role</option><option>Scoped project</option><option>Collaboration</option></select></label><label><span>Capability</span><select id="inquiry-capability" name="capability"><option value="">General inquiry</option>${workTypes.map((work) => `<option value="${esc(work.title)}">${esc(work.title)}</option>`).join('')}</select></label><label class="inquiry-message"><span>Short message</span><textarea name="message" rows="5" placeholder="What are you hiring for or trying to improve?"></textarea></label><div class="inquiry-submit"><button class="report-button report-button-light" type="submit">Send inquiry</button><p>Sent privately through this site. Your email is only used to reply.</p><strong data-form-status aria-live="polite"></strong></div></form><div class="contact-review"><a href="https://www.linkedin.com/in/oshane-jackson/" rel="noreferrer" target="_blank">Connect on LinkedIn</a><div><span>REMOTE</span><a href="https://github.com/joshane1/GTM-Portfolio" rel="noreferrer" target="_blank">GITHUB</a></div></div></section>
+  <section class="operating-contact simple-contact inquiry-section" id="contact"><div class="inquiry-intro"><p class="report-kicker">FRACTIONAL GTM ENGINEERING</p><h2>Need dependable GTM engineering <em>capacity?</em></h2><p class="contact-intro">Tell me where your team needs support. I offer fractional retainers of up to 15 or 20 hours per week across GTM data, analytics, enrichment, automation, and scoring.</p></div><form class="inquiry-form" id="inquiry-form" name="inquiry" method="POST" data-netlify="true" netlify-honeypot="company-website"><input type="hidden" name="form-name" value="inquiry"><p hidden><label>Leave this field empty <input name="company-website" tabindex="-1" autocomplete="off"></label></p><label><span>Name</span><input type="text" name="name" autocomplete="name" required></label><label><span>Email</span><input type="email" name="email" autocomplete="email" required></label><label class="inquiry-engagement"><span>Engagement type</span><select name="engagement" required><option value="">Select one</option>${engagementTypes.map((type) => `<option>${esc(type)}</option>`).join('')}</select></label><fieldset class="inquiry-areas"><legend>Areas of inquiry</legend><div class="inquiry-chips">${inquiryAreas.map(([label, slug]) => `<label class="inquiry-chip"><input type="checkbox" name="areas" value="${esc(label)}"${slug ? ` data-area="${esc(slug)}"` : ''}><span>${esc(label)}</span></label>`).join('')}</div></fieldset><label class="inquiry-message"><span>Current need</span><textarea name="message" rows="3" placeholder="What is your team trying to improve, and where is the current constraint?"></textarea></label><div class="inquiry-submit"><button class="report-button report-button-light" type="submit">Send inquiry</button><p>Your information is only used to respond to this inquiry.</p><strong data-form-status aria-live="polite"></strong></div></form></section>
   ${footer()}
 </main>${behavior}</body></html>`;
 

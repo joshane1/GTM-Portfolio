@@ -1074,25 +1074,41 @@ footer span:nth-child(2) { text-align: center; } footer a { justify-self: end; c
 .project-carousel-progress i { width: 100%; height: 100%; display: block; transform: scaleX(.3333); transform-origin: left; background: #b9d1ad; transition: transform .25s ease; }
 
 /* Context-aware inquiry */
-.inquiry-section { scroll-margin-top: 82px; display: grid; grid-template-columns: minmax(0, .9fr) minmax(420px, .72fr); gap: clamp(3rem, 8vw, 8rem); align-items: start; }
-.inquiry-section h2 { font-size: clamp(3.2rem, 5.5vw, 6.3rem); }
-.inquiry-intro > small { display: block; margin-top: 1.5rem; color: rgba(255,255,255,.72); font: 700 .65rem/1.45 'Courier New', monospace; text-transform: uppercase; }
-.inquiry-form { padding: 1.4rem; display: grid; grid-template-columns: 1fr 1fr; gap: 1.1rem; border: 1px solid rgba(255,255,255,.34); background: rgba(255,255,255,.07); }
+.inquiry-section { scroll-margin-top: 82px; display: grid; grid-template-columns: minmax(0, .8fr) minmax(420px, 1fr); gap: 2.5rem clamp(2.5rem, 6vw, 6rem); align-items: start; padding-block: clamp(3rem, 5vw, 4.5rem) 2.25rem; }
+.inquiry-section h2 { font-size: clamp(2.8rem, 4.6vw, 5.2rem); }
+.inquiry-section .contact-intro { margin-top: 1.25rem; }
+.operating-contact.inquiry-section { background: #2a2d2b; color: #f4f0e6; }
+.operating-contact.inquiry-section .report-kicker,
+.operating-contact.inquiry-section h2 em { color: #b4ec9f; opacity: 1; }
+.inquiry-section .contact-intro { color: rgba(244,240,230,.74); }
+.inquiry-form { min-width: 0; padding: 1.25rem; display: grid; grid-template-columns: 1fr 1fr; gap: .95rem; border: 1px solid rgba(255,255,255,.34); background: rgba(255,255,255,.07); }
+.inquiry-engagement, .inquiry-areas { grid-column: 1 / -1; }
+.inquiry-areas { min-width: 0; margin: 0; padding: 0; border: 0; }
+.inquiry-areas legend { margin-bottom: .55rem; padding: 0; color: rgba(255,255,255,.82); font: 700 .63rem/1.2 'Courier New', monospace; letter-spacing: .07em; text-transform: uppercase; }
+.inquiry-chips { display: flex; flex-wrap: wrap; gap: .4rem; }
+.inquiry-form .inquiry-chip { position: relative; display: inline-flex; cursor: pointer; }
+.inquiry-form .inquiry-chip input { position: absolute; inset: 0; width: 100%; height: 100%; min-height: 0; margin: 0; padding: 0; opacity: 0; cursor: pointer; }
+.inquiry-form .inquiry-chip span { display: inline-flex; align-items: center; gap: .35rem; padding: .45rem .65rem; border: 1px solid rgba(255,255,255,.38); color: white; font: 600 .75rem/1.25 Arial, Helvetica, sans-serif; letter-spacing: 0; text-transform: none; transition: background .15s ease, color .15s ease, border-color .15s ease; }
+.inquiry-form .inquiry-chip span::before { content: '+'; width: .8em; font-weight: 800; text-align: center; }
+.inquiry-form .inquiry-chip:hover span { border-color: #8fe060; background: rgba(143,224,96,.12); }
+.inquiry-form .inquiry-chip input:checked + span { border-color: #8fe060; background: #8fe060; color: #20251f; }
+.inquiry-form .inquiry-chip input:checked + span::before { content: '✓'; }
+.inquiry-form .inquiry-chip input:focus-visible + span { outline: 2px solid #8fe060; outline-offset: 2px; }
 .inquiry-form label { display: flex; flex-direction: column; gap: .55rem; }
 .inquiry-form label > span { color: rgba(255,255,255,.82); font: 700 .63rem/1.2 'Courier New', monospace; letter-spacing: .07em; text-transform: uppercase; }
 .inquiry-form :is(input, select, textarea) { width: 100%; border: 1px solid rgba(255,255,255,.32); border-radius: 0; background: rgba(255,255,255,.08); color: white; font: inherit; }
 .inquiry-form :is(input, select) { min-height: 48px; padding: 0 .8rem; }
-.inquiry-form textarea { min-height: 124px; padding: .8rem; resize: vertical; }
-.inquiry-form :is(input, select, textarea):focus { outline: 2px solid white; outline-offset: 2px; }
+.inquiry-form textarea { min-height: 92px; max-height: 320px; padding: .8rem; resize: vertical; field-sizing: content; }
+.inquiry-form :is(input, select, textarea):focus { outline: 2px solid #b4ec9f; outline-offset: 2px; }
 .inquiry-form option { color: var(--ink); }
 .inquiry-form ::placeholder { color: rgba(255,255,255,.48); }
 .inquiry-message, .inquiry-submit { grid-column: 1 / -1; }
 .inquiry-submit { display: flex; flex-wrap: wrap; align-items: center; gap: 1rem 1.25rem; }
-.inquiry-submit .report-button-light { min-height: 48px; border: 1px solid white; background: white; color: var(--accent-deep); cursor: pointer; }
-.inquiry-submit .report-button-light:hover { background: var(--ink); border-color: var(--ink); color: white; }
+.inquiry-submit .report-button-light { min-height: 48px; border: 1px solid #f4f0e6; background: #f4f0e6; color: #20251f; cursor: pointer; }
+.inquiry-submit .report-button-light:hover { background: #b4ec9f; border-color: #b4ec9f; color: #20251f; }
 .inquiry-submit p { max-width: 300px; margin: 0; color: rgba(255,255,255,.68); font-size: .75rem; line-height: 1.45; }
 .inquiry-submit strong { width: 100%; color: white; font: 700 .64rem/1.4 'Courier New', monospace; }
-.inquiry-section .contact-review { grid-column: 1 / -1; margin-top: 1rem; }
+.inquiry-submit strong:empty { display: none; }
 
 /* Types of Work index */
 .work-index-hero { padding: clamp(4rem, 8vw, 8rem) 4.5vw 4rem; display: grid; grid-template-columns: .32fr 1.25fr; gap: 6vw; border-bottom: 1px solid var(--ink); }
@@ -1856,10 +1872,11 @@ footer span:nth-child(2) { text-align: center; } footer a { justify-self: end; c
   .project-writeup-card { min-height: 500px; flex-basis: 84vw; aspect-ratio: auto; padding: 1.35rem; }
   .project-writeup-card h3 { font-size: clamp(2rem, 9vw, 2.9rem); }
   .project-carousel-progress { width: calc(100% - 1.25rem); }
-  .inquiry-section { padding-inline: 1.25rem; gap: 2.5rem; }
+  .inquiry-section { padding-inline: 1.25rem; gap: 2rem; padding-block: 3rem 2rem; }
   .inquiry-form { padding: 1rem; grid-template-columns: 1fr; }
   .inquiry-message,
   .inquiry-submit { grid-column: auto; }
+  .inquiry-submit { flex-direction: column; align-items: flex-start; gap: .75rem; }
 }
 
 @media (prefers-reduced-motion: reduce) {
