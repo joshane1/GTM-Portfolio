@@ -1,5 +1,7 @@
 __pycache__/
 
+# VS Code Folder
+.vscode/
 # macOS
 .DS_Store
 **/.DS_Store
