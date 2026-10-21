@@ -1081,14 +1081,16 @@ footer span:nth-child(2) { text-align: center; } footer a { justify-self: end; c
 .operating-contact.inquiry-section .report-kicker,
 .operating-contact.inquiry-section h2 em { color: #b4ec9f; opacity: 1; }
 .inquiry-section .contact-intro { color: rgba(244,240,230,.74); }
-.inquiry-form { min-width: 0; padding: 1.25rem; display: grid; grid-template-columns: 1fr 1fr; gap: .95rem; border: 1px solid rgba(255,255,255,.34); background: rgba(255,255,255,.07); }
-.inquiry-engagement, .inquiry-areas { grid-column: 1 / -1; }
+.inquiry-form { min-width: 0; padding: 1.25rem; display: grid; grid-template-columns: 1fr 1fr; gap: .95rem; border: 1px solid rgba(255,255,255,.34); border-radius: 10px; background: rgba(255,255,255,.07); transition: border-color .2s ease, box-shadow 320ms cubic-bezier(.22, .72, .24, 1), transform 320ms cubic-bezier(.22, .72, .24, 1); }
+.inquiry-form:hover, .inquiry-form:focus-within { border-color: #8fe060; box-shadow: 0 0 0 1px #8fe060, 0 20px 44px rgba(0,0,0,.28); }
+.inquiry-form:hover { transform: translateY(-2px); }
+.inquiry-company, .inquiry-engagement, .inquiry-areas { grid-column: 1 / -1; }
 .inquiry-areas { min-width: 0; margin: 0; padding: 0; border: 0; }
 .inquiry-areas legend { margin-bottom: .55rem; padding: 0; color: rgba(255,255,255,.82); font: 700 .63rem/1.2 'Courier New', monospace; letter-spacing: .07em; text-transform: uppercase; }
 .inquiry-chips { display: flex; flex-wrap: wrap; gap: .4rem; }
 .inquiry-form .inquiry-chip { position: relative; display: inline-flex; cursor: pointer; }
 .inquiry-form .inquiry-chip input { position: absolute; inset: 0; width: 100%; height: 100%; min-height: 0; margin: 0; padding: 0; opacity: 0; cursor: pointer; }
-.inquiry-form .inquiry-chip span { display: inline-flex; align-items: center; gap: .35rem; padding: .45rem .65rem; border: 1px solid rgba(255,255,255,.38); color: white; font: 600 .75rem/1.25 Arial, Helvetica, sans-serif; letter-spacing: 0; text-transform: none; transition: background .15s ease, color .15s ease, border-color .15s ease; }
+.inquiry-form .inquiry-chip span { display: inline-flex; align-items: center; gap: .35rem; padding: .45rem .65rem; border: 1px solid rgba(255,255,255,.38); border-radius: 6px; color: white; font: 600 .75rem/1.25 Arial, Helvetica, sans-serif; letter-spacing: 0; text-transform: none; transition: background .15s ease, color .15s ease, border-color .15s ease; }
 .inquiry-form .inquiry-chip span::before { content: '+'; width: .8em; font-weight: 800; text-align: center; }
 .inquiry-form .inquiry-chip:hover span { border-color: #8fe060; background: rgba(143,224,96,.12); }
 .inquiry-form .inquiry-chip input:checked + span { border-color: #8fe060; background: #8fe060; color: #20251f; }
@@ -1096,18 +1098,21 @@ footer span:nth-child(2) { text-align: center; } footer a { justify-self: end; c
 .inquiry-form .inquiry-chip input:focus-visible + span { outline: 2px solid #8fe060; outline-offset: 2px; }
 .inquiry-form label { display: flex; flex-direction: column; gap: .55rem; }
 .inquiry-form label > span { color: rgba(255,255,255,.82); font: 700 .63rem/1.2 'Courier New', monospace; letter-spacing: .07em; text-transform: uppercase; }
-.inquiry-form :is(input, select, textarea) { width: 100%; border: 1px solid rgba(255,255,255,.32); border-radius: 0; background: rgba(255,255,255,.08); color: white; font: inherit; }
+.inquiry-form :is(input, select, textarea) { width: 100%; border: 1px solid rgba(255,255,255,.32); border-radius: 6px; background: rgba(255,255,255,.08); color: white; font: inherit; transition: border-color .2s ease, background .2s ease, box-shadow .2s ease; }
+.inquiry-form :is(input, select, textarea):hover { border-color: rgba(143,224,96,.7); background: rgba(255,255,255,.11); }
 .inquiry-form :is(input, select) { min-height: 48px; padding: 0 .8rem; }
 .inquiry-form textarea { min-height: 92px; max-height: 320px; padding: .8rem; resize: vertical; field-sizing: content; }
-.inquiry-form :is(input, select, textarea):focus { outline: 2px solid #b4ec9f; outline-offset: 2px; }
+.inquiry-form :is(input, select, textarea):focus { outline: none; border-color: #8fe060; background: rgba(143,224,96,.1); box-shadow: 0 0 0 1px #8fe060, 0 0 0 4px rgba(143,224,96,.22); }
 .inquiry-form option { color: var(--ink); }
 .inquiry-form ::placeholder { color: rgba(255,255,255,.48); }
 .inquiry-message, .inquiry-submit { grid-column: 1 / -1; }
 .inquiry-submit { display: flex; flex-wrap: wrap; align-items: center; gap: 1rem 1.25rem; }
-.inquiry-submit .report-button-light { min-height: 48px; border: 1px solid #f4f0e6; background: #f4f0e6; color: #20251f; cursor: pointer; }
+.inquiry-submit .report-button-light { min-height: 48px; border-radius: 6px; border: 1px solid #f4f0e6; background: #f4f0e6; color: #20251f; cursor: pointer; }
 .inquiry-submit .report-button-light:hover { background: #b4ec9f; border-color: #b4ec9f; color: #20251f; }
 .inquiry-submit p { max-width: 300px; margin: 0; color: rgba(255,255,255,.68); font-size: .75rem; line-height: 1.45; }
-.inquiry-submit strong { width: 100%; color: white; font: 700 .64rem/1.4 'Courier New', monospace; }
+.inquiry-submit strong { width: 100%; color: #f4f0e6; font: 700 1.05rem/1.4 Arial, Helvetica, sans-serif; }
+.inquiry-submit strong[data-state="success"] { color: #b4ec9f; font-size: 1.2rem; }
+.inquiry-status-name { color: #8fe060; }
 .inquiry-submit strong:empty { display: none; }
 
 /* Types of Work index */
@@ -1874,6 +1879,7 @@ footer span:nth-child(2) { text-align: center; } footer a { justify-self: end; c
   .project-carousel-progress { width: calc(100% - 1.25rem); }
   .inquiry-section { padding-inline: 1.25rem; gap: 2rem; padding-block: 3rem 2rem; }
   .inquiry-form { padding: 1rem; grid-template-columns: 1fr; }
+  .inquiry-form select { padding-right: .4rem; font-size: .9rem; }
   .inquiry-message,
   .inquiry-submit { grid-column: auto; }
   .inquiry-submit { flex-direction: column; align-items: flex-start; gap: .75rem; }
@@ -1884,4 +1890,5 @@ footer span:nth-child(2) { text-align: center; } footer a { justify-self: end; c
   .project-writeup-card,
   .project-carousel-controls button,
   .project-carousel-progress i { transition: none; }
+  .inquiry-form, .inquiry-form:hover { transform: none; transition: none; }
 }
