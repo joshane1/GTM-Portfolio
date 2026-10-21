@@ -1110,9 +1110,9 @@ footer span:nth-child(2) { text-align: center; } footer a { justify-self: end; c
 .inquiry-submit .report-button-light { min-height: 48px; border-radius: 6px; border: 1px solid #f4f0e6; background: #f4f0e6; color: #20251f; cursor: pointer; }
 .inquiry-submit .report-button-light:hover { background: #b4ec9f; border-color: #b4ec9f; color: #20251f; }
 .inquiry-submit p { max-width: 300px; margin: 0; color: rgba(255,255,255,.68); font-size: .75rem; line-height: 1.45; }
-.inquiry-submit strong { width: 100%; color: #f4f0e6; font: 700 1.05rem/1.4 Arial, Helvetica, sans-serif; }
-.inquiry-submit strong[data-state="success"] { color: #b4ec9f; font-size: 1.2rem; }
-.inquiry-status-name { color: #8fe060; }
+.inquiry-submit strong { width: 100%; color: #f4f0e6; font: 400 1.05rem/1.4 Arial, Helvetica, sans-serif; }
+.inquiry-submit strong[data-state="success"] { color: #fff; font-size: 1.2rem; }
+.inquiry-status-name { color: #8fe060; font-weight: 600; }
 .inquiry-submit strong:empty { display: none; }
 
 /* Types of Work index */
