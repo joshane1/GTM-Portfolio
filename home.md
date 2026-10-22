@@ -1,6 +1,6 @@
 # GTM Engineering Portfolio
 
-**Lead-to-revenue systems for a B2B SaaS company: from account routing, to a tested CRM data model, to the analytics leaders use to run the business.**
+**Lead-to-revenue systems for a B2B SaaS company: from account discovery and routing, to a tested CRM data model, to the analytics leaders use to run the business.**
 
 Every project here is built on **Fiction Cloud**, a fictional B2B SaaS company with realistic CRM, marketing and finance data. The goal is the same one a GTM engineer has on the job: get the right accounts to the right reps, make the data trustworthy, and give Marketing, Sales and Finance a single set of numbers they agree on.
 
@@ -30,7 +30,25 @@ Accounts are found in Clay and routed to an owner in HubSpot. CRM, marketing and
 
 ## Projects
 
-### 1. Lead Routing: Clay → n8n → HubSpot
+### 1. Account Discovery & Enrichment in Clay
+
+> Builds the target-account list: real companies that match the ICP, enriched and labeled for routing.
+
+Two Clay company searches, one for the US and one for the UK, feed company tables where every account is enriched, segmented, given a region and assigned a fit decision.
+
+- **ICP-driven search.** Filters on country, company size (200+ employees), industry and domain mirror the ideal customer profile.
+- **Credits spent only where needed.** Enrichment runs conditionally, filling in missing facts instead of re-fetching what the search already returned.
+- **Formula-based decisions.** Clay formulas derive segment, region and fit status the same way for every row, using the exact codes the routing workflow expects.
+- **Hiring as a buying signal.** Clay's Find jobs enrichment lifts accounts with open roles from `FIT` to `STRONG_FIT`.
+- **Unclear data goes to review, not to the CRM.** Missing sizes or locations are flagged `NEEDS_REVIEW` rather than guessed.
+
+**Shows:** account discovery · data enrichment · ICP qualification · Clay formulas · data quality controls
+
+**[Read the account discovery write-up →](clay_account_discovery.md)**
+
+---
+
+### 2. Lead Routing: Clay → n8n → HubSpot
 
 > Automatically assigns each target account to the right sales rep, and logs why.
 
@@ -48,7 +66,7 @@ An n8n workflow reads companies enriched in Clay, decides which of six sales lan
 
 ---
 
-### 2. CRM Data Modeling
+### 3. CRM Data Modeling
 
 > Turns raw CRM exports into a clean, typed and tested data model that analytics can trust.
 
@@ -66,7 +84,7 @@ A walkthrough of how CRM data is modeled for analytics: the core tables, how Hub
 
 ---
 
-### 3. Sales Pipeline & Funnel Analytics
+### 4. Sales Pipeline & Funnel Analytics
 
 > Answers eight of the questions GTM leaders ask most, from first inquiry to recognized revenue.
 
@@ -90,6 +108,7 @@ Short, readable SQL against the dbt models, each with real results, a chart and 
 
 | | |
 |---:|---|
+| **73** | candidate accounts sourced in Clay across the US and UK |
 | **14** | source tables across CRM, marketing, finance and identity |
 | **7,860** | source rows modeled |
 | **29** | dbt models: staging, intermediate and marts |
