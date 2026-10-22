@@ -1,10 +1,10 @@
 # Fiction Cloud Inc. core data generator
 
-This folder contains the code to create Fiction Cloud Inc.'s core fictional CRM, marketing, finance, and identity source tables as CSV files. It also creates the April departmental report extracts needed for the Lead-to-Revenue Data Mart / SSOT assignment. It does **not** build the mart, import records into a CRM, or send messages.
+The `generate.py` script in the repo root creates Fiction Cloud Inc.'s core fictional CRM, marketing, finance, and identity source tables as CSV files. It also creates the April departmental report extracts used in the lead-to-revenue analysis. It does **not** build the mart, import records into a CRM, or send messages.
 
-## Run it in your Git repository
+## Run it
 
-Copy this folder into a new repository. With Python 3.10 or newer:
+From the repo root, with Python 3.10 or newer:
 
 ```bash
 python3 -m venv .venv
@@ -41,4 +41,4 @@ The 14 core tables contain 7,860 source rows. The validator checks key relations
 
 All companies and people are fictional. Emails use `example.com` and must not be used for outreach. The CSV schemas are logical source tables, not a promise that a CRM has those exact native objects or field names. Importing into HubSpot or Salesforce requires a separate, deliberate mapping; do not import `validation_private/` or analytical-only history tables as CRM contacts or deals by default.
 
-Routing assignment logs, product usage, daily pipeline snapshots, and seller documents are later extensions. Core v1 preserves the accounts, inquiries, owners, and opportunities those extensions can reference. The completed real-world Jamaica Airbnb enrichment project is separate from Fiction Cloud Inc.
+Routing assignment logs, product usage, daily pipeline snapshots, and seller documents are later extensions. Core v1 preserves the accounts, inquiries, owners, and opportunities those extensions can reference.

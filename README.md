@@ -45,7 +45,7 @@ flowchart TD
         clay["Clay<br/>Find & enrich ICP accounts"]
         routing["n8n Account Routing<br/>Assign the right rep"]
         crm["HubSpot CRM<br/>Company owner set"]
-        review["Review queue<br/>NEEDS_REVIEW"]
+        review["Review queue<br/>NEEDS REVIEW · Skipped"]
     end
 
     subgraph analyze["Model & analyze data"]
@@ -91,9 +91,9 @@ Bad data is stopped along the way: Clay and n8n send unclear or conflicting reco
 
 - **ICP-driven search.** US and UK searches filter on country, company size (201+ employees), industry, and domain, and enrichment runs only to fill in missing facts, so credits aren't spent re-fetching data.
 - **Formula-based decisions.** Clay formulas derive segment, region, and fit status the same way for every row, using the exact codes the routing workflow expects.
-- **Hiring as a buying signal.** Clay's Find jobs enrichment lifts accounts with open roles from `FIT` to `STRONG_FIT`.
+- **Hiring as a buying signal.** Clay's Find jobs enrichment lifts accounts with open roles from `Fit` to `Strong Fit`.
 
-**Result:** 73 candidate accounts sourced (50 US, 23 UK). Only `FIT` and `STRONG_FIT` accounts are exported; anything with a missing size or location is flagged `NEEDS_REVIEW` and never leaves Clay.
+**Result:** 73 candidate accounts sourced (50 US, 23 UK). Accounts with a missing size or location are flagged `NEEDS REVIEW`, and the export can be filtered to send only `Fit` and `Strong Fit` accounts to routing.
 
 **Shows:** account discovery · data enrichment · ICP qualification · Clay formulas · data quality controls
 
@@ -105,15 +105,15 @@ Bad data is stopped along the way: Clay and n8n send unclear or conflicting reco
 
 **Tools:** n8n, HubSpot API
 
-> Automatically assigns each target account to the right sales rep, and logs why.
+> Automatically assigns each target account to the right sales rep, and logs the result.
 
 ![n8n account routing workflow](docs/images/account_routing_n8n_workflow.png)
 
 - **Six sales lanes:** US East, US West, and UK, each split into Mid-Market and Enterprise, decided by company size and region.
 - **Zero new HubSpot fields.** Built on HubSpot Free with its custom properties already used up: routing decisions live in an n8n Data Table, and only the native Company owner field is written back.
-- **Safe to re-run and explainable.** Only undecided companies are picked up, so no account is assigned twice, and every decision records a status, reason, and policy version.
+- **Traceable by design.** Each row records its assigned route, owner email, and update status, and `Updated` is written only after HubSpot confirms the owner change.
 
-**Result:** Every company ends in one of two places: its owner is assigned in HubSpot, or it's skipped with a reason, such as an unmatched domain, a duplicate record, or a missing region.
+**Result:** Every processed company ends in one of two places: its owner is assigned in HubSpot and the queue records `Updated`, or it's marked `Skipped` for review, for example because of an unmatched domain, a duplicate record, or a missing region.
 
 **Shows:** workflow automation · API integration · routing design · data quality controls
 
