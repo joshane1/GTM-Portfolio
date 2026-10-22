@@ -84,7 +84,7 @@ const projectWriteups = [
     title: 'Route the Right Accounts to the Right Reps—Automatically',
     summary: 'An explainable Clay-to-n8n-to-HubSpot workflow that routes enriched accounts into six sales lanes, preserves clean ownership logic, and sends incomplete records to review.',
     tags: ['n8n', 'Clay', 'HubSpot', 'Routing logic'],
-    href: 'https://github.com/joshane1/GTM-Portfolio/blob/main/lead_routing.md',
+    href: 'https://github.com/joshane1/GTM-Portfolio/blob/main/docs/2_lead_routing.md',
   },
   {
     number: '02',
@@ -92,7 +92,7 @@ const projectWriteups = [
     title: 'Enable Trustworthy Reporting With a Tested CRM Data Model',
     summary: 'A typed, connected, and tested CRM data foundation built with SQL and dbt—including historical reporting logic, relationship checks, and 89 automated tests.',
     tags: ['dbt', 'SQL', 'CRM modeling', 'Data quality'],
-    href: 'https://github.com/joshane1/GTM-Portfolio/blob/main/data_modeling.md',
+    href: 'https://github.com/joshane1/GTM-Portfolio/blob/main/docs/3_data_modeling.md',
   },
   {
     number: '03',
@@ -100,7 +100,7 @@ const projectWriteups = [
     title: 'Turn Funnel and Pipeline Data Into Decisions Leaders Can Trust',
     summary: 'A decision-focused analysis of conversion, channel contribution, pipeline definitions, velocity, bookings, and revenue—organized around eight recurring GTM questions.',
     tags: ['Funnel analytics', 'Pipeline', 'Metric definitions'],
-    href: 'https://github.com/joshane1/GTM-Portfolio/blob/main/funnel_analytics.md',
+    href: 'https://github.com/joshane1/GTM-Portfolio/blob/main/docs/4_funnel_analytics.md',
   },
 ];
 

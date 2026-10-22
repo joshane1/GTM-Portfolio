@@ -67,7 +67,7 @@ No paid HubSpot workflow tools are needed. The tradeoff is that the route lane i
 
 ## The workflow
 
-![n8n lead routing workflow](assets/lead_routing_n8n_workflow.png)
+![n8n lead routing workflow](images/lead_routing_n8n_workflow.png)
 
 The workflow runs in three stages, each grouped in the n8n canvas. Every company ends in one of two places: its owner is assigned in HubSpot, or it's marked skipped with a reason.
 
@@ -151,4 +151,4 @@ Evidence for each run: the exported Data Table CSV, the HubSpot Company records,
 - **Move to a schedule.** Switch the manual trigger to a 15-minute schedule so new Clay accounts are routed without anyone starting a run.
 - **Add capacity rules.** Balance assignments within a lane by each rep's current account count, not just by territory.
 - **Route contacts and inbound leads.** Extend the same policy to contacts and form fills, inheriting the owner of the matched company.
-- **Report on routing.** Feed the decision log into the [funnel analytics](funnel_analytics.md) so speed-to-assignment and review rates can be tracked over time.
+- **Report on routing.** Feed the decision log into the [funnel analytics](4_funnel_analytics.md) so speed-to-assignment and review rates can be tracked over time.

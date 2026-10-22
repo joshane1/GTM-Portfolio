@@ -68,14 +68,14 @@ flowchart TD
     class n1,n2,n3,n4,gap,gap2 num
 ```
 
-1. **Discover:** Clay finds and enriches ICP-fit accounts, labeling each with a segment, region, and fit decision. → [Write-up](clay_account_discovery.md)
-2. **Route:** n8n assigns each account to the right rep and sets the Company owner in HubSpot. → [Write-up](lead_routing.md)
-3. **Model:** dbt turns Fiction Cloud's CRM, marketing, finance, and identity data into clean, tested tables. → [Write-up](Data_Modeling.md)
-4. **Analyze:** SQL against the dbt models answers the funnel and pipeline questions leaders ask every week. → [Write-up](funnel_analytics.md)
+1. **Discover:** Clay finds and enriches ICP-fit accounts, labeling each with a segment, region, and fit decision. → [Write-up](docs/1_account_discovery.md)
+2. **Route:** n8n assigns each account to the right rep and sets the Company owner in HubSpot. → [Write-up](docs/2_lead_routing.md)
+3. **Model:** dbt turns Fiction Cloud's CRM, marketing, finance, and identity data into clean, tested tables. → [Write-up](docs/3_data_modeling.md)
+4. **Analyze:** SQL against the dbt models answers the funnel and pipeline questions leaders ask every week. → [Write-up](docs/4_funnel_analytics.md)
 
 Bad data is stopped along the way: Clay and n8n send unclear or conflicting records to review instead of to a rep, and dbt tests catch problems before they reach a report.
 
-> **Note:** The data model runs on Fiction Cloud's source data: CSV exports generated with Faker to mirror real CRM, marketing, and finance systems. It doesn't read from the HubSpot account that the routing workflow writes to. To regenerate the data yourself, see the [data generator setup](data_generator.md).
+> **Note:** The data model runs on Fiction Cloud's source data: CSV exports generated with Faker to mirror real CRM, marketing, and finance systems. It doesn't read from the HubSpot account that the routing workflow writes to. To regenerate the data yourself, see the [data generator setup](docs/data_generator.md).
 
 ---
 
@@ -87,7 +87,7 @@ Bad data is stopped along the way: Clay and n8n send unclear or conflicting reco
 
 > Builds the target-account list: real companies that match the ICP, enriched and labeled for routing.
 
-![Clay workbook: two company searches feeding two company tables](github_assets/clay_account_discovery_tables.png)
+![Clay workbook: two company searches feeding two company tables](docs/images/clay_account_discovery_tables.png)
 
 - **ICP-driven search.** US and UK searches filter on country, company size (200+ employees), industry, and domain, and enrichment runs only to fill in missing facts, so credits aren't spent re-fetching data.
 - **Formula-based decisions.** Clay formulas derive segment, region, and fit status the same way for every row, using the exact codes the routing workflow expects.
@@ -97,7 +97,7 @@ Bad data is stopped along the way: Clay and n8n send unclear or conflicting reco
 
 **Shows:** account discovery · data enrichment · ICP qualification · Clay formulas · data quality controls
 
-**[Read the account discovery write-up →](clay_account_discovery.md)**
+**[Read the account discovery write-up →](docs/1_account_discovery.md)**
 
 ---
 
@@ -107,7 +107,7 @@ Bad data is stopped along the way: Clay and n8n send unclear or conflicting reco
 
 > Automatically assigns each target account to the right sales rep, and logs why.
 
-![n8n lead routing workflow](github_assets/lead_routing_n8n_workflow.png)
+![n8n lead routing workflow](docs/images/lead_routing_n8n_workflow.png)
 
 - **Six sales lanes:** US East, US West, and UK, each split into Mid-Market and Enterprise, decided by company size and region.
 - **Zero new HubSpot fields.** Built on HubSpot Free with its custom properties already used up: routing decisions live in an n8n Data Table, and only the native Company owner field is written back.
@@ -117,7 +117,7 @@ Bad data is stopped along the way: Clay and n8n send unclear or conflicting reco
 
 **Shows:** workflow automation · API integration · routing design · data quality controls
 
-**[Read the lead routing write-up →](lead_routing.md)**
+**[Read the lead routing write-up →](docs/2_lead_routing.md)**
 
 ---
 
@@ -135,7 +135,7 @@ Bad data is stopped along the way: Clay and n8n send unclear or conflicting reco
 
 **Shows:** data modeling · dbt · SQL · data testing · CRM data structures
 
-**[Read the data modeling write-up →](Data_Modeling.md)**
+**[Read the data modeling write-up →](docs/3_data_modeling.md)**
 
 ---
 
@@ -153,7 +153,7 @@ Bad data is stopped along the way: Clay and n8n send unclear or conflicting reco
 
 **Shows:** funnel analysis · pipeline reporting · metric definitions · cross-team reconciliation
 
-**[Read the funnel & pipeline analytics →](funnel_analytics.md)**
+**[Read the funnel & pipeline analytics →](docs/4_funnel_analytics.md)**
 
 ---
 

@@ -4,7 +4,7 @@
 
 A sales team can only route and work accounts it has already found. Building that list by hand is slow and uneven: one rep pulls companies from a directory, another from LinkedIn, and nobody records why a company made the cut. Bought lists are faster, but they arrive full of firms that are too small, in the wrong country, or missing the facts needed to assign them to a rep.
 
-This project builds the target-account list for **Fiction Cloud**, a fictional B2B SaaS company, in Clay. Clay searches for real companies that match the ideal customer profile (ICP), enriches only the facts that are missing, and labels every company with a segment, a region and a fit decision. The reviewed list is the input to the [lead routing workflow](lead_routing.md), which assigns each account to a rep in HubSpot.
+This project builds the target-account list for **Fiction Cloud**, a fictional B2B SaaS company, in Clay. Clay searches for real companies that match the ideal customer profile (ICP), enriches only the facts that are missing, and labels every company with a segment, a region and a fit decision. The reviewed list is the input to the [lead routing workflow](2_lead_routing.md), which assigns each account to a rep in HubSpot.
 
 ## The ideal customer profile
 
@@ -19,7 +19,7 @@ Fiction Cloud sells to B2B operating companies with recurring work across teams,
 
 ## The Clay build
 
-![Clay workbook: two company searches feeding two company tables](github_assets/clay_account_discovery_tables.png)
+![Clay workbook: two company searches feeding two company tables](images/clay_account_discovery_tables.png)
 
 The workbook has one company search per country, each feeding its own company table:
 
@@ -70,7 +70,7 @@ Four formula columns turn the enriched data into the fields routing and prioriti
 
 - **Every row gets an answer.** Each formula ends in a catch-all, so no row is left blank.
 - **Unknown is not the same as out of scope.** Missing or unrecognized data returns `NEEDS_REVIEW`; data that clearly fails the ICP returns `OUT_OF_ICP`.
-- **Outputs match the routing workflow.** For in-scope companies, segment and region values are the exact codes the [lead routing workflow](lead_routing.md) expects, so nothing has to be relabeled after export. `OUT_OF_ICP` and `NEEDS_REVIEW` are Clay-only values that stop a company before export.
+- **Outputs match the routing workflow.** For in-scope companies, segment and region values are the exact codes the [lead routing workflow](2_lead_routing.md) expects, so nothing has to be relabeled after export. `OUT_OF_ICP` and `NEEDS_REVIEW` are Clay-only values that stop a company before export.
 
 ### Segment
 
@@ -168,7 +168,7 @@ The order of the checks is deliberate. A known disqualifier wins first: a 50-per
 
 ## 5. Handoff to routing
 
-Only approved companies (`FIT` or `STRONG_FIT`, with no unresolved duplicates) go into the export view. It's downloaded as `fiction_cloud_icp_accounts_YYYY-MM-DD.csv` and imported into both HubSpot and the n8n routing queue, where the [lead routing workflow](lead_routing.md) assigns each company to one of six sales lanes using its segment and region.
+Only approved companies (`FIT` or `STRONG_FIT`, with no unresolved duplicates) go into the export view. It's downloaded as `fiction_cloud_icp_accounts_YYYY-MM-DD.csv` and imported into both HubSpot and the n8n routing queue, where the [lead routing workflow](2_lead_routing.md) assigns each company to one of six sales lanes using its segment and region.
 
 Because the export is filtered on fit status, `OUT_OF_ICP` and `NEEDS_REVIEW` never leave Clay: every exported row carries one of the routing codes (`MID_MARKET` or `ENTERPRISE`, and `US_EAST`, `US_WEST` or `UK`). Routing still checks the region, segment and review flag on every row, so a bad value that slipped through would be sent to `REVIEW` rather than assigned.
 
@@ -195,7 +195,7 @@ The export columns use the same names as the routing queue:
 ## What's next
 
 - **Add more buying signals.** Funding rounds, leadership changes and technology changes alongside job postings.
-- **Score instead of tier.** Combine fit and signals into a numeric score that the [funnel analytics](funnel_analytics.md) can test against actual conversion.
+- **Score instead of tier.** Combine fit and signals into a numeric score that the [funnel analytics](4_funnel_analytics.md) can test against actual conversion.
 - **Find contacts.** Add Clay's people search to find the right roles at each approved account, inheriting the account's owner.
 - **Automate the handoff.** Send approved rows from Clay straight to the n8n routing queue instead of exporting a CSV.
 

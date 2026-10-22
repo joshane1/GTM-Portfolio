@@ -6,7 +6,7 @@ Marketing, Sales and Finance each run on their own system, and each one tells a 
 
 Good GTM analytics fixes that. It connects the first form fill to the final invoice, so a team can see where deals come from, where they stall, and which investments turn into revenue. It also defines each metric once, so "pipeline" means the same thing in every meeting.
 
-This page answers eight of the most common questions GTM leaders ask, using **Fiction Cloud**, a fictional B2B SaaS company whose lead-to-revenue data I modeled in DuckDB and dbt (see [Data Modeling](Data_Modeling.md) for the tables behind it). The data covers January 2025 to June 2026: 960 inquiries, 240 opportunities and the finance revenue they produced.
+This page answers eight of the most common questions GTM leaders ask, using **Fiction Cloud**, a fictional B2B SaaS company whose lead-to-revenue data I modeled in DuckDB and dbt (see [Data Modeling](3_data_modeling.md) for the tables behind it). The data covers January 2025 to June 2026: 960 inquiries, 240 opportunities and the finance revenue they produced.
 
 ## The questions
 
