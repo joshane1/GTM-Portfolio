@@ -4,7 +4,7 @@
 
 I design and build connected go-to-market systems that improve operational efficiency, data reliability, and revenue visibility.
 
-My work combines data engineering, systems integration, workflow automation, and analytics to solve complex problems across Sales, Marketing, and Revenue Operations. From account discovery and lead routing to CRM data modeling and pipeline analytics, I focus on building scalable, reliable solutions that reduce manual work, improve decision-making, and enable revenue teams to operate more effectively.
+My work combines data engineering, systems integration, workflow automation, and analytics to solve complex problems across Sales, Marketing, and Revenue Operations. From account discovery and account routing to CRM data modeling and pipeline analytics, I focus on building scalable, reliable solutions that reduce manual work, improve decision-making, and enable revenue teams to operate more effectively.
 
 ---
 
@@ -43,7 +43,7 @@ flowchart TD
         direction TB
         n1["<b>1</b>"] ~~~ n2["<b>2</b>"] ~~~ gap2[" "]
         clay["Clay<br/>Find & enrich ICP accounts"]
-        routing["n8n Lead Routing<br/>Assign the right rep"]
+        routing["n8n Account Routing<br/>Assign the right rep"]
         crm["HubSpot CRM<br/>Company owner set"]
         review["Review queue<br/>NEEDS_REVIEW"]
     end
@@ -69,7 +69,7 @@ flowchart TD
 ```
 
 1. **Discover:** Clay finds and enriches ICP-fit accounts, labeling each with a segment, region, and fit decision. → [Write-up](docs/1_account_discovery.md)
-2. **Route:** n8n assigns each account to the right rep and sets the Company owner in HubSpot. → [Write-up](docs/2_lead_routing.md)
+2. **Route:** n8n assigns each account to the right rep and sets the Company owner in HubSpot. → [Write-up](docs/2_account_routing.md)
 3. **Model:** dbt turns Fiction Cloud's CRM, marketing, finance, and identity data into clean, tested tables. → [Write-up](docs/3_data_modeling.md)
 4. **Analyze:** SQL against the dbt models answers the funnel and pipeline questions leaders ask every week. → [Write-up](docs/4_funnel_analytics.md)
 
@@ -89,7 +89,7 @@ Bad data is stopped along the way: Clay and n8n send unclear or conflicting reco
 
 ![Clay workbook: two company searches feeding two company tables](docs/images/clay_account_discovery_tables.png)
 
-- **ICP-driven search.** US and UK searches filter on country, company size (200+ employees), industry, and domain, and enrichment runs only to fill in missing facts, so credits aren't spent re-fetching data.
+- **ICP-driven search.** US and UK searches filter on country, company size (201+ employees), industry, and domain, and enrichment runs only to fill in missing facts, so credits aren't spent re-fetching data.
 - **Formula-based decisions.** Clay formulas derive segment, region, and fit status the same way for every row, using the exact codes the routing workflow expects.
 - **Hiring as a buying signal.** Clay's Find jobs enrichment lifts accounts with open roles from `FIT` to `STRONG_FIT`.
 
@@ -101,13 +101,13 @@ Bad data is stopped along the way: Clay and n8n send unclear or conflicting reco
 
 ---
 
-### 2. Lead Routing
+### 2. Account Routing
 
 **Tools:** n8n, HubSpot API
 
 > Automatically assigns each target account to the right sales rep, and logs why.
 
-![n8n lead routing workflow](docs/images/lead_routing_n8n_workflow.png)
+![n8n account routing workflow](docs/images/account_routing_n8n_workflow.png)
 
 - **Six sales lanes:** US East, US West, and UK, each split into Mid-Market and Enterprise, decided by company size and region.
 - **Zero new HubSpot fields.** Built on HubSpot Free with its custom properties already used up: routing decisions live in an n8n Data Table, and only the native Company owner field is written back.
@@ -117,7 +117,7 @@ Bad data is stopped along the way: Clay and n8n send unclear or conflicting reco
 
 **Shows:** workflow automation · API integration · routing design · data quality controls
 
-**[Read the lead routing write-up →](docs/2_lead_routing.md)**
+**[Read the account routing write-up →](docs/2_account_routing.md)**
 
 ---
 

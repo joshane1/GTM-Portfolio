@@ -2,9 +2,20 @@
 
 ## The problem
 
-A sales team can only route and work accounts it has already found. Building that list by hand is slow and uneven: one rep pulls companies from a directory, another from LinkedIn, and nobody records why a company made the cut. Bought lists are faster, but they arrive full of firms that are too small, in the wrong country, or missing the facts needed to assign them to a rep.
+Sales can't work accounts it hasn't found. The usual ways of building a target list both fall short:
 
-This project builds the target-account list for **Fiction Cloud**, a fictional B2B SaaS company, in Clay. Clay searches for real companies that match the ideal customer profile (ICP), enriches only the facts that are missing, and labels every company with a segment, a region and a fit decision. The reviewed list is the input to the [lead routing workflow](2_lead_routing.md), which assigns each account to a rep in HubSpot.
+- **Hand-built lists are slow and inconsistent.** Each rep pulls companies from a different source, and nobody records why a company made the cut.
+- **Bought lists are fast but messy.** They're full of companies that are too small, in the wrong country, or missing the details needed to assign a rep.
+
+## The solution
+
+A Clay workbook that builds the target-account list for **Fiction Cloud**, a fictional B2B SaaS company:
+
+1. **Find** real companies that match the ideal customer profile (ICP).
+2. **Enrich** only the facts that are missing.
+3. **Label** every company with a segment, a region, and a fit decision.
+
+The reviewed list feeds the [account routing workflow](2_account_routing.md), which assigns each account to a rep in HubSpot.
 
 ## The ideal customer profile
 
@@ -13,7 +24,7 @@ Fiction Cloud sells to B2B operating companies with recurring work across teams,
 | Dimension | Rule |
 |---|---|
 | **Company** | B2B operating organization with evidence of recurring cross-team, multi-site or service work |
-| **Size** | 200 – 999 employees = Mid-Market; 1,000+ = Enterprise. Under 200 is out of scope. |
+| **Size** | 201 – 1,000 employees = Mid-Market; 1,001+ = Enterprise. 200 or fewer is out of scope. |
 | **Geography** | United States or United Kingdom |
 | **Priority industries** | Software, Logistics, Healthcare Operations, Business Services, Manufacturing. Search priorities, not automatic exclusions. |
 
@@ -39,7 +50,7 @@ flowchart LR
     enrich --> derive["Derive segment,<br/>region, fit status"]
     derive --> review["Review &<br/>dedupe"]
     review --> csv["Approved CSV"]
-    csv --> routing["n8n lead routing<br/>→ HubSpot"]
+    csv --> routing["n8n account routing<br/>→ HubSpot"]
 ```
 
 ## 1. Discovery: searching for ICP-fit companies
@@ -49,7 +60,7 @@ Each search uses Clay's **Find Companies** with filters that mirror the ICP:
 | Filter | Set to | Why |
 |---|---|---|
 | **Location** | United States or United Kingdom, one search each | Country is a required ICP gate |
-| **Company size** | Bands covering 200+ employees | Matches the Mid-Market floor; exact headcount is checked after import |
+| **Company size** | Bands covering 201+ employees | Matches the Mid-Market floor; exact headcount is checked after import |
 | **Industry** | Closest Clay labels for the priority industries | A starting point for the pilot, broadened later |
 | **Domain** | Has a domain | Makes enrichment and CRM matching reliable |
 
@@ -70,7 +81,7 @@ Four formula columns turn the enriched data into the fields routing and prioriti
 
 - **Every row gets an answer.** Each formula ends in a catch-all, so no row is left blank.
 - **Unknown is not the same as out of scope.** Missing or unrecognized data returns `NEEDS_REVIEW`; data that clearly fails the ICP returns `OUT_OF_ICP`.
-- **Outputs match the routing workflow.** For in-scope companies, segment and region values are the exact codes the [lead routing workflow](2_lead_routing.md) expects, so nothing has to be relabeled after export. `OUT_OF_ICP` and `NEEDS_REVIEW` are Clay-only values that stop a company before export.
+- **Outputs match the routing workflow.** For in-scope companies, segment and region values are the exact codes the [account routing workflow](2_account_routing.md) expects, so nothing has to be relabeled after export. `OUT_OF_ICP` and `NEEDS_REVIEW` are Clay-only values that stop a company before export.
 
 ### Segment
 
@@ -87,10 +98,10 @@ Maps Clay's company size band to a sales segment:
 |---|---|
 | 201 – 500, 501 – 1,000 | `MID_MARKET` |
 | 1,001 – 5,000, 5,001 – 10,000, 10,001+ | `ENTERPRISE` |
-| Under 200 employees | `OUT_OF_ICP` |
+| 200 employees or fewer | `OUT_OF_ICP` |
 | Blank or unrecognized band | `NEEDS_REVIEW` |
 
-Clay's size bands are ranges, so they only approximate the ICP's 200 and 1,000 cut-offs: a company with exactly 1,000 employees sits in the 501 – 1,000 band and is treated as Mid-Market. The exact `employee_count` is exported alongside the segment, so a borderline account can be checked during review.
+These boundaries follow Clay's available size bands. The exact `employee_count` is exported alongside the segment, so a borderline account can still be checked during review or reclassified if the policy changes.
 
 ### Region
 
@@ -168,7 +179,7 @@ The order of the checks is deliberate. A known disqualifier wins first: a 50-per
 
 ## 5. Handoff to routing
 
-Only approved companies (`FIT` or `STRONG_FIT`, with no unresolved duplicates) go into the export view. It's downloaded as `fiction_cloud_icp_accounts_YYYY-MM-DD.csv` and imported into both HubSpot and the n8n routing queue, where the [lead routing workflow](2_lead_routing.md) assigns each company to one of six sales lanes using its segment and region.
+Only approved companies (`FIT` or `STRONG_FIT`, with no unresolved duplicates) go into the export view. It's downloaded as `fiction_cloud_icp_accounts_YYYY-MM-DD.csv` and imported into both HubSpot and the n8n routing queue, where the [account routing workflow](2_account_routing.md) assigns each company to one of six sales lanes using its segment and region.
 
 Because the export is filtered on fit status, `OUT_OF_ICP` and `NEEDS_REVIEW` never leave Clay: every exported row carries one of the routing codes (`MID_MARKET` or `ENTERPRISE`, and `US_EAST`, `US_WEST` or `UK`). Routing still checks the region, segment and review flag on every row, so a bad value that slipped through would be sent to `REVIEW` rather than assigned.
 

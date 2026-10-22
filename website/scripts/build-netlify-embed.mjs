@@ -84,7 +84,7 @@ const projectWriteups = [
     title: 'Route the Right Accounts to the Right Reps—Automatically',
     summary: 'An explainable Clay-to-n8n-to-HubSpot workflow that routes enriched accounts into six sales lanes, preserves clean ownership logic, and sends incomplete records to review.',
     tags: ['n8n', 'Clay', 'HubSpot', 'Routing logic'],
-    href: 'https://github.com/joshane1/GTM-Portfolio/blob/main/docs/2_lead_routing.md',
+    href: 'https://github.com/joshane1/GTM-Portfolio/blob/main/docs/2_account_routing.md',
   },
   {
     number: '02',

@@ -1,10 +1,22 @@
-# Lead Routing with Clay, n8n and HubSpot
+# Account Routing with Clay, n8n and HubSpot
 
 ## The problem
 
-When a new target account lands in the CRM, someone has to decide which rep owns it. Done by hand, that decision is slow, inconsistent and hard to audit: two accounts with the same profile end up with different reps, and nobody can say why. Slow routing costs pipeline too, because the first rep to engage usually wins the conversation.
+Every new target account needs an owner. When that decision is made by hand, it goes wrong in three ways:
 
-This project automates that decision for **Fiction Cloud**, a fictional B2B SaaS company. Clay produces a reviewed list of target companies, n8n decides which sales lane each one belongs to, and HubSpot receives the owner assignment. Every decision is logged with a reason, so any assignment can be explained after the fact.
+- **It's slow.** The first rep to engage usually wins the conversation, so an account left unassigned costs pipeline.
+- **It's inconsistent.** Two accounts with the same profile end up with different reps.
+- **It can't be audited.** Nobody can say why an account went to the rep it did.
+
+## The solution
+
+An automated routing workflow for **Fiction Cloud**, a fictional B2B SaaS company:
+
+1. **Clay** supplies a reviewed list of target companies.
+2. **n8n** decides which sales lane each company belongs to.
+3. **HubSpot** receives the owner assignment.
+
+Every decision is logged with a reason, so any assignment can be explained later.
 
 ## Routing policy
 
@@ -14,8 +26,8 @@ Fiction Cloud sells to two segments in three regions, which gives six sales lane
 
 | Employees | Segment |
 |---|---|
-| 200 – 999 | `MID_MARKET` |
-| 1,000+ | `ENTERPRISE` |
+| 201 – 1,000 | `MID_MARKET` |
+| 1,001+ | `ENTERPRISE` |
 
 **Region** comes from headquarters location: the defined western US states map to `US_WEST`, all other US states and DC map to `US_EAST`, and Great Britain maps to `UK`.
 
@@ -67,7 +79,7 @@ No paid HubSpot workflow tools are needed. The tradeoff is that the route lane i
 
 ## The workflow
 
-![n8n lead routing workflow](images/lead_routing_n8n_workflow.png)
+![n8n account routing workflow](images/account_routing_n8n_workflow.png)
 
 The workflow runs in three stages, each grouped in the n8n canvas. Every company ends in one of two places: its owner is assigned in HubSpot, or it's marked skipped with a reason.
 
@@ -119,7 +131,7 @@ The `fc_route_queue` Data Table is the audit trail. It starts as the reviewed Cl
 | `region`, `segment`, `review_flag` | Routing inputs from the Clay ICP review |
 | `hubspot_company_id` | HubSpot Record ID after a successful domain match: the stable link to the CRM |
 | `route_bucket` | One of the six lanes |
-| `route_status` | `ROUTED`, `PRESERVED_OWNER` or `REVIEW`. Blank means pending. |
+| `route_status` | `ROUTED` or `REVIEW`. Blank means pending. |
 | `route_reason` | Short, human-readable explanation of the decision |
 | `policy_version` | `v1`, so a decision can be traced to the rules in force when it was made |
 
@@ -141,7 +153,6 @@ The workflow is tested against the cases most likely to break routing:
 | Company with a missing region | `REVIEW`, never routed |
 | Company with a review flag set in Clay | `REVIEW` |
 | Company whose domain isn't in HubSpot | `REVIEW`, no CRM match |
-| Company that already has a real HubSpot owner | Owner left untouched, status `PRESERVED_OWNER` |
 | Running the workflow a second time | No row is processed twice |
 
 Evidence for each run: the exported Data Table CSV, the HubSpot Company records, and the n8n execution log.

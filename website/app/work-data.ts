@@ -191,7 +191,7 @@ export const workTypes: WorkType[] = [
     considerations: ['Idempotency', 'Rate limits', 'Credential security', 'Rule ownership', 'Error recovery'],
     validation: ['Scenario test matrix', 'Payload inspection', 'Duplicate tests', 'Failure and retry tests'],
     evidence: [
-      { project: 'Fiction Cloud n8n Lead Routing', title: 'Designing a dependable lead-routing workflow', summary: 'Demonstrates validation, geographic and segment assignment, duplicate handling, CRM integration, and explicit exception paths.', technologies: ['n8n', 'Webhooks', 'CRM API', 'JavaScript'], demonstrates: ['Routing logic', 'Duplicate prevention', 'CRM payloads', 'Exception handling'] },
+      { project: 'Fiction Cloud n8n Account Routing', title: 'Designing a dependable account-routing workflow', summary: 'Demonstrates validation, geographic and segment assignment, duplicate handling, CRM integration, and explicit exception paths.', technologies: ['n8n', 'Webhooks', 'CRM API', 'JavaScript'], demonstrates: ['Routing logic', 'Duplicate prevention', 'CRM payloads', 'Exception handling'] },
     ],
     resources: [
       { kind: 'Architecture', title: 'n8n workflow diagram', description: 'A node-level view of trigger, validation, routing, CRM operations, notifications, and failure branches.' },

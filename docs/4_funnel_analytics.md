@@ -1,12 +1,22 @@
 # Sales Pipeline & Funnel Analytics
 
-## Why analytics matters to GTM teams
+## Benefits of Analytics to GTM Teams
 
-Marketing, Sales and Finance each run on their own system, and each one tells a slightly different story. Marketing counts leads, Sales counts pipeline, Finance counts revenue. Without a shared data layer, the weekly forecast call turns into an argument about whose number is right instead of a decision about what to do next.
+Marketing, Sales, and Finance each run on their own system and count something different: leads, pipeline, and revenue. Without a shared data layer, the weekly forecast call becomes an argument about whose number is right instead of a decision about what to do next.
 
-Good GTM analytics fixes that. It connects the first form fill to the final invoice, so a team can see where deals come from, where they stall, and which investments turn into revenue. It also defines each metric once, so "pipeline" means the same thing in every meeting.
+Good GTM analytics fixes that:
 
-This page answers eight of the most common questions GTM leaders ask, using **Fiction Cloud**, a fictional B2B SaaS company whose lead-to-revenue data I modeled in DuckDB and dbt (see [Data Modeling](3_data_modeling.md) for the tables behind it). The data covers January 2025 to June 2026: 960 inquiries, 240 opportunities and the finance revenue they produced.
+- **One view from first touch to final invoice.** Teams can see where deals come from, where they stall, and which investments turn into revenue.
+- **One definition per metric.** "Pipeline" means the same thing in every meeting.
+- **Decisions instead of debates.** Time goes into what to do next, not into reconciling numbers.
+
+## About this analysis
+
+This page answers eight of the most common questions GTM leaders ask, using **Fiction Cloud**, a fictional B2B SaaS company whose lead-to-revenue data I modeled in DuckDB and dbt.
+
+- **Period:** January 2025 to June 2026
+- **Data:** 960 inquiries, 240 opportunities, and the finance revenue they produced
+- **Tables behind it:** see [Data Modeling](3_data_modeling.md)
 
 ## The questions
 
