@@ -50,7 +50,7 @@ const header = (active, aboutHref = '/about/') => `<header class="site-header op
   <nav aria-label="Main navigation">
     <a class="${active === 'home' ? 'nav-active' : ''}" href="/">Home</a>
     <a href="/#types-of-work">Types of Work</a>
-    <a class="${active === 'about' ? 'nav-active' : ''}" href="${aboutHref}">About</a>
+    <a class="${active === 'about' ? 'nav-active' : ''}" href="${aboutHref}">About Me</a>
   </nav>
   <a class="header-cta" href="/#contact">Let&apos;s talk</a>
 </header>`;
@@ -315,11 +315,11 @@ const home = `<!doctype html><html lang="en"><head>${sharedHead('Oshane Jackson 
   ${footer()}
 </main>${behavior}</body></html>`;
 
-const about = `<!doctype html><html lang="en"><head>${sharedHead('About — Oshane Jackson, GTM Engineer', 'About the GTM engineering approach, operating principles, and technical delivery experience.')}</head><body><div class="operating-shell theme-editorial">
+const about = `<!doctype html><html lang="en"><head>${sharedHead('About Me — Oshane Jackson, GTM Engineer', 'About the GTM engineering approach, operating principles, and technical delivery experience.')}</head><body><div class="operating-shell theme-editorial">
   ${header('about')}
   <main id="top">
     <section class="about-glance"><div class="about-glance-grid">
-      <div class="about-glance-copy"><p class="report-kicker">ABOUT / GTM ENGINEER</p><h1>I turn GTM operating problems into dependable <em>systems.</em></h1><p class="about-glance-lede">I build dependable data and automation systems for GTM teams—turning operational questions into reporting, enrichment, scoring, and workflow solutions people can trust.</p><p class="about-glance-support">Recent work includes a GTM analytical layer for consistent reporting, a Clay enrichment workflow that turns ICP criteria into CRM-ready account data, and an explainable lead-scoring system using fit and engagement signals.</p><div class="about-brief"><div><span>CORE WORK</span><p>Data modeling · Funnel analytics · Enrichment · Lead scoring · Automation</p></div><div><span>TOOLS</span><p>SQL · dbt · Clay · n8n · CRM workflows · BI</p></div></div><div class="about-glance-actions"><a class="report-button report-button-primary" href="/#types-of-work">Review Types of Work</a><a class="report-button" href="/#contact">Contact</a></div></div>
+      <div class="about-glance-copy"><p class="report-kicker">ABOUT ME / GTM ENGINEER</p><h1>I turn GTM operating problems into dependable <em>systems.</em></h1><p class="about-glance-lede">I build dependable data and automation systems for GTM teams—turning operational questions into reporting, enrichment, scoring, and workflow solutions people can trust.</p><p class="about-glance-support">Recent work includes a GTM analytical layer for consistent reporting, a Clay enrichment workflow that turns ICP criteria into CRM-ready account data, and an explainable lead-scoring system using fit and engagement signals.</p><div class="about-brief"><div><span>CORE WORK</span><p>Data modeling · Funnel analytics · Enrichment · Lead scoring · Automation</p></div><div><span>TOOLS</span><p>SQL · dbt · Clay · n8n · CRM workflows · BI</p></div></div><div class="about-glance-actions"><a class="report-button report-button-primary" href="/#types-of-work">Review Types of Work</a><a class="report-button" href="/#contact">Contact</a></div></div>
       <aside class="about-glance-visual"><figure class="report-portrait report-portrait-photo"><img src="/oshane_profile_photo.webp" alt="Headshot of Oshane Jackson" width="1146" height="1419"></figure><div class="about-profile-summary"><span>WORKING PROFILE</span><strong>GTM Engineer bridging RevOps, data, and automation.</strong><p>Focused on practical systems that improve reporting trust, lead handling, targeting quality, and prioritization.</p></div></aside>
     </div></section>
   </main>
@@ -327,7 +327,7 @@ const about = `<!doctype html><html lang="en"><head>${sharedHead('About — Osha
 </div></body></html>`;
 
 const singlePageAbout = `<section class="single-page-about" id="about"><div class="single-page-about-grid">
-  <div class="single-page-about-copy"><p class="report-kicker">ABOUT / GTM ENGINEER</p><h2>I turn GTM operating problems into dependable <em>systems.</em></h2><p class="single-page-about-lede">I build dependable data and automation systems for GTM teams—turning operational questions into reporting, enrichment, scoring, and workflow solutions people can trust.</p><p class="single-page-about-detail">Recent work includes a GTM analytical layer for consistent reporting, a Clay enrichment workflow that turns ICP criteria into CRM-ready account data, and an explainable lead-scoring system using fit and engagement signals.</p><div class="about-brief"><div><span>CORE WORK</span><p>Data modeling · Funnel analytics · Enrichment · Lead scoring · Automation</p></div><div><span>TOOLS</span><p>SQL · dbt · Clay · n8n · CRM workflows · BI</p></div></div><div class="single-page-about-actions"><a class="report-button report-button-primary" href="#contact">Start a conversation</a><a class="report-button" href="#types-of-work">Review types of work</a></div></div>
+  <div class="single-page-about-copy"><p class="report-kicker">ABOUT ME / GTM ENGINEER</p><h2>I turn GTM operating problems into dependable <em>systems.</em></h2><p class="single-page-about-lede">I build dependable data and automation systems for GTM teams—turning operational questions into reporting, enrichment, scoring, and workflow solutions people can trust.</p><p class="single-page-about-detail">Recent work includes a GTM analytical layer for consistent reporting, a Clay enrichment workflow that turns ICP criteria into CRM-ready account data, and an explainable lead-scoring system using fit and engagement signals.</p><div class="about-brief"><div><span>CORE WORK</span><p>Data modeling · Funnel analytics · Enrichment · Lead scoring · Automation</p></div><div><span>TOOLS</span><p>SQL · dbt · Clay · n8n · CRM workflows · BI</p></div></div><div class="single-page-about-actions"><a class="report-button report-button-primary" href="#contact">Start a conversation</a><a class="report-button" href="#types-of-work">Review types of work</a></div></div>
   <aside class="single-page-about-visual"><figure class="report-portrait report-portrait-photo"><img src="/oshane_profile_photo.webp" alt="Headshot of Oshane Jackson" width="1146" height="1419"></figure><div class="about-profile-summary"><span>WORKING PROFILE</span><strong>GTM Engineer bridging RevOps, data, and automation.</strong><p>Focused on practical systems that improve reporting trust, lead handling, targeting quality, and prioritization.</p></div></aside>
 </div></section>`;
 
@@ -345,7 +345,7 @@ await fs.mkdir(singlePageOutputDir, { recursive: true });
 await fs.writeFile(path.join(singlePageOutputDir, 'index.html'), singlePageHome);
 await fs.copyFile(path.join(projectDir, 'public', 'oshane_profile_photo.webp'), path.join(outputDir, 'oshane_profile_photo.webp'));
 await fs.copyFile(path.join(projectDir, 'public', 'oshane_profile_photo.webp'), path.join(singlePageOutputDir, 'oshane_profile_photo.webp'));
-await fs.writeFile(path.join(singlePageOutputDir, 'README-FIRST.txt'), `GTM PORTFOLIO — SINGLE-PAGE VERSION\n\nThis alternative layout is not published by netlify.toml.\nTo preview it on Netlify, open https://app.netlify.com/drop and drag this entire folder into the drop area.\n\nThe About navigation scrolls to the About section on the Home page.\n`);
+await fs.writeFile(path.join(singlePageOutputDir, 'README-FIRST.txt'), `GTM PORTFOLIO — SINGLE-PAGE VERSION\n\nThis alternative layout is not published by netlify.toml.\nTo preview it on Netlify, open https://app.netlify.com/drop and drag this entire folder into the drop area.\n\nThe About Me navigation scrolls to the About Me section on the Home page.\n`);
 
 console.log(`Created Netlify Drop folder: ${outputDir}`);
 console.log(`Home HTML: ${Buffer.byteLength(home).toLocaleString()} bytes`);
