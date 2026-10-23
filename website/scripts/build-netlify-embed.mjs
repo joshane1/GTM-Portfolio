@@ -80,6 +80,14 @@ function accordion(items) {
 const projectWriteups = [
   {
     number: '01',
+    eyebrow: 'ACCOUNT DISCOVERY',
+    title: 'Build a Target-Account List That Matches the ICP',
+    summary: 'A Clay workbook that finds ICP-fit companies in the US and UK, enriches only the missing facts, and labels every account with a segment, region, and fit decision before routing.',
+    tags: ['Clay', 'ICP', 'Enrichment', 'Segmentation'],
+    href: 'https://github.com/joshane1/GTM-Portfolio/blob/main/docs/1_account_discovery.md',
+  },
+  {
+    number: '02',
     eyebrow: 'WORKFLOW AUTOMATION',
     title: 'Route the Right Accounts to the Right Reps—Automatically',
     summary: 'An explainable Clay-to-n8n-to-HubSpot workflow that routes enriched accounts into six sales lanes, preserves clean ownership logic, and sends incomplete records to review.',
@@ -87,7 +95,7 @@ const projectWriteups = [
     href: 'https://github.com/joshane1/GTM-Portfolio/blob/main/docs/2_account_routing.md',
   },
   {
-    number: '02',
+    number: '03',
     eyebrow: 'ANALYTICS ENGINEERING',
     title: 'Enable Trustworthy Reporting With a Tested CRM Data Model',
     summary: 'A typed, connected, and tested CRM data foundation built with SQL and dbt—including historical reporting logic, relationship checks, and 89 automated tests.',
@@ -95,7 +103,7 @@ const projectWriteups = [
     href: 'https://github.com/joshane1/GTM-Portfolio/blob/main/docs/3_data_modeling.md',
   },
   {
-    number: '03',
+    number: '04',
     eyebrow: 'REVENUE ANALYTICS',
     title: 'Turn Funnel and Pipeline Data Into Decisions Leaders Can Trust',
     summary: 'A decision-focused analysis of conversion, channel contribution, pipeline definitions, velocity, bookings, and revenue—organized around eight recurring GTM questions.',
@@ -104,13 +112,13 @@ const projectWriteups = [
   },
 ];
 
-const projectWriteupCards = () => projectWriteups.map((project) => `<a class="project-writeup-card" href="${esc(project.href)}" target="_blank" rel="noreferrer" aria-label="Read project write-up: ${esc(project.title)}">
+const projectWriteupCards = () => projectWriteups.map((project) => `<a class="project-writeup-card" href="${esc(project.href)}" target="_blank" rel="noreferrer" aria-label="Read the write-up on GitHub: ${esc(project.title)}">
   <div class="project-writeup-meta"><span>PROJECT ${esc(project.number)}</span><small>FICTION CLOUD SIMULATION</small></div>
   <p class="project-writeup-eyebrow">${esc(project.eyebrow)}</p>
   <h3>${esc(project.title)}</h3>
   <p class="project-writeup-summary">${esc(project.summary)}</p>
   <div class="project-writeup-tags">${project.tags.map((tag) => `<span>${esc(tag)}</span>`).join('')}</div>
-  <strong>Read project write-up <b>↗</b></strong>
+  <strong>Read the write-up on GitHub <b>↗</b></strong>
 </a>`).join('');
 
 const sharedHead = (title, description) => `<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>${esc(title)}</title><meta name="description" content="${esc(description)}"><style>${css}
@@ -201,16 +209,29 @@ document.addEventListener('click',function(event){
     var gap=parseFloat(getComputedStyle(track).columnGap||getComputedStyle(track).gap)||0;
     return cards[0].getBoundingClientRect().width+gap;
   }
+  // How many cards fit side by side; on desktop several show at once, so the last index is cards.length - visible.
+  function visibleCount(){
+    var step=cardStep();
+    if(!step)return 1;
+    var styles=getComputedStyle(track);
+    var gap=parseFloat(styles.columnGap||styles.gap)||0;
+    var width=track.clientWidth-(parseFloat(styles.paddingRight)||0);
+    return Math.max(1,Math.min(cards.length,Math.floor((width+gap+1)/step)));
+  }
+  function pad(value){return String(value).padStart(2,'0');}
   function updateCarousel(){
     var step=cardStep();
-    currentIndex=step?Math.max(0,Math.min(cards.length-1,Math.round(track.scrollLeft/step))):0;
-    if(progress)progress.textContent=String(currentIndex+1).padStart(2,'0')+' / '+String(cards.length).padStart(2,'0');
-    if(bar)bar.style.transform='scaleX('+((currentIndex+1)/cards.length)+')';
+    var visible=visibleCount();
+    var lastIndex=cards.length-visible;
+    currentIndex=step?Math.max(0,Math.min(lastIndex,Math.round(track.scrollLeft/step))):0;
+    var lastShown=currentIndex+visible;
+    if(progress)progress.textContent=(visible>1?pad(currentIndex+1)+'–'+pad(lastShown):pad(lastShown))+' / '+pad(cards.length);
+    if(bar)bar.style.transform='scaleX('+(lastShown/cards.length)+')';
     if(previous)previous.disabled=currentIndex===0;
-    if(next)next.disabled=currentIndex===cards.length-1;
+    if(next)next.disabled=currentIndex>=lastIndex;
   }
   function moveTo(index){
-    currentIndex=Math.max(0,Math.min(cards.length-1,index));
+    currentIndex=Math.max(0,Math.min(cards.length-visibleCount(),index));
     track.scrollTo({left:cardStep()*currentIndex,behavior:'smooth'});
   }
   if(previous)previous.addEventListener('click',function(){moveTo(currentIndex-1);});
@@ -226,16 +247,19 @@ document.addEventListener('click',function(event){
   var startX=0;
   var startScroll=0;
   track.addEventListener('pointerdown',function(event){
-    if(event.pointerType!=='mouse'||event.button!==0)return;
+    if(event.pointerType!=='mouse'||event.button!==0||track.scrollWidth<=track.clientWidth)return;
     dragging=true;dragged=false;startX=event.clientX;startScroll=track.scrollLeft;
-    track.classList.add('is-dragging');
-    track.setPointerCapture(event.pointerId);
   });
   track.addEventListener('pointermove',function(event){
     if(!dragging)return;
     var distance=event.clientX-startX;
-    if(Math.abs(distance)>5)dragged=true;
-    track.scrollLeft=startScroll-distance;
+    // Capture only once a real drag starts; capturing on pointerdown retargets plain clicks away from the card links.
+    if(!dragged&&Math.abs(distance)>5){
+      dragged=true;
+      track.classList.add('is-dragging');
+      track.setPointerCapture(event.pointerId);
+    }
+    if(dragged)track.scrollLeft=startScroll-distance;
   });
   track.addEventListener('pointerup',function(event){
     if(!dragging)return;
@@ -284,9 +308,9 @@ document.addEventListener('click',function(event){
 
 const home = `<!doctype html><html lang="en"><head>${sharedHead('Oshane Jackson — GTM Engineer', 'GTM engineering portfolio covering analytics, data systems, enrichment, automation, and lead scoring.')}</head><body><main class="operating-site work-site capability-home theme-editorial accordion-version">
   ${header('home')}
-  <section class="capability-hero" id="top"><div><p class="report-kicker">GTM ENGINEERING / REVENUE SYSTEMS</p><h1>Enable cleaner data, faster insights, and more reliable <em>GTM decisions.</em></h1></div><aside><p>I&apos;m Oshane Jackson, a GTM Engineer and GTM Analytics Engineer. I design the data models, analytics, enrichment workflows, automations, and scoring systems that help revenue teams operate with greater clarity and consistency.</p><div class="operating-actions"><a class="report-button report-button-primary" href="#types-of-work">Explore types of work</a><a class="report-button" href="#contact">Contact</a></div><small><i></i> AVAILABLE FOR THE RIGHT ROLE OR PROJECT</small></aside></section>
+  <section class="capability-hero" id="top"><div><p class="report-kicker">GTM ENGINEERING / REVENUE SYSTEMS</p><h1>Turn fragmented GTM processes into dependable <em>revenue systems.</em></h1><p class="capability-hero-lede">I design and build the data foundations, integrations, automations, and decision workflows that improve lead handling, reporting trust, and operational efficiency.</p></div><aside><p>I&apos;m Oshane Jackson, a GTM and Revenue Systems Engineer. I connect CRM data, enrichment, automation, routing, scoring, and analytics to reduce manual work, improve reporting trust, and help revenue teams operate more efficiently.</p><div class="operating-actions"><a class="report-button report-button-primary" href="#types-of-work">Explore types of work</a><a class="report-button" href="#contact">Contact</a></div><small><i></i> AVAILABLE FOR THE RIGHT ROLE OR PROJECT</small></aside></section>
   <section class="capability-work accordion-work-section" id="types-of-work"><div class="capability-section-heading accordion-heading"><div><p class="report-kicker">HOW I HELP GTM TEAMS / 05 CAPABILITIES</p><h2>Five ways I help GTM teams operate <em>better.</em></h2></div><div class="accordion-heading-note"><p>Scan the five areas below, then open the one that matches your current constraint. Each section expands in place; opening another closes the previous one.</p><span>SELECT A ROW TO EXPLORE <i>↓</i></span></div></div>${accordion(workTypes)}</section>
-  <section class="project-writeups" id="project-writeups"><div class="project-writeups-heading"><div><p class="report-kicker">PROJECT WRITE-UPS / GITHUB</p><h2>Practical systems for recurring <em>GTM problems.</em></h2></div><div class="project-writeups-intro"><p>Each write-up starts with the operating problem, then shows the design choices, technical logic, validation, and business use of the solution.</p><div class="project-carousel-controls" aria-label="Project carousel controls"><button type="button" data-carousel-prev aria-label="Previous project">←</button><span data-carousel-progress>01 / 03</span><button type="button" data-carousel-next aria-label="Next project">→</button></div></div></div><div class="project-carousel-viewport"><div class="project-carousel-track" data-project-carousel tabindex="0" aria-label="Project write-ups. Swipe or use the arrow buttons to browse.">${projectWriteupCards()}</div></div><div class="project-carousel-progress" aria-hidden="true"><i data-carousel-bar></i></div></section>
+  <section class="project-writeups" id="project-writeups"><div class="project-writeups-heading"><div><p class="report-kicker">PROJECT WRITE-UPS / GITHUB</p><h2>Practical systems for recurring <em>GTM problems.</em></h2></div><div class="project-writeups-intro"><p>Each write-up covers one part of Fiction Cloud&apos;s lead-to-revenue system, from finding and routing accounts to modeling CRM data and analyzing the funnel, with the build details, checks, and business takeaways.</p><div class="project-carousel-controls" aria-label="Project carousel controls"><button type="button" data-carousel-prev aria-label="Previous project">←</button><span data-carousel-progress>01 / 04</span><button type="button" data-carousel-next aria-label="Next project">→</button></div></div></div><div class="project-carousel-viewport"><div class="project-carousel-track" data-project-carousel tabindex="0" aria-label="Project write-ups. Swipe or use the arrow buttons to browse.">${projectWriteupCards()}</div></div><div class="project-carousel-progress" aria-hidden="true"><i data-carousel-bar></i></div></section>
   <section class="operating-contact simple-contact inquiry-section" id="contact"><div class="inquiry-intro"><p class="report-kicker">FRACTIONAL REVENUE SYSTEMS ENGINEERING</p><h2>Need more capacity across your <em>revenue systems?</em></h2><div class="contact-intro inquiry-copy"><p>I provide Revenue (GTM) Systems Engineering support to keep revenue teams operating reliably.</p><p class="inquiry-expertise-label">Core Expertise:</p><ul class="inquiry-expertise"><li>Systems Integration &amp; Architecture</li><li>Data &amp; Analytics</li><li>Data Enrichment &amp; Scoring</li><li>Workflow Automation</li></ul><p><em>Available for fractional retainer contracts up to 20 hours per week.</em></p></div></div><form class="inquiry-form" id="inquiry-form" name="inquiry" method="POST" data-netlify="true" netlify-honeypot="company-website"><input type="hidden" name="form-name" value="inquiry"><p hidden><label>Leave this field empty <input name="company-website" tabindex="-1" autocomplete="off"></label></p><label><span>Name</span><input type="text" name="name" autocomplete="name" required></label><label><span>Email</span><input type="email" name="email" autocomplete="email" required></label><label class="inquiry-company"><span>Company name</span><input type="text" name="company" autocomplete="organization"></label><label class="inquiry-engagement"><span>Engagement type</span><select name="engagement" required><option value="">Select one</option>${engagementTypes.map((type) => `<option>${esc(type)}</option>`).join('')}</select></label><fieldset class="inquiry-areas"><legend>Areas of inquiry</legend><div class="inquiry-chips">${inquiryAreas.map(([label, slug]) => `<label class="inquiry-chip"><input type="checkbox" name="areas" value="${esc(label)}"${slug ? ` data-area="${esc(slug)}"` : ''}><span>${esc(label)}</span></label>`).join('')}</div></fieldset><label class="inquiry-message"><span>Current need</span><textarea name="message" rows="3" placeholder="What is your team trying to improve, and where is the current constraint?"></textarea></label><div class="inquiry-submit"><button class="report-button report-button-light" type="submit">Send inquiry</button><p>Your information is only used to respond to this inquiry.</p><strong data-form-status aria-live="polite"></strong></div></form></section>
   ${footer()}
 </main>${behavior}</body></html>`;
