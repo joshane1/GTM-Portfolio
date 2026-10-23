@@ -112,6 +112,39 @@ const projectWriteups = [
   },
 ];
 
+const aboutRoles = [
+  {
+    article: 'a',
+    name: 'builder',
+    tagline: 'I turn ideas into systems.',
+    body: 'This involves breaking down high-level goals into actionable requirements, identifying resource and technical requirements, and architecting solutions. This work spans data models, API connections, workflow automation, analytical processes, and systems built from the ground up. I move between understanding the problem and building the solution.',
+  },
+  {
+    article: 'an',
+    name: 'analyst',
+    tagline: 'I use the data to tell the story.',
+    body: 'As an analyst, I continually test assumptions, identify discrepancies, uncover meaningful insights, and clearly communicate findings to support sound decision-making. Understanding what a number means, how it was produced, and whether it supports the decision being made guides both my technical work and business decisions.',
+  },
+  {
+    article: 'an',
+    name: 'entrepreneur',
+    tagline: 'I never run out of ideas.',
+    body: 'I have pursued businesses in technology, agriculture, and services, adapting to different markets and changing countries to pursue new opportunities. Across these ventures, I have evaluated customer needs, operating requirements, resource constraints, and commercial viability. As an entrepreneur, I remain willing to take calculated risks and change direction when circumstances require it.',
+  },
+  {
+    article: 'an',
+    name: 'operator',
+    tagline: 'I run the systems I build.',
+    body: 'As an operator, I map processes, identify bottlenecks, standardize repeatable work, and automate tasks where technology creates meaningful leverage. I define controls and measures of success so that a system can be evaluated and improved after implementation.',
+  },
+  {
+    article: 'a',
+    name: 'technologist',
+    tagline: 'I am always looking for a better way.',
+    body: 'As a technologist, I design experiments, build prototypes, compare approaches, and evaluate how emerging capabilities behave under real conditions. AI is central to this process. I use it for research, analysis, software development, structured evaluation, and automation while designing the data, validation, and operational controls around it.',
+  },
+];
+
 const projectWriteupCards = () => projectWriteups.map((project) => `<a class="project-writeup-card" href="${esc(project.href)}" target="_blank" rel="noreferrer" aria-label="Read the write-up on GitHub: ${esc(project.title)}">
   <div class="project-writeup-meta"><span>PROJECT ${esc(project.number)}</span><small>FICTION CLOUD SIMULATION</small></div>
   <p class="project-writeup-eyebrow">${esc(project.eyebrow)}</p>
@@ -124,7 +157,7 @@ const projectWriteupCards = () => projectWriteups.map((project) => `<a class="pr
 const sharedHead = (title, description) => `<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>${esc(title)}</title><meta name="description" content="${esc(description)}"><style>${css}
 html,body{width:100%;min-height:100%;margin:0;background:#f4f0e6;scroll-behavior:smooth}
 body{overflow-x:hidden}
-.about-glance{min-height:calc(100vh - 155px);padding:clamp(3.5rem,6vw,6rem) 6vw;display:grid;align-items:center;background:#fbf8f1}
+.about-glance{padding:clamp(3.5rem,6vw,6rem) 6vw clamp(2.5rem,3.5vw,3.5rem);display:grid;align-items:center;background:#fbf8f1}
 .about-glance-grid{width:100%;max-width:1480px;margin:0 auto;display:grid;grid-template-columns:minmax(0,1.15fr) minmax(330px,430px);gap:clamp(3rem,7vw,8rem);align-items:start}
 .about-glance-copy{display:flex;flex-direction:column;justify-content:center}
 .about-glance-copy h1{max-width:900px;margin:1rem 0 1.6rem;font:500 clamp(3.2rem,5.9vw,6.4rem)/.9 Georgia,'Times New Roman',serif;letter-spacing:-.065em}
@@ -150,6 +183,41 @@ body{overflow-x:hidden}
 .about-profile-summary span{display:block;margin-bottom:.65rem;color:var(--accent-deep);font:700 .62rem/1.3 'Courier New',monospace;letter-spacing:.07em;text-transform:uppercase}
 .about-profile-summary strong{display:block;font:500 1.35rem/1.15 Georgia,'Times New Roman',serif}
 .about-profile-summary p{margin:.75rem 0 0;color:var(--muted);font-size:.8rem;line-height:1.55}
+.about-identity-index{max-width:760px;margin:1.75rem 0 0;padding:0;list-style:none;border-bottom:1px solid var(--line)}
+.about-identity-index a{display:grid;grid-template-columns:2.25rem 8.5rem minmax(0,1fr) auto;gap:.75rem;align-items:baseline;padding:.8rem 0;border-top:1px solid var(--line);color:var(--ink)}
+.about-identity-index span{color:var(--accent-deep);font:700 .64rem/1 'Courier New',monospace;letter-spacing:.08em}
+.about-identity-index strong{font:500 1.3rem/1.1 Georgia,'Times New Roman',serif;letter-spacing:-.03em;transition:color .2s ease}
+.about-identity-index small{color:var(--muted);font-size:.92rem;line-height:1.4}
+.about-identity-index b{color:var(--accent-deep);font-size:.85rem;transition:transform .2s ease}
+.about-identity-index a:hover strong{color:var(--accent-deep)}
+.about-identity-index a:hover b{transform:translateY(3px)}
+.about-roles-list li{scroll-margin-top:1.5rem}
+.about-profile-summary .about-profile-roles-label{margin-top:1.1rem}
+.about-profile-list{margin:0;padding:0;list-style:none;display:flex;flex-wrap:wrap;gap:.35rem .55rem;color:var(--ink);font-size:.95rem;line-height:1.4}
+.about-profile-list li{white-space:nowrap}
+.about-profile-list li:not(:last-child)::after{content:'•';margin-left:.55rem;color:var(--ink)}
+.about-glance-copy h1.about-identity-title{font-size:clamp(3.1rem,5.4vw,6rem);line-height:.92}
+.about-roles{padding:clamp(2.75rem,4vw,4rem) 6vw clamp(4rem,7vw,7rem);background:#f4f0e6;border-top:1px solid var(--line)}
+.about-roles-inner{max-width:1480px;margin:0 auto}
+.about-roles-list{margin:2rem 0 0;padding:0;list-style:none;border-bottom:1px solid var(--line)}
+.about-roles-list li{display:grid;grid-template-columns:70px minmax(0,.85fr) minmax(0,1.15fr);gap:clamp(1.5rem,4vw,4.5rem);padding:clamp(2rem,3.5vw,3rem) 0;border-top:1px solid var(--line);align-items:start}
+.about-role-number{padding-top:.6rem;color:var(--accent-deep);font:700 .7rem/1 'Courier New',monospace;letter-spacing:.08em}
+.about-role-title h2{margin:0;font:500 clamp(2.2rem,3.6vw,3.6rem)/.95 Georgia,'Times New Roman',serif;letter-spacing:-.055em}
+.about-role-title h2 em{color:var(--accent-deep);font-weight:inherit}
+.about-role-title p{margin:.9rem 0 0;color:var(--ink);font-size:clamp(1.05rem,1.3vw,1.2rem);line-height:1.45}
+.about-role-body{max-width:640px;margin:0;padding-top:.35rem;color:var(--muted);line-height:1.75}
+.about-focus{padding:clamp(4.5rem,8vw,8rem) 6vw;background:#274334;color:var(--paper)}
+.about-focus-grid{max-width:1480px;margin:0 auto;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(3rem,7vw,8rem);align-items:start}
+.about-focus .report-kicker{color:#b9d1ad}
+.about-focus h2{margin:1rem 0 0;font:500 clamp(3rem,5.4vw,5.9rem)/.92 Georgia,'Times New Roman',serif;letter-spacing:-.065em}
+.about-focus h2 em{color:#b9d1ad;font-weight:inherit}
+.about-focus-copy p{max-width:640px;margin:0 0 1.1rem;color:#c3cec0;line-height:1.75}
+.about-focus-copy .about-focus-lede{color:var(--paper);font-size:clamp(1.15rem,1.6vw,1.45rem);line-height:1.5}
+.about-focus-copy .about-focus-availability{margin-top:1.75rem;padding-top:1.25rem;border-top:1px solid rgba(244,240,230,.2);color:var(--paper);font:700 .72rem/1.5 'Courier New',monospace;letter-spacing:.06em;text-transform:uppercase}
+.about-focus .report-button-light{border-color:#f4f0e6;background:#f4f0e6;color:#20251f}
+.about-focus .report-button-light:hover{border-color:#b4ec9f;background:#b4ec9f}
+.about-focus .about-focus-secondary{border-color:rgba(244,240,230,.48);color:var(--paper)}
+.about-focus .about-focus-secondary:hover{background:var(--paper);color:#274334}
 .single-page-about{padding:clamp(5rem,8vw,8rem) 6vw;scroll-margin-top:82px;background:#fbf8f1;border-bottom:1px solid var(--ink)}
 .single-page-about-grid{width:100%;max-width:1480px;margin:0 auto;display:grid;grid-template-columns:minmax(0,1.15fr) minmax(330px,430px);gap:clamp(3rem,7vw,8rem);align-items:start}
 .single-page-about-copy h2{max-width:900px;margin:1rem 0 1.6rem;font:500 clamp(3.2rem,5.7vw,6.2rem)/.91 Georgia,'Times New Roman',serif;letter-spacing:-.065em}
@@ -168,7 +236,8 @@ body{overflow-x:hidden}
 .report-portrait.report-portrait-photo{padding:0;border-radius:18px;overflow:hidden;background:#274334}
 .report-portrait-photo img{display:block;width:100%;height:100%;flex:1;object-fit:cover;object-position:center top}
 @media(max-width:1000px){.about-glance-grid{grid-template-columns:1fr;align-items:stretch}.about-glance-visual{max-width:760px;grid-template-columns:minmax(280px,.65fr) 1fr;align-items:center;align-self:auto;margin-top:2.5rem}.about-glance .report-portrait{min-height:360px}.about-profile-summary{padding:1.25rem 0 1.25rem 1.5rem;border-top:0;border-left:1px solid var(--line)}}
-@media(max-width:720px){.about-glance{min-height:0;padding:3.5rem 1.25rem}.about-glance-copy h1{font-size:clamp(3rem,14vw,4.8rem)}.about-glance-facts{grid-template-columns:1fr}.about-glance-facts div{min-height:82px}.about-glance-visual{grid-template-columns:1fr;margin-top:2rem;padding:1rem}.about-glance .report-portrait{min-height:360px}.about-profile-summary{padding:1.1rem 0 0;border-top:1px solid var(--line);border-left:0}.about-glance-actions{flex-direction:column;align-items:flex-start}.about-brief>div{grid-template-columns:1fr;gap:.35rem}}
+@media(max-width:900px){.about-roles-list li{grid-template-columns:50px minmax(0,1fr);row-gap:1rem}.about-role-body{grid-column:2}.about-focus-grid{grid-template-columns:1fr;gap:2rem}}
+@media(max-width:720px){.about-glance{min-height:0;padding:3.5rem 1.25rem}.about-glance-copy h1{font-size:clamp(3rem,14vw,4.8rem)}.about-glance-facts{grid-template-columns:1fr}.about-glance-facts div{min-height:82px}.about-glance-visual{grid-template-columns:1fr;margin-top:2rem;padding:1rem}.about-glance .report-portrait{min-height:360px}.about-profile-summary{padding:1.1rem 0 0;border-top:1px solid var(--line);border-left:0}.about-glance-actions{flex-direction:column;align-items:flex-start}.about-brief>div{grid-template-columns:1fr;gap:.35rem}.about-roles,.about-focus{padding:3.5rem 1.25rem}.about-roles-list li{grid-template-columns:1fr;gap:.75rem}.about-role-number{padding-top:0}.about-role-body{grid-column:auto}.about-identity-index a{grid-template-columns:2rem minmax(0,1fr) auto;row-gap:.2rem}.about-identity-index small{grid-column:2}.about-identity-index b{grid-column:3;grid-row:1}}
 @media(max-width:1000px){.single-page-about-grid{grid-template-columns:1fr}.single-page-about-visual{max-width:760px;margin-top:2.5rem;grid-template-columns:minmax(280px,.65fr) 1fr;align-items:center}.single-page-about .report-portrait{min-height:360px}.single-page-about-visual .about-profile-summary{padding:1.25rem 0 1.25rem 1.5rem;border-top:0;border-left:1px solid var(--line)}}
 @media(max-width:720px){.single-page-about{padding:4.5rem 1.25rem}.single-page-about-copy h2{font-size:clamp(3rem,14vw,4.8rem)}.single-page-about-facts{grid-template-columns:1fr}.single-page-about-facts div{min-height:82px}.single-page-about-visual{grid-template-columns:1fr;margin-top:2rem;padding:1rem}.single-page-about .report-portrait{min-height:360px}.single-page-about-visual .about-profile-summary{padding:1.1rem 0 0;border-top:1px solid var(--line);border-left:0}.single-page-about-actions{flex-direction:column;align-items:flex-start}}
 </style>`;
@@ -319,8 +388,13 @@ const about = `<!doctype html><html lang="en"><head>${sharedHead('About Me — O
   ${header('about')}
   <main id="top">
     <section class="about-glance"><div class="about-glance-grid">
-      <div class="about-glance-copy"><p class="report-kicker">ABOUT ME / GTM ENGINEER</p><h1>I turn GTM operating problems into dependable <em>systems.</em></h1><p class="about-glance-lede">I build dependable data and automation systems for GTM teams—turning operational questions into reporting, enrichment, scoring, and workflow solutions people can trust.</p><p class="about-glance-support">Recent work includes a GTM analytical layer for consistent reporting, a Clay enrichment workflow that turns ICP criteria into CRM-ready account data, and an explainable lead-scoring system using fit and engagement signals.</p><div class="about-brief"><div><span>CORE WORK</span><p>Data modeling · Funnel analytics · Enrichment · Lead scoring · Automation</p></div><div><span>TOOLS</span><p>SQL · dbt · Clay · n8n · CRM workflows · BI</p></div></div><div class="about-glance-actions"><a class="report-button report-button-primary" href="/#types-of-work">Review Types of Work</a><a class="report-button" href="/#contact">Contact</a></div></div>
-      <aside class="about-glance-visual"><figure class="report-portrait report-portrait-photo"><img src="/oshane_profile_photo.webp" alt="Headshot of Oshane Jackson" width="1146" height="1419"></figure><div class="about-profile-summary"><span>WORKING PROFILE</span><strong>GTM Engineer bridging RevOps, data, and automation.</strong><p>Focused on practical systems that improve reporting trust, lead handling, targeting quality, and prioritization.</p></div></aside>
+      <div class="about-glance-copy"><p class="report-kicker">ABOUT ME / GTM SYSTEMS ENGINEER</p><h1 class="about-identity-title">I&apos;m a builder, analyst, entrepreneur, operator, and <em>technologist.</em></h1><p class="about-glance-lede">Working at the intersection of business, data, and technology, I translate strategic goals into analytical systems, automations, and workflows.</p><ol class="about-identity-index" aria-label="Core identities">${aboutRoles.map((role, index) => `<li><a href="#identity-${role.name}"><span>${String(index + 1).padStart(2, '0')}</span><strong>${esc(role.name[0].toUpperCase() + role.name.slice(1))}</strong><small>${esc(role.tagline)}</small><b aria-hidden="true">↓</b></a></li>`).join('')}</ol></div>
+      <aside class="about-glance-visual"><figure class="report-portrait report-portrait-photo"><img src="/oshane_profile_photo.webp" alt="Headshot of Oshane Jackson" width="1146" height="1419"></figure><div class="about-profile-summary"><span>LOCATION</span><ul class="about-profile-list"><li>Canada</li><li>USA</li><li>Americas</li></ul><span class="about-profile-roles-label">ROLES</span><ul class="about-profile-list"><li>Analytics Engineer</li><li>Data Analyst</li><li>GTM Engineer</li></ul></div></aside>
+    </div></section>
+    <section class="about-roles" id="identities" aria-label="Core identities"><div class="about-roles-inner"><p class="report-kicker">CORE IDENTITIES / 05</p><ol class="about-roles-list">${aboutRoles.map((role, index) => `<li id="identity-${role.name}"><span class="about-role-number">${String(index + 1).padStart(2, '0')}</span><div class="about-role-title"><h2>I am ${role.article} <em>${esc(role.name)}.</em></h2><p>${esc(role.tagline)}</p></div><p class="about-role-body">${esc(role.body)}</p></li>`).join('')}</ol></div></section>
+    <section class="about-focus"><div class="about-focus-grid">
+      <div><p class="report-kicker">MY FOCUS</p><h2>My focus is <em>GTM systems.</em></h2></div>
+      <div class="about-focus-copy"><p class="about-focus-lede">GTM Systems Engineering brings these parts of my identity into one field.</p><p>It combines business analysis, system architecture, data, automation, analytics, and operational execution. It requires ideas to be translated into requirements, requirements into systems, and systems into dependable operating processes.</p><p>I apply this approach to data foundations, enrichment, routing, scoring, workflow automation, revenue analytics, and the integrations connecting them.</p><p class="about-focus-availability">I am open to full-time roles, contracts, and well-scoped analytical projects.</p><div class="about-glance-actions"><a class="report-button report-button-light" href="/#contact">Start a conversation</a><a class="report-button about-focus-secondary" href="/#types-of-work">Types of Work</a></div></div>
     </div></section>
   </main>
   ${footer()}
