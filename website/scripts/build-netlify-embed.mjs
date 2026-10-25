@@ -35,6 +35,31 @@ const inquiryAreas = [
   ['Lead scoring & signal activation', 'lead-scoring-activation'],
   ['Still defining the need', ''],
 ];
+// Accordion inquiry prompts, keyed by the same work-data slug as `inquiryAreas`, so each
+// "Start an inquiry" button selects the matching Areas of inquiry chip.
+const capabilityInquiries = {
+  'gtm-data-modeling': {
+    heading: 'Need a stronger GTM data foundation?',
+    message: 'Let’s discuss the reporting, integration, or data-quality problem you’re working through.',
+  },
+  'sales-pipeline-analytics': {
+    heading: 'Need a clearer view of your pipeline?',
+    message: 'Let’s discuss the conversion, velocity, or coverage questions slowing down your forecast.',
+  },
+  'icp-discovery-enrichment': {
+    heading: 'Need better-fit accounts to target?',
+    message: 'Let’s discuss how you define your ICP and where your account data is incomplete or unreliable.',
+  },
+  'lead-qualification-automation': {
+    heading: 'Need faster, more consistent lead handling?',
+    message: 'Let’s discuss the qualification, routing, or handoff steps that still depend on manual work.',
+  },
+  'lead-scoring-activation': {
+    heading: 'Need your team focused on the right leads?',
+    message: 'Let’s discuss the fit and buying signals that should shape how your reps prioritize.',
+  },
+};
+
 let css = await fs.readFile(path.join(projectDir, 'app/globals.css'), 'utf8');
 css = css.replace("@import 'tailwindcss';", '');
 
@@ -59,19 +84,18 @@ const footer = () => `<footer class="operating-footer"><span>© 2026 OSHANE JACK
 
 function accordion(items) {
   return `<div class="work-accordion" aria-label="Types of GTM engineering work">${items.map((work) => {
-    const evidence = work.evidence[0];
+    const inquiry = capabilityInquiries[work.slug];
     const panelId = `capability-${work.slug}`;
     return `<article class="work-accordion-item">
-      <h3><button aria-controls="${panelId}" aria-expanded="false" class="work-accordion-trigger" type="button">
+      <h3><button aria-controls="${panelId}" aria-expanded="false" class="work-accordion-trigger" id="${panelId}-trigger" type="button">
         <span class="work-accordion-identity"><strong>${esc(work.number)}</strong><small>${esc(work.discipline)}</small></span>
         <span class="work-accordion-title"><strong>${esc(work.title)}</strong><span>${esc(work.summary)}</span></span>
         <span class="work-accordion-deliverables"><small>SELECT DELIVERABLES</small>${work.deliverables.slice(0, 3).map((item) => `<span>${esc(item.title)}</span>`).join('')}</span>
         <span class="work-accordion-action" aria-hidden="true"><small>Explore</small><i></i></span>
       </button></h3>
-      <div class="work-accordion-panel" id="${panelId}" aria-hidden="true"><div class="work-accordion-panel-inner"><div class="work-accordion-compact">
-        <div class="work-accordion-value"><span>WHY IT MATTERS</span><h4>${esc(work.outcomeHeadline)}</h4><p>${esc(work.businessValue)}</p></div>
-        <div class="work-accordion-manager-view"><span>WHAT A GTM LEADER GETS</span><ul>${work.benefits.map((benefit) => `<li>${esc(benefit)}</li>`).join('')}</ul></div>
-        <div class="work-accordion-evidence"><span>PROJECT EVIDENCE</span><h5>${esc(evidence?.project ?? 'Representative project')}</h5><p>${esc(evidence?.summary)}</p><div>${work.technologies.slice(0, 4).map((technology) => `<small>${esc(technology)}</small>`).join('')}</div><a class="work-inquiry-link" href="#contact" data-capability="${esc(work.title)}" data-area="${esc(work.slug)}">Discuss this capability <b>→</b></a></div>
+      <div class="work-accordion-panel" id="${panelId}" role="region" aria-labelledby="${panelId}-trigger" aria-hidden="true"><div class="work-accordion-panel-inner"><div class="work-accordion-inquiry">
+        <div><h4>${esc(inquiry.heading)}</h4><p>${esc(inquiry.message)}</p></div>
+        <a class="work-inquiry-link" href="#inquiry-form" data-area="${esc(work.slug)}">Start an inquiry <b aria-hidden="true">→</b></a>
       </div></div></div>
     </article>`;
   }).join('')}</div>`;
@@ -243,12 +267,40 @@ body{overflow-x:hidden}
 </style>`;
 
 const behavior = `<script>
+// Native smooth scrolling can't be slowed, so ease it manually. The stopping point honors the
+// target's CSS scroll-margin-top, and any wheel or touch hands control back to the visitor.
+function scrollToForm(target,done){
+  var start=scrollY;
+  var end=Math.min(document.documentElement.scrollHeight-innerHeight,start+target.getBoundingClientRect().top-parseFloat(getComputedStyle(target).scrollMarginTop));
+  var distance=end-start,duration=Math.min(1200,Math.max(700,Math.abs(distance)*.4)),startTime,stopped=false;
+  if(matchMedia('(prefers-reduced-motion: reduce)').matches){scrollTo({top:end,behavior:'instant'});return done();}
+  function stop(){stopped=true;}
+  addEventListener('wheel',stop,{passive:true,once:true});
+  addEventListener('touchstart',stop,{passive:true,once:true});
+  requestAnimationFrame(function step(time){
+    var p=stopped?1:Math.min(1,(time-(startTime??=time))/duration);
+    if(!stopped)scrollTo({top:start+distance*(p<.5?4*p*p*p:1-Math.pow(2-2*p,3)/2),behavior:'instant'});
+    if(p<1)return requestAnimationFrame(step);
+    removeEventListener('wheel',stop);removeEventListener('touchstart',stop);done();
+  });
+}
+
 document.addEventListener('click',function(event){
   var inquiryLink=event.target.closest('.work-inquiry-link');
   if(inquiryLink){
+    var form=document.getElementById('inquiry-form');
+    if(!form)return;
+    event.preventDefault();
+    // Add the matching area without clearing any the visitor already chose; fire events so listeners see the change.
     var area=inquiryLink.getAttribute('data-area');
-    var areaInput=area&&document.querySelector('.inquiry-chip input[data-area="'+area+'"]');
-    if(areaInput)areaInput.checked=true;
+    var areaInput=area&&form.querySelector('.inquiry-chip input[data-area="'+area+'"]');
+    if(areaInput&&!areaInput.checked){
+      areaInput.checked=true;
+      areaInput.dispatchEvent(new Event('input',{bubbles:true}));
+      areaInput.dispatchEvent(new Event('change',{bubbles:true}));
+    }
+    scrollToForm(form,function(){if(areaInput)areaInput.focus({preventScroll:true});});
+    return;
   }
   var trigger=event.target.closest('.work-accordion-trigger');
   if(!trigger)return;
@@ -378,7 +430,7 @@ document.addEventListener('click',function(event){
 const home = `<!doctype html><html lang="en"><head>${sharedHead('Oshane Jackson — GTM Engineer', 'GTM engineering portfolio covering analytics, data systems, enrichment, automation, and lead scoring.')}</head><body><main class="operating-site work-site capability-home theme-editorial accordion-version">
   ${header('home')}
   <section class="capability-hero" id="top"><div><p class="report-kicker">GTM ENGINEERING / REVENUE SYSTEMS</p><h1>Turn fragmented GTM processes into dependable <em>revenue systems.</em></h1><p class="capability-hero-lede">I design and build the data foundations, integrations, automations, and decision workflows that improve lead handling, reporting trust, and operational efficiency.</p></div><aside><p>I&apos;m Oshane Jackson, a GTM and Revenue Systems Engineer. I connect CRM data, enrichment, automation, routing, scoring, and analytics to reduce manual work, improve reporting trust, and help revenue teams operate more efficiently.</p><div class="operating-actions"><a class="report-button report-button-primary" href="#types-of-work">Explore types of work</a><a class="report-button" href="#contact">Contact</a></div><small><i></i> AVAILABLE FOR THE RIGHT ROLE OR PROJECT</small></aside></section>
-  <section class="capability-work accordion-work-section" id="types-of-work"><div class="capability-section-heading accordion-heading"><div><p class="report-kicker">HOW I HELP GTM TEAMS / 05 CAPABILITIES</p><h2>Five ways I help GTM teams operate <em>better.</em></h2></div><div class="accordion-heading-note"><p>Scan the five areas below, then open the one that matches your current constraint. Each section expands in place; opening another closes the previous one.</p><span>SELECT A ROW TO EXPLORE <i>↓</i></span></div></div>${accordion(workTypes)}</section>
+  <section class="capability-work accordion-work-section" id="types-of-work"><div class="capability-section-heading accordion-heading"><div><p class="report-kicker">HOW I HELP GTM TEAMS / 05 CAPABILITIES</p><h2>Five ways I help GTM teams operate <em>better.</em></h2></div><div class="accordion-heading-note"><p>These five areas cover the data, analytical, and operational systems I build. Explore an area to start a relevant inquiry, or continue below to view selected project write-ups.</p><span>SELECT A ROW TO EXPLORE <i>↓</i></span></div></div>${accordion(workTypes)}</section>
   <section class="project-writeups" id="project-writeups"><div class="project-writeups-heading"><div><p class="report-kicker">PROJECT WRITE-UPS / GITHUB</p><h2>Practical systems for recurring <em>GTM problems.</em></h2></div><div class="project-writeups-intro"><p>Each write-up covers one part of Fiction Cloud&apos;s lead-to-revenue system, from finding and routing accounts to modeling CRM data and analyzing the funnel, with the build details, checks, and business takeaways.</p><div class="project-carousel-controls" aria-label="Project carousel controls"><button type="button" data-carousel-prev aria-label="Previous project">←</button><span data-carousel-progress>01 / 04</span><button type="button" data-carousel-next aria-label="Next project">→</button></div></div></div><div class="project-carousel-viewport"><div class="project-carousel-track" data-project-carousel tabindex="0" aria-label="Project write-ups. Swipe or use the arrow buttons to browse.">${projectWriteupCards()}</div></div><div class="project-carousel-progress" aria-hidden="true"><i data-carousel-bar></i></div></section>
   <section class="operating-contact simple-contact inquiry-section" id="contact"><div class="inquiry-intro"><p class="report-kicker">FRACTIONAL REVENUE SYSTEMS ENGINEERING</p><h2>Need more capacity across your <em>revenue systems?</em></h2><div class="contact-intro inquiry-copy"><p>I provide Revenue (GTM) Systems Engineering support to keep revenue teams operating reliably.</p><p class="inquiry-expertise-label">Core Expertise:</p><ul class="inquiry-expertise"><li>Systems Integration &amp; Architecture</li><li>Data &amp; Analytics</li><li>Data Enrichment &amp; Scoring</li><li>Workflow Automation</li></ul><p><em>Available for fractional retainer contracts up to 20 hours per week.</em></p></div></div><form class="inquiry-form" id="inquiry-form" name="inquiry" method="POST" data-netlify="true" netlify-honeypot="company-website"><input type="hidden" name="form-name" value="inquiry"><p hidden><label>Leave this field empty <input name="company-website" tabindex="-1" autocomplete="off"></label></p><label><span>Name</span><input type="text" name="name" autocomplete="name" required></label><label><span>Email</span><input type="email" name="email" autocomplete="email" required></label><label class="inquiry-company"><span>Company name</span><input type="text" name="company" autocomplete="organization"></label><label class="inquiry-engagement"><span>Engagement type</span><select name="engagement" required><option value="">Select one</option>${engagementTypes.map((type) => `<option>${esc(type)}</option>`).join('')}</select></label><fieldset class="inquiry-areas"><legend>Areas of inquiry</legend><div class="inquiry-chips">${inquiryAreas.map(([label, slug]) => `<label class="inquiry-chip"><input type="checkbox" name="areas" value="${esc(label)}"${slug ? ` data-area="${esc(slug)}"` : ''}><span>${esc(label)}</span></label>`).join('')}</div></fieldset><label class="inquiry-message"><span>Current need</span><textarea name="message" rows="3" placeholder="What is your team trying to improve, and where is the current constraint?"></textarea></label><div class="inquiry-submit"><button class="report-button report-button-light" type="submit">Send inquiry</button><p>Your information is only used to respond to this inquiry.</p><strong data-form-status aria-live="polite"></strong></div></form></section>
   ${footer()}

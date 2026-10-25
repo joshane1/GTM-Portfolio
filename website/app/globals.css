@@ -1785,67 +1785,51 @@ footer span:nth-child(2) { text-align: center; } footer a { justify-self: end; c
   color: var(--ink);
   border-top: 1px solid var(--line);
 }
-.work-accordion-compact {
-  min-height: 290px;
-  padding: 2rem;
-  display: grid;
-  grid-template-columns: minmax(0, 1.15fr) minmax(220px, .65fr) minmax(280px, .8fr);
-  gap: clamp(2rem, 4vw, 5rem);
-  align-items: start;
+.work-accordion-inquiry {
+  min-height: 104px;
+  padding: 1.5rem 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: clamp(1.5rem, 4vw, 4rem);
 }
-.work-accordion-compact > div > span {
-  display: block;
-  color: var(--accent-deep);
-  font: 700 .64rem/1.3 'Courier New', monospace;
-  letter-spacing: .07em;
+.work-accordion-inquiry h4 {
+  margin: 0 0 .45rem;
+  font: 500 clamp(1.35rem, 1.9vw, 1.7rem)/1.1 Georgia, 'Times New Roman', serif;
+  letter-spacing: -.035em;
 }
-.work-accordion-value h4 {
-  max-width: 700px;
-  margin: 1.2rem 0 1rem;
-  font: 500 clamp(1.9rem, 3vw, 3.2rem)/.98 Georgia, 'Times New Roman', serif;
-  letter-spacing: -.05em;
-}
-.work-accordion-value p,
-.work-accordion-evidence p {
+.work-accordion-inquiry p {
+  max-width: 680px;
   margin: 0;
   color: var(--muted);
-  font-size: .91rem;
-  line-height: 1.6;
+  font-size: .94rem;
+  line-height: 1.55;
 }
-.work-accordion-manager-view,
-.work-accordion-evidence {
-  min-height: 215px;
-  padding-left: 1.5rem;
-  border-left: 1px solid var(--line);
-}
-.work-accordion-manager-view ul {
-  margin: 1.35rem 0 0;
-  padding: 0;
-  list-style: none;
-}
-.work-accordion-manager-view li {
-  padding: .55rem 0;
-  border-bottom: 1px solid var(--line);
-  font-size: .84rem;
-}
-.work-accordion-manager-view li::before { content: '— '; color: var(--accent-deep); }
-.work-accordion-evidence h5 { margin: 1.25rem 0 .7rem; font-size: 1.3rem; line-height: 1.1; }
-.work-accordion-evidence > div { margin: 1rem 0; display: flex; flex-wrap: wrap; gap: .35rem; }
-.work-accordion-evidence small {
-  padding: .36rem .43rem;
-  border: 1px solid var(--line);
-  font: 700 .57rem/1 'Courier New', monospace;
-  text-transform: uppercase;
-}
-.work-accordion-evidence a {
+.work-inquiry-link {
+  flex: none;
+  min-height: 46px;
+  padding: 0 1.15rem;
   display: inline-flex;
-  gap: .55rem;
-  padding-bottom: .3rem;
-  border-bottom: 1px solid var(--ink);
-  color: var(--accent-deep);
-  font: 700 .64rem/1 'Courier New', monospace;
+  align-items: center;
+  gap: .6rem;
+  border: 1px solid var(--ink);
+  border-radius: 6px;
+  background: var(--ink);
+  color: #fbf8f1;
+  font: 800 .7rem/1 'Courier New', monospace;
+  letter-spacing: .07em;
   text-transform: uppercase;
+  transition: background var(--accordion-duration, 320ms) ease, color var(--accordion-duration, 320ms) ease, transform var(--accordion-duration, 320ms) ease;
 }
+.work-inquiry-link:hover { background: transparent; color: var(--ink); }
+.work-inquiry-link:hover b { transform: translateX(3px); }
+.work-inquiry-link b { transition: transform var(--accordion-duration, 320ms) ease; }
+.work-inquiry-link:focus-visible { outline: 2px solid var(--accent-deep); outline-offset: 3px; }
+/* Inset so the ring isn't clipped by the tile's rounded overflow. */
+.accordion-version .work-accordion-trigger:focus-visible { outline: 2px solid var(--accent-deep); outline-offset: -4px; border-radius: 8px; }
+/* Clears the sticky header (82px, 68px on phones) plus a small gap when scrolled to. */
+#inquiry-form { scroll-margin-top: calc(82px + 1.5rem); }
+@media (max-width: 560px) { #inquiry-form { scroll-margin-top: calc(68px + 1.5rem); } }
 
 @media (max-width: 1100px) {
   .accordion-version .work-accordion-trigger {
@@ -1853,8 +1837,6 @@ footer span:nth-child(2) { text-align: center; } footer a { justify-self: end; c
   }
   .work-accordion-deliverables { grid-column: 2; }
   .accordion-version .work-accordion-action { grid-column: 3; grid-row: 1 / span 2; }
-  .work-accordion-compact { grid-template-columns: 1fr 1fr; }
-  .work-accordion-evidence { grid-column: 1 / -1; min-height: 0; padding: 1.5rem 0 0; border-left: 0; border-top: 1px solid var(--line); }
 }
 
 @media (max-width: 720px) {
@@ -1881,10 +1863,7 @@ footer span:nth-child(2) { text-align: center; } footer a { justify-self: end; c
   .work-accordion-deliverables { grid-column: 1 / -1; padding-top: .9rem; border-top: 1px solid var(--line); }
   .accordion-version .work-accordion-action { min-width: 34px; grid-column: 2; grid-row: 2; }
   .accordion-version .work-accordion-action small { display: none; }
-  .work-accordion-compact { min-height: 0; padding: 1.4rem; grid-template-columns: 1fr; gap: 1.5rem; }
-  .work-accordion-manager-view,
-  .work-accordion-evidence { min-height: 0; padding: 1.4rem 0 0; border-left: 0; border-top: 1px solid var(--line); }
-  .work-accordion-value h4 { font-size: clamp(1.8rem, 10vw, 2.7rem); }
+  .work-accordion-inquiry { padding: 1.25rem 1.4rem 1.4rem; flex-direction: column; align-items: flex-start; gap: 1rem; }
 }
 
 @media (max-width: 1000px) {
