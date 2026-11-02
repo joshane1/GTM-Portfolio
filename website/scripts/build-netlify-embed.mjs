@@ -141,7 +141,7 @@ const aboutRoles = [
     article: 'a',
     name: 'builder',
     tagline: 'I turn ideas into systems.',
-    body: 'This involves breaking down high-level goals into actionable requirements, identifying resource and technical requirements, and architecting solutions. This work spans data models, API connections, workflow automation, analytical processes, and systems built from the ground up. I move between understanding the problem and building the solution.',
+    body: 'As a builder, I break down high-level goals into actionable requirements, identify the resources and technology needed, and architect solutions. My work spans data models, API connections, workflow automation, analytical processes, and systems built from the ground up. I naturally move between understanding the problem and building the solution.',
   },
   {
     article: 'an',
@@ -186,7 +186,7 @@ body{overflow-x:hidden}
 .about-glance-copy{display:flex;flex-direction:column;justify-content:center}
 .about-glance-copy h1{max-width:900px;margin:1rem 0 1.6rem;font:500 clamp(3.2rem,5.9vw,6.4rem)/.9 Georgia,'Times New Roman',serif;letter-spacing:-.065em}
 .about-glance-copy h1 em{color:var(--accent-deep);font-weight:inherit}
-.about-glance-lede{max-width:760px;margin:0;color:var(--ink);font-size:clamp(1.15rem,1.65vw,1.55rem);line-height:1.5}
+.about-glance-lede{max-width:760px;margin:0;color:var(--muted);font-size:clamp(1.15rem,1.6vw,1.4rem);line-height:1.55}
 .about-glance-support{max-width:720px;margin:1.1rem 0 0;color:var(--muted);line-height:1.7}
 .about-glance-experience{max-width:760px;margin:1.1rem 0 0;color:var(--muted);line-height:1.7}
 .about-glance-experience strong{color:var(--ink);font-weight:600}
