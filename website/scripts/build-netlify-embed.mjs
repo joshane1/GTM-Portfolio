@@ -82,7 +82,7 @@ const header = (active, aboutHref = '/about/') => `<header class="site-header op
   <a class="header-cta" href="/#contact">Let&apos;s talk</a>
 </header>`;
 
-const footer = () => `<footer class="operating-footer"><span>© 2026 OSHANE JACKSON</span><span>GTM ENGINEERING / SYSTEMS / ANALYTICS</span><div class="footer-links"><a href="${linkedinUrl}" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn profile (opens in a new tab)">LINKEDIN ↗</a><a href="/">HOME</a></div></footer>`;
+const footer = (aboutHref = '/about/') => `<footer class="operating-footer"><span>© 2026 OSHANE JACKSON</span><span>GTM ENGINEERING / SYSTEMS / ANALYTICS</span><div class="footer-links"><a href="/#types-of-work">TYPES OF WORK</a><a href="${aboutHref}">ABOUT ME</a><a href="${linkedinUrl}" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn profile (opens in a new tab)">LINKEDIN ↗</a><a href="/">HOME</a></div></footer>`;
 
 function accordion(items) {
   return `<div class="work-accordion" aria-label="Types of GTM engineering work">${items.map((work) => {
@@ -223,7 +223,7 @@ body{overflow-x:hidden}
 .about-profile-list li{white-space:nowrap}
 .about-profile-list li:not(:last-child)::after{content:'•';margin-left:.55rem;color:var(--ink)}
 .about-profile-link{color:var(--ink);text-decoration:underline;text-decoration-color:var(--accent-deep);text-underline-offset:3px}.about-profile-link:hover{color:var(--accent-deep)}.about-profile-summary .about-profile-arrow{display:inline-block;margin:0 0 0 .3em;color:inherit;font:inherit;font-size:.72em;letter-spacing:0;text-transform:none;vertical-align:.12em}
-.footer-links{justify-self:end;display:flex;gap:1.75rem}.footer-links a{color:#fff;text-decoration:none}.footer-links a:hover{text-decoration:underline;text-underline-offset:3px}
+.footer-links{justify-self:end;display:flex;flex-wrap:wrap;justify-content:flex-end;gap:.6rem 1.75rem}.footer-links a{color:#fff;text-decoration:none}.footer-links a:hover{text-decoration:underline;text-underline-offset:3px}
 [data-state="error"] a{color:inherit;text-decoration:underline;text-underline-offset:3px}
 .about-glance-copy h1.about-identity-title{font-size:clamp(3.1rem,5.4vw,6rem);line-height:.92}
 .about-roles{padding:clamp(2.75rem,4vw,4rem) 6vw clamp(4rem,7vw,7rem);background:#f4f0e6;border-top:1px solid var(--line)}
@@ -269,6 +269,21 @@ body{overflow-x:hidden}
 @media(max-width:720px){.about-glance{min-height:0;padding:3.5rem 1.25rem}.about-glance-copy h1{font-size:clamp(3rem,14vw,4.8rem)}.about-glance-facts{grid-template-columns:1fr}.about-glance-facts div{min-height:82px}.about-glance-visual{grid-template-columns:1fr;margin-top:2rem;padding:1rem}.about-glance .report-portrait{min-height:360px}.about-profile-summary{padding:1.1rem 0 0;border-top:1px solid var(--line);border-left:0}.about-glance-actions{flex-direction:column;align-items:flex-start}.about-brief>div{grid-template-columns:1fr;gap:.35rem}.about-roles,.about-focus{padding:3.5rem 1.25rem}.about-roles-list li{grid-template-columns:1fr;gap:.75rem}.about-role-number{padding-top:0}.about-role-body{grid-column:auto}.about-identity-index a{grid-template-columns:2rem minmax(0,1fr) auto;row-gap:.2rem}.about-identity-index small{grid-column:2}.about-identity-index b{grid-column:3;grid-row:1}}
 @media(max-width:1000px){.single-page-about-grid{grid-template-columns:1fr}.single-page-about-visual{max-width:760px;margin-top:2.5rem;grid-template-columns:minmax(280px,.65fr) 1fr;align-items:center}.single-page-about .report-portrait{min-height:360px}.single-page-about-visual .about-profile-summary{padding:1.25rem 0 1.25rem 1.5rem;border-top:0;border-left:1px solid var(--line)}}
 @media(max-width:720px){.single-page-about{padding:4.5rem 1.25rem}.single-page-about-copy h2{font-size:clamp(3rem,14vw,4.8rem)}.single-page-about-facts{grid-template-columns:1fr}.single-page-about-facts div{min-height:82px}.single-page-about-visual{grid-template-columns:1fr;margin-top:2rem;padding:1rem}.single-page-about .report-portrait{min-height:360px}.single-page-about-visual .about-profile-summary{padding:1.1rem 0 0;border-top:1px solid var(--line);border-left:0}.single-page-about-actions{flex-direction:column;align-items:flex-start}}
+@media(max-width:900px){
+.operating-header{grid-template-columns:1fr auto;grid-template-areas:"logo cta" "nav nav";align-content:center;min-height:0;padding-top:.95rem;padding-bottom:0}
+.operating-header .monogram{grid-area:logo}
+.operating-header .header-cta{grid-area:cta}
+.operating-header nav{grid-area:nav;display:flex;flex-wrap:nowrap;justify-content:center;gap:clamp(1.35rem,6vw,2.6rem);margin-top:.7rem;padding:.35rem 0 .85rem}
+.operating-header nav a{white-space:nowrap}
+#types-of-work,.inquiry-section{scroll-margin-top:86px}
+#inquiry-form{scroll-margin-top:calc(86px + 1.5rem)}
+.about-roles-list li{scroll-margin-top:calc(86px + 1rem)}
+}
+@media(max-width:1280px){.operating-footer{grid-template-columns:auto 1fr}.operating-footer span:nth-child(2){display:none}}
+@media(max-width:720px){
+.operating-footer{grid-template-columns:1fr;gap:1.1rem;padding:1.75rem 1.25rem}
+.operating-footer .footer-links{justify-self:start;justify-content:flex-start;gap:.75rem 1.5rem}
+}
 </style>`;
 
 const behavior = `<script>
@@ -465,6 +480,7 @@ const singlePageAbout = `<section class="single-page-about" id="about"><div clas
 const singlePageHome = home
   .replace('accordion-version"', 'accordion-version single-page-version"')
   .replace(header('home'), header('home', '#about'))
+  .replace(footer(), footer('#about'))
   .replace(/<section class="project-writeups"[\s\S]*?<\/section>/, singlePageAbout)
   .replace(/\s*<section class="simple-about capability-about">[\s\S]*?<\/section>/, '');
 
