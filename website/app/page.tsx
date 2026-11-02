@@ -33,7 +33,7 @@ export default async function Home({ searchParams }: PageProps) {
         <aside>
           <p>I&apos;m Oshane Jackson, a GTM Engineer and GTM Analytics Engineer. I design the data models, analytics, enrichment workflows, automations, and scoring systems that help revenue teams operate with greater clarity and consistency.</p>
           <div className="operating-actions"><a className="report-button report-button-primary" href="#types-of-work">Explore types of work</a><a className="report-button" href="#contact">Contact</a></div>
-          <small><i /> AVAILABLE FOR THE RIGHT ROLE OR PROJECT</small>
+          <small><i /> AVAILABLE FOR FULL-TIME ROLES &amp; CONTRACTS</small>
         </aside>
       </section>
 
@@ -80,7 +80,7 @@ export default async function Home({ searchParams }: PageProps) {
       </section>
 
       <section className="operating-contact simple-contact" id="contact">
-        <div><p className="report-kicker">EMPLOYMENT OR PROJECT-BASED SUPPORT</p><h2>Hiring for this capability—or need it <em>built?</em></h2><p className="contact-intro">I&apos;m open to GTM Engineering and GTM Analytics Engineering roles, as well as clearly scoped project work.</p></div>
+        <div><p className="report-kicker">EMPLOYMENT OR PROJECT-BASED SUPPORT</p><h2>Hiring for this capability—or need it <em>built?</em></h2><p className="contact-intro">I&apos;m open to full-time and contract GTM roles.</p></div>
         <div className="contact-review"><a href="https://www.linkedin.com/in/oshane-jackson/" rel="noreferrer" target="_blank">Connect on LinkedIn</a><div><span>REMOTE</span><a href="https://github.com/joshane1/GTM-Portfolio" rel="noreferrer" target="_blank">GITHUB</a></div></div>
       </section>
 
