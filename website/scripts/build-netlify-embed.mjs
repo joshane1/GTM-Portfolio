@@ -18,6 +18,8 @@ async function importTypeScript(relativePath) {
 
 const { workTypes } = await importTypeScript('app/work-data.ts');
 
+const linkedinUrl = 'https://www.linkedin.com/in/oshane-jackson/';
+
 const engagementTypes = [
   'Full-time — GTM Engineer',
   'Full-time — GTM Analytics Engineer',
@@ -80,7 +82,7 @@ const header = (active, aboutHref = '/about/') => `<header class="site-header op
   <a class="header-cta" href="/#contact">Let&apos;s talk</a>
 </header>`;
 
-const footer = () => `<footer class="operating-footer"><span>© 2026 OSHANE JACKSON</span><span>GTM ENGINEERING / SYSTEMS / ANALYTICS</span><a href="/">HOME</a></footer>`;
+const footer = () => `<footer class="operating-footer"><span>© 2026 OSHANE JACKSON</span><span>GTM ENGINEERING / SYSTEMS / ANALYTICS</span><div class="footer-links"><a href="${linkedinUrl}" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn profile (opens in a new tab)">LINKEDIN ↗</a><a href="/">HOME</a></div></footer>`;
 
 function accordion(items) {
   return `<div class="work-accordion" aria-label="Types of GTM engineering work">${items.map((work) => {
@@ -201,17 +203,17 @@ body{overflow-x:hidden}
 .about-brief>div{display:grid;grid-template-columns:110px 1fr;gap:1.5rem;padding:1rem 0;border-bottom:1px solid var(--line);align-items:start}
 .about-brief span{color:var(--accent-deep);font:700 .63rem/1.45 'Courier New',monospace;letter-spacing:.07em;text-transform:uppercase}
 .about-brief p{margin:0;color:var(--muted);font-size:.9rem;line-height:1.55}
-.about-glance-visual{width:100%;max-width:430px;justify-self:center;align-self:start;margin-top:clamp(6.25rem,7.2vw,7.5rem);padding:1rem 1.25rem 1.25rem;background:#f4f0e6;border:1px solid var(--line);display:grid;gap:1.35rem}
+.about-glance-visual{width:100%;max-width:430px;justify-self:center;align-self:start;margin-top:2.4rem;padding:1rem 1.25rem 1.25rem;background:#f4f0e6;border:1px solid var(--line);display:grid;gap:1.35rem}
 .about-glance .report-portrait{width:calc(100% - 10px);min-height:410px;height:auto;margin:0;box-shadow:10px 10px 0 #9db190}
 .about-profile-summary{padding-top:1.1rem;border-top:1px solid var(--line)}
 .about-profile-summary span{display:block;margin-bottom:.65rem;color:var(--accent-deep);font:700 .62rem/1.3 'Courier New',monospace;letter-spacing:.07em;text-transform:uppercase}
 .about-profile-summary strong{display:block;font:500 1.35rem/1.15 Georgia,'Times New Roman',serif}
 .about-profile-summary p{margin:.75rem 0 0;color:var(--muted);font-size:.8rem;line-height:1.55}
-.about-identity-index{max-width:760px;margin:1.75rem 0 0;padding:0;list-style:none;border-bottom:1px solid var(--line)}
-.about-identity-index a{display:grid;grid-template-columns:2.25rem 8.5rem minmax(0,1fr) auto;gap:.75rem;align-items:baseline;padding:.8rem 0;border-top:1px solid var(--line);color:var(--ink)}
+.about-identity-index{max-width:760px;margin:2.25rem 0 0;padding:0;list-style:none;border-bottom:1px solid var(--line)}
+.about-identity-index a{display:grid;grid-template-columns:2.25rem 9.25rem minmax(0,1fr) auto;gap:.75rem;align-items:baseline;padding:.95rem 0;border-top:1px solid var(--line);color:var(--ink)}
 .about-identity-index span{color:var(--accent-deep);font:700 .64rem/1 'Courier New',monospace;letter-spacing:.08em}
-.about-identity-index strong{font:500 1.3rem/1.1 Georgia,'Times New Roman',serif;letter-spacing:-.03em;transition:color .2s ease}
-.about-identity-index small{color:var(--muted);font-size:.92rem;line-height:1.4}
+.about-identity-index strong{font:500 1.4rem/1.1 Georgia,'Times New Roman',serif;letter-spacing:-.03em;transition:color .2s ease}
+.about-identity-index small{color:var(--muted);font-size:.96rem;line-height:1.4}
 .about-identity-index b{color:var(--accent-deep);font-size:.85rem;transition:transform .2s ease}
 .about-identity-index a:hover strong{color:var(--accent-deep)}
 .about-identity-index a:hover b{transform:translateY(3px)}
@@ -220,6 +222,9 @@ body{overflow-x:hidden}
 .about-profile-list{margin:0;padding:0;list-style:none;display:flex;flex-wrap:wrap;gap:.35rem .55rem;color:var(--ink);font-size:.95rem;line-height:1.4}
 .about-profile-list li{white-space:nowrap}
 .about-profile-list li:not(:last-child)::after{content:'•';margin-left:.55rem;color:var(--ink)}
+.about-profile-link{color:var(--ink);text-decoration:underline;text-decoration-color:var(--accent-deep);text-underline-offset:3px}.about-profile-link:hover{color:var(--accent-deep)}.about-profile-summary .about-profile-arrow{display:inline-block;margin:0 0 0 .3em;color:inherit;font:inherit;font-size:.72em;letter-spacing:0;text-transform:none;vertical-align:.12em}
+.footer-links{justify-self:end;display:flex;gap:1.75rem}.footer-links a{color:#fff;text-decoration:none}.footer-links a:hover{text-decoration:underline;text-underline-offset:3px}
+[data-state="error"] a{color:inherit;text-decoration:underline;text-underline-offset:3px}
 .about-glance-copy h1.about-identity-title{font-size:clamp(3.1rem,5.4vw,6rem);line-height:.92}
 .about-roles{padding:clamp(2.75rem,4vw,4rem) 6vw clamp(4rem,7vw,7rem);background:#f4f0e6;border-top:1px solid var(--line)}
 .about-roles-inner{max-width:1480px;margin:0 auto}
@@ -421,7 +426,7 @@ document.addEventListener('click',function(event){
           status.append('Hi ',nameEl,', your inquiry has been sent. I’ll be in touch soon.');
         }
       })
-      .catch(function(){setStatus('error','Something went wrong. Please reach out on LinkedIn instead.');})
+      .catch(function(){setStatus('error','Something went wrong. Please reach out on ');if(status){var a=document.createElement('a');a.href='${linkedinUrl}';a.target='_blank';a.rel='noopener noreferrer';a.textContent='LinkedIn';status.append(a,' instead.');}})
       .finally(function(){if(button)button.disabled=false;});
   });
 })();
@@ -441,7 +446,7 @@ const about = `<!doctype html><html lang="en"><head>${sharedHead('About Me — O
   <main id="top">
     <section class="about-glance"><div class="about-glance-grid">
       <div class="about-glance-copy"><p class="report-kicker">ABOUT ME / GTM SYSTEMS ENGINEER</p><h1 class="about-identity-title">I&apos;m a builder, analyst, entrepreneur, operator, and <em>technologist.</em></h1><p class="about-glance-lede">Working at the intersection of business, data, and technology, I translate strategic goals into analytical systems, automations, and workflows.</p><ol class="about-identity-index" aria-label="Core identities">${aboutRoles.map((role, index) => `<li><a href="#identity-${role.name}"><span>${String(index + 1).padStart(2, '0')}</span><strong>${esc(role.name[0].toUpperCase() + role.name.slice(1))}</strong><small>${esc(role.tagline)}</small><b aria-hidden="true">↓</b></a></li>`).join('')}</ol></div>
-      <aside class="about-glance-visual"><figure class="report-portrait report-portrait-photo"><img src="/oshane_profile_photo.webp" alt="Headshot of Oshane Jackson" width="1146" height="1419"></figure><div class="about-profile-summary"><span>LOCATION</span><ul class="about-profile-list"><li>Canada</li><li>USA</li><li>Americas</li></ul><span class="about-profile-roles-label">ROLES</span><ul class="about-profile-list"><li>Analytics Engineer</li><li>Data Analyst</li><li>GTM Engineer</li></ul></div></aside>
+      <aside class="about-glance-visual"><figure class="report-portrait report-portrait-photo"><img src="/oshane_profile_photo.webp" alt="Headshot of Oshane Jackson" width="1146" height="1419"></figure><div class="about-profile-summary"><span>LOCATION</span><ul class="about-profile-list"><li>Canada</li><li>USA</li><li>Americas</li></ul><span class="about-profile-roles-label">ROLES</span><ul class="about-profile-list"><li>Analytics Engineer</li><li>Data Analyst</li><li>GTM Engineer</li></ul><span class="about-profile-roles-label">CONNECT</span><ul class="about-profile-list"><li><a class="about-profile-link" href="${linkedinUrl}" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn profile (opens in a new tab)">LinkedIn<span class="about-profile-arrow" aria-hidden="true">↗</span></a></li></ul></div></aside>
     </div></section>
     <section class="about-roles" id="identities" aria-label="Core identities"><div class="about-roles-inner"><p class="report-kicker">CORE IDENTITIES / 05</p><ol class="about-roles-list">${aboutRoles.map((role, index) => `<li id="identity-${role.name}"><span class="about-role-number">${String(index + 1).padStart(2, '0')}</span><div class="about-role-title"><h2>I am ${role.article} <em>${esc(role.name)}.</em></h2><p>${esc(role.tagline)}</p></div><p class="about-role-body">${esc(role.body)}</p></li>`).join('')}</ol></div></section>
     <section class="about-focus"><div class="about-focus-grid">
